@@ -37,7 +37,7 @@ void checkTerminalCommands()
           buf[6] = ++session;
           buf[7] = buf[4] == 'Y' ? 6 : 4;
           bufp = 6;
-          parseCameraCommand();
+          parseSerialWrite();
           updateLCD();
         }
         return;

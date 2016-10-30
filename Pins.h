@@ -2,11 +2,11 @@
 //
 //    connect to USB           0; //      PE0 ( RXD0/PCINT8 )
 //    connect to USB           1; //      PE1 ( TXD0 )
-const int RTC_SQW            = 2; //      PE4 ( OC3B/INT4 )
+const int RTC_SQW            = 2; //      PE4 ( OC3B/INT4 )         // reserved
 const int IR_RECEIVE         = 3; //      PE5 ( OC3C/INT5 )
 //                             4; //      PG5 ( OC0B )
 //                             5; //      PE3 ( OC3A/AIN1 )
-const int TRIG              =  6; //      PH3 ( OC4A ) // for Hero 3+ Black only
+const int TRIG              =  6; //      PH3 ( OC4A )              // for Hero 3+ Black only
 const int HSYNC             =  7; //      PH4 ( OC4B )
 //      connect to D47 <----   8; //      PH5 ( OC4C )
 const int SECONDARY_RESET   =  9; //      PH6 ( OC2B )

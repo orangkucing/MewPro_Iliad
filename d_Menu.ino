@@ -107,6 +107,7 @@ boolean nextWidget()
           if (&setting.b[id] < &setting.p.reserved0 || &setting.b[id] >= &setting.p.v4) {
             storeSetupValue();
           }
+          Broadcast_ChangeSetting(id);
         }
         setup_id = id;
         return true;
@@ -146,6 +147,7 @@ void setNextValue()
       if (&setting.b[setup_id] < &setting.p.reserved0 || &setting.b[setup_id] >= &setting.p.v4) {
         storeSetupValue();
       }
+      Broadcast_ChangeSetting(setup_id);
       return;
     }
   } while (1);

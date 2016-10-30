@@ -48,6 +48,10 @@ byte buf[MEWPRO_BUFFER_LENGTH];
 int bufp = 6;
 unsigned char session = 0xFF;
 
+
+int protocol = 1;
+int state = 0;
+
 // IR remote
 union {
   unsigned long l[4];

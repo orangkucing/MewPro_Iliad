@@ -1,8 +1,4 @@
-#include <Arduino.h>
 #include "Iliad.h"
-
-int protocol = 1;
-int state = 0;
 
 void setup()
 {
@@ -39,6 +35,7 @@ void setup()
 
 void loop()
 {
+  // start up sessions
   if (startupSession != STARTUP_HALT) {
     if (startup[startupSession] != NULL) {
       (startup[startupSession++])(); // call the function

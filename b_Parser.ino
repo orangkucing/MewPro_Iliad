@@ -29,7 +29,8 @@ void _printOutPut()
   SERIAL.println("");
 }
 
-void parseCameraCommand()
+// parse command that is broadcasted to cameras
+void parseSerialWrite()
 {
   _printOutPut();
   switch (buf[2]) {
@@ -41,11 +42,7 @@ void parseCameraCommand()
         case ('Z' << 8) + 'Z':
           ZZcommand();
           break;
-        default:
-          break;
       }
-      break;
-    default:
       break;
   }
 }
@@ -62,10 +59,10 @@ void YYcommand()
 int ZZcommand()
 {
   switch (buf[8]) {
-    case 1: // bacpac capabilities? Dual Hero only
+    case 1:
       switch (buf[9]) {
         case 0:
-          // capabilities?
+          // Dual Hero only
           break;
       }
       break;
@@ -82,8 +79,6 @@ int ZZcommand()
     case 0: // extended command
       extendedZZcommand(); 
       break;
-    default:
-      break;
   }
 }
 
@@ -98,8 +93,6 @@ int extendedYYcommand()
         case 5: // set sub mode
           //                        main       sub
           setting.p.current_submode[buf[13]] = buf[14];
-          break;
-        default:
           break;
       }
       break;
@@ -134,8 +127,6 @@ int extendedYYcommand()
           }
           loadSetupValue();
           break;
-        default:
-          break;
       }
       break;
     case 3: // photo
@@ -161,8 +152,6 @@ int extendedYYcommand()
             storage[i].p.v4.photoProtune_iso_min     = buf[25 + i * 20];
           }
           loadSetupValue();
-          break;
-        default:
           break;
       }
       break;
@@ -191,8 +180,6 @@ int extendedYYcommand()
             storage[i].p.v4.multi_shotProtune_iso_min     = buf[27 + i * 22];
           }
           loadSetupValue();
-          break;
-        default:
           break;
       }
       break;
@@ -249,8 +236,6 @@ int extendedYYcommand()
           storeDefaultSubMode(setting.p.setup.default_app_mode, buf[40]);
           rtc.adjust(DateTime((int)(buf[41] * 256 + buf[42]), buf[43], buf[44], buf[45], buf[46], buf[47]));         
           break;
-        default:
-          break;
       }
       break;
     case 9: // delete
@@ -259,11 +244,7 @@ int extendedYYcommand()
           break;
         case 10: // delete all/format
           break;
-        default:
-          break;
       }
-      break;
-    default:
       break;
   }
 }
@@ -282,13 +263,9 @@ void extendedZZcommand()
               break;
             case 1:
               break;
-            default:
-              break;
           }
           break;
         case 2: // block until writing to microSD complete
-          break;
-        default:
           break;
       }
       break;
@@ -301,8 +278,6 @@ void extendedZZcommand()
     case 5: // bacpac firmware version
       break;
     case 6: // bacpac serial number
-      break;
-    default:
       break;
   }
 }

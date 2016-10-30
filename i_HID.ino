@@ -113,7 +113,7 @@ void navigateMenu(char key)
           break;
         case KEY_OK:
           if (setting.p.mode == MODE_SETUP) { // if current mode is Setting then
-            disp_state = MENU_SUB;          // goto setup menu
+            disp_state = MENU_SUB;            // goto setup menu
           } else {
             switch (recording_state) {
               case 0:
@@ -149,15 +149,6 @@ void navigateMenu(char key)
           break;
         case KEY_OK:
           setNextValue();
-          switch (setup_id) {
-            case &setting.p.current_submode[MODE_VIDEO] - setting.b:
-            case &setting.p.current_submode[MODE_PHOTO] - setting.b:
-            case &setting.p.current_submode[MODE_MULTI_SHOT] - setting.b:
-              Broadcast_ChangeSubMode();
-              break;
-            default:
-              break;
-          }
           break;
         default:
           return;
