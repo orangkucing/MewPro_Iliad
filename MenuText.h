@@ -5,9 +5,9 @@ const char MODE_PLAYBACK = 4;
 const char MODE_SETUP = 5;
 const char MODE_AUDIO = 6;
 
-const char GPCAMERA_GROUP_VIDEO[] PROGMEM = { 5, 6, 7, 2, 3, 4, 8, 9, 10, 11, 12, 73, 13, 74, 14, 15, 0 };
-const char GPCAMERA_GROUP_PHOTO[] PROGMEM = { 18, 19, 17, 20, 21, 22, 23, 75, 24, 25, 26, 0 };
-const char GPCAMERA_GROUP_MULTI_SHOT[] PROGMEM = { 31, 29, 30, 32, 28, 33, 34, 35, 36, 76, 37, 38, 39, 0 };
+const char GPCAMERA_GROUP_VIDEO[] PROGMEM = { 5, 6, 7, 2, 3, 4, 8, 9, 10, 11, 12, 13, 14, 15, 0 };
+const char GPCAMERA_GROUP_PHOTO[] PROGMEM = { 18, 19, 17, 20, 21, 22, 23, 24, 25, 26, 0 };
+const char GPCAMERA_GROUP_MULTI_SHOT[] PROGMEM = { 31, 29, 30, 32, 28, 33, 34, 35, 36, 37, 38, 39, 0 };
 const char GPCAMERA_GROUP_SETUP[] PROGMEM = { 52, 53, 1, 16, 27, 54, 55, 56, 57, 58, 59, 0 };
 const char GPCAMERA_GROUP_DELETE_ID[] PROGMEM = { 0 };
 const char GPCAMERA_GROUP_CAMERA_INFO[] PROGMEM = { 0 };
@@ -24,7 +24,7 @@ const char* const option_txt_0_0[] PROGMEM = {
 option_txt_0_0_0, option_txt_0_0_1, option_txt_0_0_2, option_txt_0_0_3, NULL
 };
 
-const char title_txt_0_1[] PROGMEM = "\x44""Sub Mode";
+const char title_txt_0_1[] PROGMEM = "\x44""Video Sub Mode";
 const char option_txt_0_1_0[] PROGMEM = "\x00""Video";
 const char option_txt_0_1_1[] PROGMEM = "\x01""Time Lapse Video";
 const char option_txt_0_1_2[] PROGMEM = "\x02""Video + Photo";
@@ -99,10 +99,10 @@ option_txt_0_6_0, option_txt_0_6_1, option_txt_0_6_2, option_txt_0_6_3, option_t
 };
 
 const char title_txt_0_7[] PROGMEM = "\x07""Interval";
-const char option_txt_0_7_0[] PROGMEM = "\x01""1 P / 5 Seconds";
-const char option_txt_0_7_1[] PROGMEM = "\x02""1 P / 10 Seconds";
-const char option_txt_0_7_2[] PROGMEM = "\x03""1 P / 30 Seconds";
-const char option_txt_0_7_3[] PROGMEM = "\x04""1 P / 60 Seconds";
+const char option_txt_0_7_0[] PROGMEM = "\x01""1 P / 5 Sec";
+const char option_txt_0_7_1[] PROGMEM = "\x02""1 P / 10 Sec";
+const char option_txt_0_7_2[] PROGMEM = "\x03""1 P / 30 Sec";
+const char option_txt_0_7_3[] PROGMEM = "\x04""1 P / 60 Sec";
 const char* const option_txt_0_7[] PROGMEM = {
 option_txt_0_7_0, option_txt_0_7_1, option_txt_0_7_2, option_txt_0_7_3, NULL
 };
@@ -131,14 +131,11 @@ option_txt_0_10_0, option_txt_0_10_1, NULL
 const char title_txt_0_11[] PROGMEM = "\x0b""White Balance";
 const char option_txt_0_11_0[] PROGMEM = "\x00""Auto";
 const char option_txt_0_11_1[] PROGMEM = "\x01""3000K";
-const char option_txt_0_11_2[] PROGMEM = "\x05""4000K";
-const char option_txt_0_11_3[] PROGMEM = "\x06""4800K";
-const char option_txt_0_11_4[] PROGMEM = "\x02""5500K";
-const char option_txt_0_11_5[] PROGMEM = "\x07""6000K";
-const char option_txt_0_11_6[] PROGMEM = "\x03""6500K";
-const char option_txt_0_11_7[] PROGMEM = "\x04""Native";
+const char option_txt_0_11_2[] PROGMEM = "\x02""5500K";
+const char option_txt_0_11_3[] PROGMEM = "\x03""6500K";
+const char option_txt_0_11_4[] PROGMEM = "\x04""Native";
 const char* const option_txt_0_11[] PROGMEM = {
-option_txt_0_11_0, option_txt_0_11_1, option_txt_0_11_2, option_txt_0_11_3, option_txt_0_11_4, option_txt_0_11_5, option_txt_0_11_6, option_txt_0_11_7, NULL
+option_txt_0_11_0, option_txt_0_11_1, option_txt_0_11_2, option_txt_0_11_3, option_txt_0_11_4, NULL
 };
 
 const char title_txt_0_12[] PROGMEM = "\x0c""Color";
@@ -161,68 +158,23 @@ const char option_txt_0_14_0[] PROGMEM = "\x08""-2.0";
 const char option_txt_0_14_1[] PROGMEM = "\x07""-1.5";
 const char option_txt_0_14_2[] PROGMEM = "\x06""-1.0";
 const char option_txt_0_14_3[] PROGMEM = "\x05""-0.5";
-const char option_txt_0_14_4[] PROGMEM = "\x04""0";
-const char option_txt_0_14_5[] PROGMEM = "\x03""+0.5";
-const char option_txt_0_14_6[] PROGMEM = "\x02""+1.0";
-const char option_txt_0_14_7[] PROGMEM = "\x01""+1.5";
-const char option_txt_0_14_8[] PROGMEM = "\x00""+2.0";
+const char option_txt_0_14_4[] PROGMEM = "\x04""0.0";
+const char option_txt_0_14_5[] PROGMEM = "\x03""0.5";
+const char option_txt_0_14_6[] PROGMEM = "\x02""1.0";
+const char option_txt_0_14_7[] PROGMEM = "\x01""1.5";
+const char option_txt_0_14_8[] PROGMEM = "\x00""2.0";
 const char* const option_txt_0_14[] PROGMEM = {
 option_txt_0_14_0, option_txt_0_14_1, option_txt_0_14_2, option_txt_0_14_3, option_txt_0_14_4, option_txt_0_14_5, option_txt_0_14_6, option_txt_0_14_7, option_txt_0_14_8, NULL
 };
 
-const char title_txt_0_15[] PROGMEM = "\x49""Manual Exposure";
-const char option_txt_0_15_0[] PROGMEM = "\x00""Auto";
-const char option_txt_0_15_1[] PROGMEM = "\x01""1/12.5";
-const char option_txt_0_15_2[] PROGMEM = "\x02""1/15";
-const char option_txt_0_15_3[] PROGMEM = "\x03""1/24";
-const char option_txt_0_15_4[] PROGMEM = "\x04""1/25";
-const char option_txt_0_15_5[] PROGMEM = "\x05""1/30";
-const char option_txt_0_15_6[] PROGMEM = "\x06""1/48";
-const char option_txt_0_15_7[] PROGMEM = "\x07""1/50";
-const char option_txt_0_15_8[] PROGMEM = "\x08""1/60";
-const char option_txt_0_15_9[] PROGMEM = "\x09""1/80";
-const char option_txt_0_15_10[] PROGMEM = "\x0a""1/90";
-const char option_txt_0_15_11[] PROGMEM = "\x0b""1/96";
-const char option_txt_0_15_12[] PROGMEM = "\x0c""1/100";
-const char option_txt_0_15_13[] PROGMEM = "\x0d""1/120";
-const char option_txt_0_15_14[] PROGMEM = "\x0e""1/160";
-const char option_txt_0_15_15[] PROGMEM = "\x0f""1/180";
-const char option_txt_0_15_16[] PROGMEM = "\x10""1/192";
-const char option_txt_0_15_17[] PROGMEM = "\x11""1/200";
-const char option_txt_0_15_18[] PROGMEM = "\x12""1/240";
-const char option_txt_0_15_19[] PROGMEM = "\x13""1/320";
-const char option_txt_0_15_20[] PROGMEM = "\x14""1/360";
-const char option_txt_0_15_21[] PROGMEM = "\x15""1/400";
-const char option_txt_0_15_22[] PROGMEM = "\x16""1/480";
-const char option_txt_0_15_23[] PROGMEM = "\x17""1/960";
+const char title_txt_0_15[] PROGMEM = "\x0d""ISO Limit";
+const char option_txt_0_15_0[] PROGMEM = "\x00""6400";
+const char option_txt_0_15_1[] PROGMEM = "\x01""1600";
+const char option_txt_0_15_2[] PROGMEM = "\x02""400";
+const char option_txt_0_15_3[] PROGMEM = "\x03""3200";
+const char option_txt_0_15_4[] PROGMEM = "\x04""800";
 const char* const option_txt_0_15[] PROGMEM = {
-option_txt_0_15_0, option_txt_0_15_1, option_txt_0_15_2, option_txt_0_15_3, option_txt_0_15_4, option_txt_0_15_5, option_txt_0_15_6, option_txt_0_15_7, option_txt_0_15_8, option_txt_0_15_9, option_txt_0_15_10, option_txt_0_15_11, option_txt_0_15_12, option_txt_0_15_13, option_txt_0_15_14, option_txt_0_15_15, option_txt_0_15_16, option_txt_0_15_17, option_txt_0_15_18, option_txt_0_15_19, option_txt_0_15_20, option_txt_0_15_21, option_txt_0_15_22, option_txt_0_15_23, NULL
-};
-
-const char title_txt_0_16[] PROGMEM = "\x0d""ISO Limit";
-const char option_txt_0_16_0[] PROGMEM = "\x00""6400";
-const char option_txt_0_16_1[] PROGMEM = "\x03""3200";
-const char option_txt_0_16_2[] PROGMEM = "\x01""1600";
-const char option_txt_0_16_3[] PROGMEM = "\x04""800";
-const char option_txt_0_16_4[] PROGMEM = "\x02""400";
-const char option_txt_0_16_5[] PROGMEM = "\x07""200";
-const char option_txt_0_16_6[] PROGMEM = "\x08""100";
-const char* const option_txt_0_16[] PROGMEM = {
-option_txt_0_16_0, option_txt_0_16_1, option_txt_0_16_2, option_txt_0_16_3, option_txt_0_16_4, option_txt_0_16_5, option_txt_0_16_6, NULL
-};
-
-const char title_txt_0_17[] PROGMEM = "\x4a""ISO Mode";
-const char option_txt_0_17_0[] PROGMEM = "\x00""Max";
-const char option_txt_0_17_1[] PROGMEM = "\x01""Lock";
-const char* const option_txt_0_17[] PROGMEM = {
-option_txt_0_17_0, option_txt_0_17_1, NULL
-};
-
-const char title_txt_0_18[] PROGMEM = "\x4e""EIS";
-const char option_txt_0_18_0[] PROGMEM = "\x01""ON";
-const char option_txt_0_18_1[] PROGMEM = "\x00""OFF";
-const char* const option_txt_0_18[] PROGMEM = {
-option_txt_0_18_0, option_txt_0_18_1, NULL
+option_txt_0_15_0, option_txt_0_15_1, option_txt_0_15_2, option_txt_0_15_3, option_txt_0_15_4, NULL
 };
 
 
@@ -235,7 +187,7 @@ const char* const option_txt_1_0[] PROGMEM = {
 option_txt_1_0_0, option_txt_1_0_1, option_txt_1_0_2, NULL
 };
 
-const char title_txt_1_1[] PROGMEM = "\x45""Sub Mode";
+const char title_txt_1_1[] PROGMEM = "\x45""Photo Sub Mode";
 const char option_txt_1_1_0[] PROGMEM = "\x00""Single";
 const char option_txt_1_1_1[] PROGMEM = "\x01""Continuous";
 const char option_txt_1_1_2[] PROGMEM = "\x02""Night";
@@ -244,9 +196,9 @@ option_txt_1_1_0, option_txt_1_1_1, option_txt_1_1_2, NULL
 };
 
 const char title_txt_1_2[] PROGMEM = "\x12""Continuous Rate";
-const char option_txt_1_2_0[] PROGMEM = "\x00""3 Frames / Sec";
-const char option_txt_1_2_1[] PROGMEM = "\x01""5 Frames / Sec";
-const char option_txt_1_2_2[] PROGMEM = "\x02""10 Frames / Sec";
+const char option_txt_1_2_0[] PROGMEM = "\x00""3 FPS";
+const char option_txt_1_2_1[] PROGMEM = "\x01""5 FPS";
+const char option_txt_1_2_2[] PROGMEM = "\x02""10 FPS";
 const char* const option_txt_1_2[] PROGMEM = {
 option_txt_1_2_0, option_txt_1_2_1, option_txt_1_2_2, NULL
 };
@@ -279,85 +231,59 @@ const char* const option_txt_1_5[] PROGMEM = {
 option_txt_1_5_0, option_txt_1_5_1, NULL
 };
 
-const char title_txt_1_6[] PROGMEM = "\x4d""WDR";
+const char title_txt_1_6[] PROGMEM = "\x15""Protune";
 const char option_txt_1_6_0[] PROGMEM = "\x01""ON";
 const char option_txt_1_6_1[] PROGMEM = "\x00""OFF";
 const char* const option_txt_1_6[] PROGMEM = {
 option_txt_1_6_0, option_txt_1_6_1, NULL
 };
 
-const char title_txt_1_7[] PROGMEM = "\x52""RAW";
-const char option_txt_1_7_0[] PROGMEM = "\x01""ON";
-const char option_txt_1_7_1[] PROGMEM = "\x00""OFF";
+const char title_txt_1_7[] PROGMEM = "\x16""White Balance";
+const char option_txt_1_7_0[] PROGMEM = "\x00""Auto";
+const char option_txt_1_7_1[] PROGMEM = "\x01""3000K";
+const char option_txt_1_7_2[] PROGMEM = "\x02""5500K";
+const char option_txt_1_7_3[] PROGMEM = "\x03""6500K";
+const char option_txt_1_7_4[] PROGMEM = "\x04""Native";
 const char* const option_txt_1_7[] PROGMEM = {
-option_txt_1_7_0, option_txt_1_7_1, NULL
+option_txt_1_7_0, option_txt_1_7_1, option_txt_1_7_2, option_txt_1_7_3, option_txt_1_7_4, NULL
 };
 
-const char title_txt_1_8[] PROGMEM = "\x15""Protune";
-const char option_txt_1_8_0[] PROGMEM = "\x01""ON";
-const char option_txt_1_8_1[] PROGMEM = "\x00""OFF";
+const char title_txt_1_8[] PROGMEM = "\x17""Color";
+const char option_txt_1_8_0[] PROGMEM = "\x00""GoPro Color";
+const char option_txt_1_8_1[] PROGMEM = "\x01""Flat";
 const char* const option_txt_1_8[] PROGMEM = {
 option_txt_1_8_0, option_txt_1_8_1, NULL
 };
 
-const char title_txt_1_9[] PROGMEM = "\x16""White Balance";
-const char option_txt_1_9_0[] PROGMEM = "\x00""Auto";
-const char option_txt_1_9_1[] PROGMEM = "\x01""3000K";
-const char option_txt_1_9_2[] PROGMEM = "\x05""4000K";
-const char option_txt_1_9_3[] PROGMEM = "\x06""4800K";
-const char option_txt_1_9_4[] PROGMEM = "\x02""5500K";
-const char option_txt_1_9_5[] PROGMEM = "\x07""6000K";
-const char option_txt_1_9_6[] PROGMEM = "\x03""6500K";
-const char option_txt_1_9_7[] PROGMEM = "\x04""Native";
+const char title_txt_1_9[] PROGMEM = "\x19""Sharpness";
+const char option_txt_1_9_0[] PROGMEM = "\x00""High";
+const char option_txt_1_9_1[] PROGMEM = "\x01""Medium";
+const char option_txt_1_9_2[] PROGMEM = "\x02""Low";
 const char* const option_txt_1_9[] PROGMEM = {
-option_txt_1_9_0, option_txt_1_9_1, option_txt_1_9_2, option_txt_1_9_3, option_txt_1_9_4, option_txt_1_9_5, option_txt_1_9_6, option_txt_1_9_7, NULL
+option_txt_1_9_0, option_txt_1_9_1, option_txt_1_9_2, NULL
 };
 
-const char title_txt_1_10[] PROGMEM = "\x17""Color";
-const char option_txt_1_10_0[] PROGMEM = "\x00""GoPro Color";
-const char option_txt_1_10_1[] PROGMEM = "\x01""Flat";
+const char title_txt_1_10[] PROGMEM = "\x1a""EV Comp";
+const char option_txt_1_10_0[] PROGMEM = "\x08""-2.0";
+const char option_txt_1_10_1[] PROGMEM = "\x07""-1.5";
+const char option_txt_1_10_2[] PROGMEM = "\x06""-1.0";
+const char option_txt_1_10_3[] PROGMEM = "\x05""-0.5";
+const char option_txt_1_10_4[] PROGMEM = "\x04""0.0";
+const char option_txt_1_10_5[] PROGMEM = "\x03""0.5";
+const char option_txt_1_10_6[] PROGMEM = "\x02""1.0";
+const char option_txt_1_10_7[] PROGMEM = "\x01""1.5";
+const char option_txt_1_10_8[] PROGMEM = "\x00""2.0";
 const char* const option_txt_1_10[] PROGMEM = {
-option_txt_1_10_0, option_txt_1_10_1, NULL
+option_txt_1_10_0, option_txt_1_10_1, option_txt_1_10_2, option_txt_1_10_3, option_txt_1_10_4, option_txt_1_10_5, option_txt_1_10_6, option_txt_1_10_7, option_txt_1_10_8, NULL
 };
 
-const char title_txt_1_11[] PROGMEM = "\x19""Sharpness";
-const char option_txt_1_11_0[] PROGMEM = "\x00""High";
-const char option_txt_1_11_1[] PROGMEM = "\x01""Medium";
-const char option_txt_1_11_2[] PROGMEM = "\x02""Low";
+const char title_txt_1_11[] PROGMEM = "\x18""ISO Limit";
+const char option_txt_1_11_0[] PROGMEM = "\x00""800";
+const char option_txt_1_11_1[] PROGMEM = "\x01""400";
+const char option_txt_1_11_2[] PROGMEM = "\x02""200";
+const char option_txt_1_11_3[] PROGMEM = "\x03""100";
 const char* const option_txt_1_11[] PROGMEM = {
-option_txt_1_11_0, option_txt_1_11_1, option_txt_1_11_2, NULL
-};
-
-const char title_txt_1_12[] PROGMEM = "\x1a""EV Comp";
-const char option_txt_1_12_0[] PROGMEM = "\x08""-2.0";
-const char option_txt_1_12_1[] PROGMEM = "\x07""-1.5";
-const char option_txt_1_12_2[] PROGMEM = "\x06""-1.0";
-const char option_txt_1_12_3[] PROGMEM = "\x05""-0.5";
-const char option_txt_1_12_4[] PROGMEM = "\x04""0";
-const char option_txt_1_12_5[] PROGMEM = "\x03""+0.5";
-const char option_txt_1_12_6[] PROGMEM = "\x02""+1.0";
-const char option_txt_1_12_7[] PROGMEM = "\x01""+1.5";
-const char option_txt_1_12_8[] PROGMEM = "\x00""+2.0";
-const char* const option_txt_1_12[] PROGMEM = {
-option_txt_1_12_0, option_txt_1_12_1, option_txt_1_12_2, option_txt_1_12_3, option_txt_1_12_4, option_txt_1_12_5, option_txt_1_12_6, option_txt_1_12_7, option_txt_1_12_8, NULL
-};
-
-const char title_txt_1_13[] PROGMEM = "\x4b""ISO Min";
-const char option_txt_1_13_0[] PROGMEM = "\x00""800";
-const char option_txt_1_13_1[] PROGMEM = "\x01""400";
-const char option_txt_1_13_2[] PROGMEM = "\x02""200";
-const char option_txt_1_13_3[] PROGMEM = "\x03""100";
-const char* const option_txt_1_13[] PROGMEM = {
-option_txt_1_13_0, option_txt_1_13_1, option_txt_1_13_2, option_txt_1_13_3, NULL
-};
-
-const char title_txt_1_14[] PROGMEM = "\x18""ISO Max";
-const char option_txt_1_14_0[] PROGMEM = "\x00""800";
-const char option_txt_1_14_1[] PROGMEM = "\x01""400";
-const char option_txt_1_14_2[] PROGMEM = "\x02""200";
-const char option_txt_1_14_3[] PROGMEM = "\x03""100";
-const char* const option_txt_1_14[] PROGMEM = {
-option_txt_1_14_0, option_txt_1_14_1, option_txt_1_14_2, option_txt_1_14_3, NULL
+option_txt_1_11_0, option_txt_1_11_1, option_txt_1_11_2, option_txt_1_11_3, NULL
 };
 
 
@@ -459,14 +385,11 @@ option_txt_2_8_0, option_txt_2_8_1, NULL
 const char title_txt_2_9[] PROGMEM = "\x23""White Balance";
 const char option_txt_2_9_0[] PROGMEM = "\x00""Auto";
 const char option_txt_2_9_1[] PROGMEM = "\x01""3000K";
-const char option_txt_2_9_2[] PROGMEM = "\x05""4000K";
-const char option_txt_2_9_3[] PROGMEM = "\x06""4800K";
-const char option_txt_2_9_4[] PROGMEM = "\x02""5500K";
-const char option_txt_2_9_5[] PROGMEM = "\x07""6000K";
-const char option_txt_2_9_6[] PROGMEM = "\x03""6500K";
-const char option_txt_2_9_7[] PROGMEM = "\x04""Native";
+const char option_txt_2_9_2[] PROGMEM = "\x02""5500K";
+const char option_txt_2_9_3[] PROGMEM = "\x03""6500K";
+const char option_txt_2_9_4[] PROGMEM = "\x04""Native";
 const char* const option_txt_2_9[] PROGMEM = {
-option_txt_2_9_0, option_txt_2_9_1, option_txt_2_9_2, option_txt_2_9_3, option_txt_2_9_4, option_txt_2_9_5, option_txt_2_9_6, option_txt_2_9_7, NULL
+option_txt_2_9_0, option_txt_2_9_1, option_txt_2_9_2, option_txt_2_9_3, option_txt_2_9_4, NULL
 };
 
 const char title_txt_2_10[] PROGMEM = "\x24""Color";
@@ -489,16 +412,16 @@ const char option_txt_2_12_0[] PROGMEM = "\x08""-2.0";
 const char option_txt_2_12_1[] PROGMEM = "\x07""-1.5";
 const char option_txt_2_12_2[] PROGMEM = "\x06""-1.0";
 const char option_txt_2_12_3[] PROGMEM = "\x05""-0.5";
-const char option_txt_2_12_4[] PROGMEM = "\x04""0";
-const char option_txt_2_12_5[] PROGMEM = "\x03""+0.5";
-const char option_txt_2_12_6[] PROGMEM = "\x02""+1.0";
-const char option_txt_2_12_7[] PROGMEM = "\x01""+1.5";
-const char option_txt_2_12_8[] PROGMEM = "\x00""+2.0";
+const char option_txt_2_12_4[] PROGMEM = "\x04""0.0";
+const char option_txt_2_12_5[] PROGMEM = "\x03""0.5";
+const char option_txt_2_12_6[] PROGMEM = "\x02""1.0";
+const char option_txt_2_12_7[] PROGMEM = "\x01""1.5";
+const char option_txt_2_12_8[] PROGMEM = "\x00""2.0";
 const char* const option_txt_2_12[] PROGMEM = {
 option_txt_2_12_0, option_txt_2_12_1, option_txt_2_12_2, option_txt_2_12_3, option_txt_2_12_4, option_txt_2_12_5, option_txt_2_12_6, option_txt_2_12_7, option_txt_2_12_8, NULL
 };
 
-const char title_txt_2_13[] PROGMEM = "\x4c""ISO Min";
+const char title_txt_2_13[] PROGMEM = "\x25""ISO Limit";
 const char option_txt_2_13_0[] PROGMEM = "\x00""800";
 const char option_txt_2_13_1[] PROGMEM = "\x01""400";
 const char option_txt_2_13_2[] PROGMEM = "\x02""200";
@@ -507,144 +430,109 @@ const char* const option_txt_2_13[] PROGMEM = {
 option_txt_2_13_0, option_txt_2_13_1, option_txt_2_13_2, option_txt_2_13_3, NULL
 };
 
-const char title_txt_2_14[] PROGMEM = "\x25""ISO Max";
-const char option_txt_2_14_0[] PROGMEM = "\x00""800";
-const char option_txt_2_14_1[] PROGMEM = "\x01""400";
-const char option_txt_2_14_2[] PROGMEM = "\x02""200";
-const char option_txt_2_14_3[] PROGMEM = "\x03""100";
-const char* const option_txt_2_14[] PROGMEM = {
-option_txt_2_14_0, option_txt_2_14_1, option_txt_2_14_2, option_txt_2_14_3, NULL
-};
-
 
 //
-
-//
-const char title_txt_4_0[] PROGMEM = "\x48""LCD Display";
-const char option_txt_4_0_0[] PROGMEM = "\x01""ON";
-const char option_txt_4_0_1[] PROGMEM = "\x00""OFF";
-const char* const option_txt_4_0[] PROGMEM = {
-option_txt_4_0_0, option_txt_4_0_1, NULL
+const char title_txt_3_0[] PROGMEM = "\x48""LCD Display";
+const char option_txt_3_0_0[] PROGMEM = "\x01""ON";
+const char option_txt_3_0_1[] PROGMEM = "\x00""OFF";
+const char* const option_txt_3_0[] PROGMEM = {
+option_txt_3_0_0, option_txt_3_0_1, NULL
 };
 
-const char title_txt_4_1[] PROGMEM = "\x31""LCD Brightness";
-const char option_txt_4_1_0[] PROGMEM = "\x00""High";
-const char option_txt_4_1_1[] PROGMEM = "\x01""Medium";
-const char option_txt_4_1_2[] PROGMEM = "\x02""Low";
-const char* const option_txt_4_1[] PROGMEM = {
-option_txt_4_1_0, option_txt_4_1_1, option_txt_4_1_2, NULL
+const char title_txt_3_1[] PROGMEM = "\x31""LCD Brightness";
+const char option_txt_3_1_0[] PROGMEM = "\x00""High";
+const char option_txt_3_1_1[] PROGMEM = "\x01""Medium";
+const char option_txt_3_1_2[] PROGMEM = "\x02""Low";
+const char* const option_txt_3_1[] PROGMEM = {
+option_txt_3_1_0, option_txt_3_1_1, option_txt_3_1_2, NULL
 };
 
-const char title_txt_4_2[] PROGMEM = "\x32""LCD Lock";
-const char option_txt_4_2_0[] PROGMEM = "\x01""ON";
-const char option_txt_4_2_1[] PROGMEM = "\x00""OFF";
-const char* const option_txt_4_2[] PROGMEM = {
-option_txt_4_2_0, option_txt_4_2_1, NULL
+const char title_txt_3_2[] PROGMEM = "\x32""LCD Lock";
+const char option_txt_3_2_0[] PROGMEM = "\x01""ON";
+const char option_txt_3_2_1[] PROGMEM = "\x00""OFF";
+const char* const option_txt_3_2[] PROGMEM = {
+option_txt_3_2_0, option_txt_3_2_1, NULL
 };
 
-const char title_txt_4_3[] PROGMEM = "\x33""LCD Sleep";
-const char option_txt_4_3_0[] PROGMEM = "\x00""Never";
-const char option_txt_4_3_1[] PROGMEM = "\x01""1 MIN";
-const char option_txt_4_3_2[] PROGMEM = "\x02""2 MIN";
-const char option_txt_4_3_3[] PROGMEM = "\x03""3 MIN";
-const char* const option_txt_4_3[] PROGMEM = {
-option_txt_4_3_0, option_txt_4_3_1, option_txt_4_3_2, option_txt_4_3_3, NULL
+const char title_txt_3_3[] PROGMEM = "\x33""LCD Sleep";
+const char option_txt_3_3_0[] PROGMEM = "\x00""Never";
+const char option_txt_3_3_1[] PROGMEM = "\x01""1 MIN";
+const char option_txt_3_3_2[] PROGMEM = "\x02""2 MIN";
+const char option_txt_3_3_3[] PROGMEM = "\x03""3 MIN";
+const char* const option_txt_3_3[] PROGMEM = {
+option_txt_3_3_0, option_txt_3_3_1, option_txt_3_3_2, option_txt_3_3_3, NULL
 };
 
-const char title_txt_4_4[] PROGMEM = "\x34""Orientation";
-const char option_txt_4_4_0[] PROGMEM = "\x01""Up";
-const char option_txt_4_4_1[] PROGMEM = "\x02""Down";
-const char option_txt_4_4_2[] PROGMEM = "\x00""Auto";
-const char* const option_txt_4_4[] PROGMEM = {
-option_txt_4_4_0, option_txt_4_4_1, option_txt_4_4_2, NULL
+const char title_txt_3_4[] PROGMEM = "\x34""Orientation";
+const char option_txt_3_4_0[] PROGMEM = "\x01""Up";
+const char option_txt_3_4_1[] PROGMEM = "\x02""Down";
+const char option_txt_3_4_2[] PROGMEM = "\x00""Auto";
+const char* const option_txt_3_4[] PROGMEM = {
+option_txt_3_4_0, option_txt_3_4_1, option_txt_3_4_2, NULL
 };
 
-const char title_txt_4_5[] PROGMEM = "\x35""Default Mode";
-const char option_txt_4_5_0[] PROGMEM = "\x00""Video";
-const char option_txt_4_5_1[] PROGMEM = "\x01""Photo";
-const char option_txt_4_5_2[] PROGMEM = "\x02""Multi-shot";
-const char* const option_txt_4_5[] PROGMEM = {
-option_txt_4_5_0, option_txt_4_5_1, option_txt_4_5_2, NULL
+const char title_txt_3_5[] PROGMEM = "\x35""Default Mode";
+const char option_txt_3_5_0[] PROGMEM = "\x00""Video";
+const char option_txt_3_5_1[] PROGMEM = "\x01""Photo";
+const char option_txt_3_5_2[] PROGMEM = "\x02""Multi-shot";
+const char* const option_txt_3_5[] PROGMEM = {
+option_txt_3_5_0, option_txt_3_5_1, option_txt_3_5_2, NULL
 };
 
-const char title_txt_4_6[] PROGMEM = "\x36""Quick Capture";
-const char option_txt_4_6_0[] PROGMEM = "\x01""ON";
-const char option_txt_4_6_1[] PROGMEM = "\x00""OFF";
-const char* const option_txt_4_6[] PROGMEM = {
-option_txt_4_6_0, option_txt_4_6_1, NULL
+const char title_txt_3_6[] PROGMEM = "\x36""Quick Capture";
+const char option_txt_3_6_0[] PROGMEM = "\x01""ON";
+const char option_txt_3_6_1[] PROGMEM = "\x00""OFF";
+const char* const option_txt_3_6[] PROGMEM = {
+option_txt_3_6_0, option_txt_3_6_1, NULL
 };
 
-const char title_txt_4_7[] PROGMEM = "\x37""LED Blink";
-const char option_txt_4_7_0[] PROGMEM = "\x00""OFF";
-const char option_txt_4_7_1[] PROGMEM = "\x01""2";
-const char option_txt_4_7_2[] PROGMEM = "\x02""4";
-const char* const option_txt_4_7[] PROGMEM = {
-option_txt_4_7_0, option_txt_4_7_1, option_txt_4_7_2, NULL
+const char title_txt_3_7[] PROGMEM = "\x37""LED Blink";
+const char option_txt_3_7_0[] PROGMEM = "\x00""OFF";
+const char option_txt_3_7_1[] PROGMEM = "\x01""2";
+const char option_txt_3_7_2[] PROGMEM = "\x02""4";
+const char* const option_txt_3_7[] PROGMEM = {
+option_txt_3_7_0, option_txt_3_7_1, option_txt_3_7_2, NULL
 };
 
-const char title_txt_4_8[] PROGMEM = "\x38""Beeps";
-const char option_txt_4_8_0[] PROGMEM = "\x00""100%";
-const char option_txt_4_8_1[] PROGMEM = "\x01""70%";
-const char option_txt_4_8_2[] PROGMEM = "\x02""OFF";
-const char* const option_txt_4_8[] PROGMEM = {
-option_txt_4_8_0, option_txt_4_8_1, option_txt_4_8_2, NULL
+const char title_txt_3_8[] PROGMEM = "\x38""Beeps";
+const char option_txt_3_8_0[] PROGMEM = "\x00""100%";
+const char option_txt_3_8_1[] PROGMEM = "\x01""70%";
+const char option_txt_3_8_2[] PROGMEM = "\x02""OFF";
+const char* const option_txt_3_8[] PROGMEM = {
+option_txt_3_8_0, option_txt_3_8_1, option_txt_3_8_2, NULL
 };
 
-const char title_txt_4_9[] PROGMEM = "\x39""Video Format";
-const char option_txt_4_9_0[] PROGMEM = "\x00""NTSC";
-const char option_txt_4_9_1[] PROGMEM = "\x01""PAL";
-const char* const option_txt_4_9[] PROGMEM = {
-option_txt_4_9_0, option_txt_4_9_1, NULL
+const char title_txt_3_9[] PROGMEM = "\x39""Video Format";
+const char option_txt_3_9_0[] PROGMEM = "\x00""NTSC";
+const char option_txt_3_9_1[] PROGMEM = "\x01""PAL";
+const char* const option_txt_3_9[] PROGMEM = {
+option_txt_3_9_0, option_txt_3_9_1, NULL
 };
 
-const char title_txt_4_10[] PROGMEM = "\x3a""OSD";
-const char option_txt_4_10_0[] PROGMEM = "\x01""ON";
-const char option_txt_4_10_1[] PROGMEM = "\x00""OFF";
-const char* const option_txt_4_10[] PROGMEM = {
-option_txt_4_10_0, option_txt_4_10_1, NULL
+const char title_txt_3_10[] PROGMEM = "\x3a""OSD";
+const char option_txt_3_10_0[] PROGMEM = "\x01""ON";
+const char option_txt_3_10_1[] PROGMEM = "\x00""OFF";
+const char* const option_txt_3_10[] PROGMEM = {
+option_txt_3_10_0, option_txt_3_10_1, NULL
 };
 
-const char title_txt_4_11[] PROGMEM = "\x3b""Auto Off";
-const char option_txt_4_11_0[] PROGMEM = "\x00""NEVER";
-const char option_txt_4_11_1[] PROGMEM = "\x01""1 MIN";
-const char option_txt_4_11_2[] PROGMEM = "\x02""2 MIN";
-const char option_txt_4_11_3[] PROGMEM = "\x03""3 MIN";
-const char option_txt_4_11_4[] PROGMEM = "\x04""5 MIN";
-const char* const option_txt_4_11[] PROGMEM = {
-option_txt_4_11_0, option_txt_4_11_1, option_txt_4_11_2, option_txt_4_11_3, option_txt_4_11_4, NULL
+const char title_txt_3_11[] PROGMEM = "\x3b""Auto Off";
+const char option_txt_3_11_0[] PROGMEM = "\x00""NEVER";
+const char option_txt_3_11_1[] PROGMEM = "\x01""1 MIN";
+const char option_txt_3_11_2[] PROGMEM = "\x02""2 MIN";
+const char option_txt_3_11_3[] PROGMEM = "\x03""3 MIN";
+const char option_txt_3_11_4[] PROGMEM = "\x04""5 MIN";
+const char* const option_txt_3_11[] PROGMEM = {
+option_txt_3_11_0, option_txt_3_11_1, option_txt_3_11_2, option_txt_3_11_3, option_txt_3_11_4, NULL
 };
 
-const char title_txt_4_12[] PROGMEM = "\x3f""Wireless Mode";
-const char option_txt_4_12_0[] PROGMEM = "\x00""OFF";
-const char option_txt_4_12_1[] PROGMEM = "\x01""App";
-const char option_txt_4_12_2[] PROGMEM = "\x02""RC";
-const char option_txt_4_12_3[] PROGMEM = "\x04""Smart";
-const char* const option_txt_4_12[] PROGMEM = {
-option_txt_4_12_0, option_txt_4_12_1, option_txt_4_12_2, option_txt_4_12_3, NULL
-};
-
-//
-const char title_txt_5_0[] PROGMEM = "\x50""Auto Audio Mode";
-const char option_txt_5_0_0[] PROGMEM = "\x00""Stereo Only";
-const char option_txt_5_0_1[] PROGMEM = "\x01""Wind Only";
-const char option_txt_5_0_2[] PROGMEM = "\x02""Auto";
-const char* const option_txt_5_0[] PROGMEM = {
-option_txt_5_0_0, option_txt_5_0_1, option_txt_5_0_2, NULL
-};
-
-const char title_txt_5_1[] PROGMEM = "\x4f""Audio Protune";
-const char option_txt_5_1_0[] PROGMEM = "\x01""ON";
-const char option_txt_5_1_1[] PROGMEM = "\x00""OFF";
-const char* const option_txt_5_1[] PROGMEM = {
-option_txt_5_1_0, option_txt_5_1_1, NULL
-};
-
-const char title_txt_5_2[] PROGMEM = "\x51""Raw Audio Track";
-const char option_txt_5_2_0[] PROGMEM = "\x00""Low";
-const char option_txt_5_2_1[] PROGMEM = "\x01""Mid";
-const char option_txt_5_2_2[] PROGMEM = "\x02""High";
-const char* const option_txt_5_2[] PROGMEM = {
-option_txt_5_2_0, option_txt_5_2_1, option_txt_5_2_2, NULL
+const char title_txt_3_12[] PROGMEM = "\x3f""Wireless Mode";
+const char option_txt_3_12_0[] PROGMEM = "\x00""OFF";
+const char option_txt_3_12_1[] PROGMEM = "\x01""App";
+const char option_txt_3_12_2[] PROGMEM = "\x02""RC";
+const char option_txt_3_12_3[] PROGMEM = "\x04""Smart";
+const char* const option_txt_3_12[] PROGMEM = {
+option_txt_3_12_0, option_txt_3_12_1, option_txt_3_12_2, option_txt_3_12_3, NULL
 };
 
 struct Widget {
@@ -666,7 +554,7 @@ const struct Widget widgets[] PROGMEM = {
 { title_txt_0_10, option_txt_0_10 },
 { title_txt_0_11, option_txt_0_11 },
 { title_txt_0_12, option_txt_0_12 },
-{ title_txt_0_16, option_txt_0_16 },
+{ title_txt_0_15, option_txt_0_15 },
 { title_txt_0_13, option_txt_0_13 },
 { title_txt_0_14, option_txt_0_14 },
 { title_txt_1_0, option_txt_1_0 },
@@ -674,12 +562,12 @@ const struct Widget widgets[] PROGMEM = {
 { title_txt_1_2, option_txt_1_2 },
 { title_txt_1_4, option_txt_1_4 },
 { title_txt_1_5, option_txt_1_5 },
+{ title_txt_1_6, option_txt_1_6 },
+{ title_txt_1_7, option_txt_1_7 },
 { title_txt_1_8, option_txt_1_8 },
+{ title_txt_1_11, option_txt_1_11 },
 { title_txt_1_9, option_txt_1_9 },
 { title_txt_1_10, option_txt_1_10 },
-{ title_txt_1_14, option_txt_1_14 },
-{ title_txt_1_11, option_txt_1_11 },
-{ title_txt_1_12, option_txt_1_12 },
 { title_txt_2_0, option_txt_2_0 },
 { title_txt_2_6, option_txt_2_6 },
 { title_txt_2_3, option_txt_2_3 },
@@ -690,7 +578,7 @@ const struct Widget widgets[] PROGMEM = {
 { title_txt_2_8, option_txt_2_8 },
 { title_txt_2_9, option_txt_2_9 },
 { title_txt_2_10, option_txt_2_10 },
-{ title_txt_2_14, option_txt_2_14 },
+{ title_txt_2_13, option_txt_2_13 },
 { title_txt_2_11, option_txt_2_11 },
 { title_txt_2_12, option_txt_2_12 },
 { NULL, NULL },
@@ -702,21 +590,21 @@ const struct Widget widgets[] PROGMEM = {
 { NULL, NULL },
 { NULL, NULL },
 { NULL, NULL },
-{ title_txt_4_1, option_txt_4_1 },
-{ title_txt_4_2, option_txt_4_2 },
-{ title_txt_4_3, option_txt_4_3 },
-{ title_txt_4_4, option_txt_4_4 },
-{ title_txt_4_5, option_txt_4_5 },
-{ title_txt_4_6, option_txt_4_6 },
-{ title_txt_4_7, option_txt_4_7 },
-{ title_txt_4_8, option_txt_4_8 },
-{ title_txt_4_9, option_txt_4_9 },
-{ title_txt_4_10, option_txt_4_10 },
-{ title_txt_4_11, option_txt_4_11 },
+{ title_txt_3_1, option_txt_3_1 },
+{ title_txt_3_2, option_txt_3_2 },
+{ title_txt_3_3, option_txt_3_3 },
+{ title_txt_3_4, option_txt_3_4 },
+{ title_txt_3_5, option_txt_3_5 },
+{ title_txt_3_6, option_txt_3_6 },
+{ title_txt_3_7, option_txt_3_7 },
+{ title_txt_3_8, option_txt_3_8 },
+{ title_txt_3_9, option_txt_3_9 },
+{ title_txt_3_10, option_txt_3_10 },
+{ title_txt_3_11, option_txt_3_11 },
 { NULL, NULL },
 { NULL, NULL },
 { NULL, NULL },
-{ title_txt_4_12, option_txt_4_12 },
+{ title_txt_3_12, option_txt_3_12 },
 { NULL, NULL },
 { NULL, NULL },
 { NULL, NULL },
@@ -725,20 +613,10 @@ const struct Widget widgets[] PROGMEM = {
 { title_txt_1_1, option_txt_1_1 },
 { title_txt_2_1, option_txt_2_1 },
 { NULL, NULL },
-{ title_txt_4_0, option_txt_4_0 },
-{ title_txt_0_15, option_txt_0_15 },
-{ title_txt_0_17, option_txt_0_17 },
-{ title_txt_1_13, option_txt_1_13 },
-{ title_txt_2_13, option_txt_2_13 },
-{ title_txt_1_6, option_txt_1_6 },
-{ title_txt_0_18, option_txt_0_18 },
-{ title_txt_5_1, option_txt_5_1 },
-{ title_txt_5_0, option_txt_5_0 },
-{ title_txt_5_2, option_txt_5_2 },
-{ title_txt_1_7, option_txt_1_7 },
+{ title_txt_3_0, option_txt_3_0 },
 };
 
-#define SETUP_LEN 83
+#define SETUP_LEN 73
 typedef union Setting {
   byte b[SETUP_LEN];
   struct {
@@ -809,6 +687,7 @@ typedef union Setting {
     } setup;
     byte reserved1[3];
     byte current_submode[5];
+/*
     struct {
       byte videoExposure_time;
       byte videoProtune_iso_mode;
@@ -822,6 +701,7 @@ typedef union Setting {
       byte audioProtune_option;
       byte photoSingle_raw;
     } v4;
+ */
   } p;
 } Setting;
 
@@ -901,6 +781,7 @@ Setting setting =
   0,     // 70 setup/current_sub_mode (multi shot)
   0,     // 71
   0,     // 72 setup/lcd
+/*
 // firmware v.4.00 only
   0,     // 73 v4/video/exposure_time
   0,     // 74 v4/video/protune_iso_mode
@@ -913,6 +794,7 @@ Setting setting =
   1,     // 80 v4/audio/option (0: stereo only, 1: wind only, 2: auto)
   1,     // 81 v4/audio/protune_option (0: Low, 1: Mid, 2: High)
   0,     // 82 v4/photo/single_raw (capture in raw)
+ */
 };
 
 const char MAX_SUBMODE_SIZE = 4;
@@ -993,6 +875,7 @@ Setting storage[MAX_SUBMODE_SIZE] = {
   0,     // 70 setup/current_sub_mode (multi shot)
   0,     // 71
   0,     // 72 setup/lcd
+/*
 // firmware v.4.00 only
   0,     // 73 v4/video/exposure_time
   0,     // 74 v4/video/protune_iso_mode
@@ -1005,6 +888,7 @@ Setting storage[MAX_SUBMODE_SIZE] = {
   1,     // 80 v4/audio/option (0: stereo only, 1: wind only, 2: auto)
   1,     // 81 v4/audio/protune_option (0: Low, 1: Mid, 2: High)
   0,     // 82 v4/photo/single_raw (capture in raw)
+ */
 },
 { // setting #1
          // id path
@@ -1081,6 +965,7 @@ Setting storage[MAX_SUBMODE_SIZE] = {
   0,     // 70 setup/current_sub_mode (multi shot)
   0,     // 71
   0,     // 72 setup/lcd
+/*
 // firmware v.4.00 only
   0,     // 73 v4/video/exposure_time
   0,     // 74 v4/video/protune_iso_mode
@@ -1093,6 +978,7 @@ Setting storage[MAX_SUBMODE_SIZE] = {
   1,     // 80 v4/audio/option (0: stereo only, 1: wind only, 2: auto)
   1,     // 81 v4/audio/protune_option (0: Low, 1: Mid, 2: High)
   0,     // 82 v4/photo/single_raw (capture in raw)
+ */
 },
 { // setting #2
          // id path
@@ -1169,6 +1055,7 @@ Setting storage[MAX_SUBMODE_SIZE] = {
   0,     // 70 setup/current_sub_mode (multi shot)
   0,     // 71
   0,     // 72 setup/lcd
+/*
 // firmware v.4.00 only
   0,     // 73 v4/video/exposure_time
   0,     // 74 v4/video/protune_iso_mode
@@ -1181,6 +1068,7 @@ Setting storage[MAX_SUBMODE_SIZE] = {
   1,     // 80 v4/audio/option (0: stereo only, 1: wind only, 2: auto)
   1,     // 81 v4/audio/protune_option (0: Low, 1: Mid, 2: High)
   0,     // 82 v4/photo/single_raw (capture in raw)
+ */
 },
 { // setting #3
          // id path
@@ -1257,6 +1145,7 @@ Setting storage[MAX_SUBMODE_SIZE] = {
   0,     // 70 setup/current_sub_mode (multi shot)
   0,     // 71
   0,     // 72 setup/lcd
+/*
 // firmware v.4.00 only
   0,     // 73 v4/video/exposure_time
   0,     // 74 v4/video/protune_iso_mode
@@ -1269,6 +1158,7 @@ Setting storage[MAX_SUBMODE_SIZE] = {
   1,     // 80 v4/audio/option (0: stereo only, 1: wind only, 2: auto)
   1,     // 81 v4/audio/protune_option (0: Low, 1: Mid, 2: High)
   0,     // 82 v4/photo/single_raw (capture in raw)
+ */
 },  
 };
 
@@ -1298,22 +1188,19 @@ if(id==3&&setting.b[2]==5&&setting.b[57]==1)switch(v){case 0:case 1:case 2:case 
 if(id==3&&setting.b[2]==4&&setting.b[57]==1)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 8:case 11:case 12:return true;}
 if(id==3&&setting.b[2]==2&&setting.b[57]==1)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 8:case 9:case 11:case 12:return true;}
 if(id==3&&setting.b[2]==1&&setting.b[57]==1)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 8:case 11:case 12:return true;}
-if(id==4&&setting.b[2]==1)switch(v){case 1:case 2:case 4:return true;}
-if(id==4&&setting.b[2]==2)switch(v){case 1:case 2:case 4:return true;}
-if(id==4&&setting.b[2]==4&&setting.b[3]==5)switch(v){case 2:case 4:return true;}
-if(id==4&&setting.b[2]==4&&setting.b[3]==6)switch(v){case 2:case 4:return true;}
-if(id==4&&setting.b[2]==4&&setting.b[3]==7)switch(v){case 2:case 4:return true;}
+if(id==4&&setting.b[2]==1)switch(v){case 1:case 2:return true;}
+if(id==4&&setting.b[2]==2)switch(v){case 1:case 2:return true;}
 if(id==4&&setting.b[2]==4)switch(v){case 2:return true;}
-if(id==4&&setting.b[2]==5)switch(v){case 1:case 2:case 4:return true;}
-if(id==4&&setting.b[2]==6)switch(v){case 1:case 2:case 4:return true;}
-if(id==4&&setting.b[2]==7)switch(v){case 1:case 2:case 4:return true;}
-if(id==4&&setting.b[2]==9&&setting.b[3]==1)switch(v){case 1:case 4:return true;}
-if(id==4&&setting.b[2]==9&&setting.b[3]==3)switch(v){case 1:case 4:return true;}
-if(id==4&&setting.b[2]==8)switch(v){case 1:case 2:case 4:return true;}
-if(id==4&&setting.b[2]==10)switch(v){case 1:case 2:case 4:return true;}
-if(id==4&&setting.b[2]==12&&setting.b[3]==0)switch(v){case 0:case 1:case 4:return true;}
-if(id==4&&setting.b[2]==11)switch(v){case 1:case 2:case 4:return true;}
-if(id==4&&setting.b[2]==13)switch(v){case 1:case 2:case 4:return true;}
+if(id==4&&setting.b[2]==5)switch(v){case 1:case 2:return true;}
+if(id==4&&setting.b[2]==6)switch(v){case 1:case 2:return true;}
+if(id==4&&setting.b[2]==7)switch(v){case 1:case 2:return true;}
+if(id==4&&setting.b[2]==9&&setting.b[3]==1)switch(v){case 1:return true;}
+if(id==4&&setting.b[2]==9&&setting.b[3]==3)switch(v){case 1:return true;}
+if(id==4&&setting.b[2]==8)switch(v){case 1:case 2:return true;}
+if(id==4&&setting.b[2]==10)switch(v){case 1:case 2:return true;}
+if(id==4&&setting.b[2]==12&&setting.b[3]==0)switch(v){case 0:case 1:return true;}
+if(id==4&&setting.b[2]==11)switch(v){case 1:case 2:return true;}
+if(id==4&&setting.b[2]==13)switch(v){case 1:case 2:return true;}
 if(id==2&&setting.b[68]==2)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:case 8:case 10:case 11:case 13:return true;}
 if(id==3&&setting.b[68]==2&&setting.b[2]==4)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 11:case 12:return true;}
 if(id==3&&setting.b[68]==2&&setting.b[2]==5)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 10:case 11:case 12:return true;}
@@ -1324,29 +1211,6 @@ if(id==3&&setting.b[68]==2&&setting.b[2]==10)switch(v){case 0:case 1:case 2:case
 if(id==3&&setting.b[68]==2&&setting.b[2]==11)switch(v){case 0:case 1:case 2:case 3:case 4:case 7:case 8:case 9:case 10:case 11:case 12:return true;}
 if(id==3&&setting.b[68]==2&&setting.b[2]==12)switch(v){case 0:case 1:case 2:case 3:case 4:case 7:case 10:case 11:case 12:return true;}
 if(id==4&&setting.b[68]==2&&setting.b[2]==12&&setting.b[3]==5)switch(v){case 0:return true;}
-if(id==8&&setting.b[10]==1&&setting.b[73]==1)switch(v){case 0:case 1:return true;}
-if(id==8&&setting.b[10]==1&&setting.b[73]==2)switch(v){case 0:case 1:return true;}
-if(id==8&&setting.b[10]==1&&setting.b[73]==3)switch(v){case 0:case 1:return true;}
-if(id==8&&setting.b[10]==1&&setting.b[73]==4)switch(v){case 0:case 1:return true;}
-if(id==8&&setting.b[10]==1&&setting.b[73]==5)switch(v){case 0:case 1:return true;}
-if(id==8&&setting.b[10]==1&&setting.b[73]==6)switch(v){case 0:case 1:return true;}
-if(id==8&&setting.b[10]==1&&setting.b[73]==7)switch(v){case 0:case 1:return true;}
-if(id==8&&setting.b[10]==1&&setting.b[73]==8)switch(v){case 0:case 1:return true;}
-if(id==8&&setting.b[10]==1&&setting.b[73]==9)switch(v){case 0:case 1:return true;}
-if(id==8&&setting.b[10]==1&&setting.b[73]==10)switch(v){case 0:case 1:return true;}
-if(id==8&&setting.b[10]==1&&setting.b[73]==11)switch(v){case 0:case 1:return true;}
-if(id==8&&setting.b[10]==1&&setting.b[73]==12)switch(v){case 0:case 1:return true;}
-if(id==8&&setting.b[10]==1&&setting.b[73]==13)switch(v){case 0:case 1:return true;}
-if(id==8&&setting.b[10]==1&&setting.b[73]==14)switch(v){case 0:case 1:return true;}
-if(id==8&&setting.b[10]==1&&setting.b[73]==15)switch(v){case 0:case 1:return true;}
-if(id==8&&setting.b[10]==1&&setting.b[73]==16)switch(v){case 0:case 1:return true;}
-if(id==8&&setting.b[10]==1&&setting.b[73]==17)switch(v){case 0:case 1:return true;}
-if(id==8&&setting.b[10]==1&&setting.b[73]==18)switch(v){case 0:case 1:return true;}
-if(id==8&&setting.b[10]==1&&setting.b[73]==19)switch(v){case 0:case 1:return true;}
-if(id==8&&setting.b[10]==1&&setting.b[73]==20)switch(v){case 0:case 1:return true;}
-if(id==8&&setting.b[10]==1&&setting.b[73]==21)switch(v){case 0:case 1:return true;}
-if(id==8&&setting.b[10]==1&&setting.b[73]==22)switch(v){case 0:case 1:return true;}
-if(id==8&&setting.b[10]==1&&setting.b[73]==23)switch(v){case 0:case 1:return true;}
 if(id==8&&setting.b[68]==1)switch(v){case 0:case 1:return true;}
 if(id==8&&setting.b[3]==0)switch(v){case 0:case 1:return true;}
 if(id==8&&setting.b[3]==8)switch(v){case 0:case 1:return true;}
@@ -1354,13 +1218,11 @@ if(id==8&&setting.b[3]==9)switch(v){case 0:case 1:return true;}
 if(id==8&&setting.b[3]==10)switch(v){case 0:case 1:return true;}
 if(id==8&&setting.b[3]==11)switch(v){case 0:case 1:return true;}
 if(id==8&&setting.b[3]==12)switch(v){case 0:case 1:return true;}
-if(id==11&&setting.b[10]==0)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:case 7:return true;}
+if(id==11&&setting.b[10]==0)switch(v){case 0:case 1:case 2:case 3:case 4:return true;}
 if(id==12&&setting.b[10]==0)switch(v){case 0:case 1:return true;}
 if(id==14&&setting.b[10]==0)switch(v){case 0:case 1:case 2:return true;}
-if(id==13&&setting.b[10]==0)switch(v){case 0:case 1:case 2:case 3:case 4:case 7:case 8:return true;}
-if(id==74&&setting.b[10]==0)switch(v){case 0:case 1:return true;}
+if(id==13&&setting.b[10]==0)switch(v){case 0:case 1:case 2:case 3:case 4:return true;}
 if(id==15&&setting.b[10]==0)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 8:return true;}
-if(id==73&&setting.b[10]==0)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 8:case 9:case 10:case 11:case 12:case 13:case 14:case 15:case 16:case 17:case 18:case 19:case 20:case 21:case 22:case 23:return true;}
 if(id==5&&setting.b[68]==0)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:return true;}
 if(id==6&&setting.b[68]==0)switch(v){case 0:case 1:case 2:case 3:case 4:return true;}
 if(id==7&&setting.b[68]==0)switch(v){case 0:case 1:case 2:case 3:case 4:return true;}
@@ -1374,74 +1236,13 @@ if(id==4&&setting.b[68]==1)switch(v){case 0:case 1:case 2:return true;}
 if(id==9&&setting.b[68]==1)switch(v){case 0:case 1:return true;}
 if(id==2&&setting.b[68]==1)switch(v){case 2:case 3:case 4:case 5:case 7:case 8:case 9:case 10:case 11:case 12:case 13:return true;}
 if(id==3&&setting.b[68]==1)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 8:case 9:case 10:case 11:case 12:return true;}
-if(id==73&&setting.b[3]==0)switch(v){case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 8:case 9:case 10:case 11:case 12:case 13:case 14:case 15:case 16:case 17:case 19:case 20:case 21:return true;}
-if(id==73&&setting.b[3]==1)switch(v){case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 8:case 9:case 10:case 11:case 12:case 14:case 15:case 16:case 17:case 19:case 20:case 21:case 23:return true;}
-if(id==73&&setting.b[3]==2)switch(v){case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 8:case 9:case 10:case 11:case 13:case 14:case 15:case 16:case 18:case 19:case 20:case 22:case 23:return true;}
-if(id==73&&setting.b[3]==3)switch(v){case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 8:case 9:case 11:case 12:case 13:case 14:case 16:case 17:case 18:case 19:case 21:case 22:case 23:return true;}
-if(id==73&&setting.b[3]==4)switch(v){case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 8:case 10:case 11:case 12:case 13:case 15:case 16:case 17:case 18:case 20:case 21:case 22:case 23:return true;}
-if(id==73&&setting.b[3]==5)switch(v){case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 9:case 10:case 11:case 12:case 14:case 15:case 16:case 17:case 19:case 20:case 21:case 22:case 23:return true;}
-if(id==73&&setting.b[3]==6)switch(v){case 1:case 2:case 3:case 4:case 5:case 6:case 8:case 9:case 10:case 11:case 13:case 14:case 15:case 16:case 18:case 19:case 20:case 21:case 22:case 23:return true;}
-if(id==73&&setting.b[3]==7)switch(v){case 1:case 2:case 3:case 4:case 5:case 7:case 8:case 9:case 10:case 12:case 13:case 14:case 15:case 17:case 18:case 19:case 20:case 21:case 22:case 23:return true;}
-if(id==73&&setting.b[3]==8)switch(v){case 1:case 2:case 3:case 4:case 6:case 7:case 9:case 10:case 11:case 12:case 14:case 15:case 16:case 17:case 18:case 19:case 20:case 21:case 22:case 23:return true;}
-if(id==73&&setting.b[3]==9)switch(v){case 1:case 2:case 3:case 5:case 6:case 8:case 9:case 10:case 11:case 13:case 14:case 15:case 16:case 17:case 18:case 19:case 20:case 21:case 22:case 23:return true;}
-if(id==73&&setting.b[3]==10)switch(v){case 1:case 2:case 4:case 5:case 7:case 8:case 9:case 10:case 12:case 13:case 14:case 15:case 16:case 17:case 18:case 19:case 20:case 21:case 22:case 23:return true;}
-if(id==73&&setting.b[3]==11)switch(v){case 1:case 3:case 4:case 6:case 7:case 9:case 10:case 11:case 12:case 13:case 14:case 15:case 16:case 17:case 18:case 19:case 20:case 21:case 22:case 23:return true;}
-if(id==73&&setting.b[3]==12)switch(v){case 3:case 4:case 5:case 6:case 8:case 9:case 10:case 11:case 12:case 13:case 14:case 15:case 16:case 17:case 18:case 19:case 20:case 21:case 22:case 23:return true;}
-if(id==15&&setting.b[10]==1&&setting.b[73]==1)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 8:return true;}
-if(id==15&&setting.b[10]==1&&setting.b[73]==2)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 8:return true;}
-if(id==15&&setting.b[10]==1&&setting.b[73]==3)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 8:return true;}
-if(id==15&&setting.b[10]==1&&setting.b[73]==4)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 8:return true;}
-if(id==15&&setting.b[10]==1&&setting.b[73]==5)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 8:return true;}
-if(id==15&&setting.b[10]==1&&setting.b[73]==6)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 8:return true;}
-if(id==15&&setting.b[10]==1&&setting.b[73]==7)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 8:return true;}
-if(id==15&&setting.b[10]==1&&setting.b[73]==8)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 8:return true;}
-if(id==15&&setting.b[10]==1&&setting.b[73]==9)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 8:return true;}
-if(id==15&&setting.b[10]==1&&setting.b[73]==10)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 8:return true;}
-if(id==15&&setting.b[10]==1&&setting.b[73]==11)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 8:return true;}
-if(id==15&&setting.b[10]==1&&setting.b[73]==12)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 8:return true;}
-if(id==15&&setting.b[10]==1&&setting.b[73]==13)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 8:return true;}
-if(id==15&&setting.b[10]==1&&setting.b[73]==14)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 8:return true;}
-if(id==15&&setting.b[10]==1&&setting.b[73]==15)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 8:return true;}
-if(id==15&&setting.b[10]==1&&setting.b[73]==16)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 8:return true;}
-if(id==15&&setting.b[10]==1&&setting.b[73]==17)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 8:return true;}
-if(id==15&&setting.b[10]==1&&setting.b[73]==18)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 8:return true;}
-if(id==15&&setting.b[10]==1&&setting.b[73]==19)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 8:return true;}
-if(id==15&&setting.b[10]==1&&setting.b[73]==20)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 8:return true;}
-if(id==15&&setting.b[10]==1&&setting.b[73]==21)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 8:return true;}
-if(id==15&&setting.b[10]==1&&setting.b[73]==22)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 8:return true;}
-if(id==15&&setting.b[10]==1&&setting.b[73]==23)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 8:return true;}
-if(id==13&&setting.b[10]==1&&setting.b[73]==0)switch(v){case 7:case 8:return true;}
-if(id==13&&setting.b[10]==1&&setting.b[73]==1&&setting.b[74]==0)switch(v){case 7:case 8:return true;}
-if(id==13&&setting.b[10]==1&&setting.b[73]==2&&setting.b[74]==0)switch(v){case 7:case 8:return true;}
-if(id==13&&setting.b[10]==1&&setting.b[73]==3&&setting.b[74]==0)switch(v){case 7:case 8:return true;}
-if(id==13&&setting.b[10]==1&&setting.b[73]==4&&setting.b[74]==0)switch(v){case 7:case 8:return true;}
-if(id==13&&setting.b[10]==1&&setting.b[73]==5&&setting.b[74]==0)switch(v){case 7:case 8:return true;}
-if(id==13&&setting.b[10]==1&&setting.b[73]==6&&setting.b[74]==0)switch(v){case 7:case 8:return true;}
-if(id==13&&setting.b[10]==1&&setting.b[73]==7&&setting.b[74]==0)switch(v){case 7:case 8:return true;}
-if(id==13&&setting.b[10]==1&&setting.b[73]==8&&setting.b[74]==0)switch(v){case 7:case 8:return true;}
-if(id==13&&setting.b[10]==1&&setting.b[73]==9&&setting.b[74]==0)switch(v){case 7:case 8:return true;}
-if(id==13&&setting.b[10]==1&&setting.b[73]==10&&setting.b[74]==0)switch(v){case 7:case 8:return true;}
-if(id==13&&setting.b[10]==1&&setting.b[73]==11&&setting.b[74]==0)switch(v){case 7:case 8:return true;}
-if(id==13&&setting.b[10]==1&&setting.b[73]==12&&setting.b[74]==0)switch(v){case 7:case 8:return true;}
-if(id==13&&setting.b[10]==1&&setting.b[73]==13&&setting.b[74]==0)switch(v){case 7:case 8:return true;}
-if(id==13&&setting.b[10]==1&&setting.b[73]==14&&setting.b[74]==0)switch(v){case 7:case 8:return true;}
-if(id==13&&setting.b[10]==1&&setting.b[73]==15&&setting.b[74]==0)switch(v){case 7:case 8:return true;}
-if(id==13&&setting.b[10]==1&&setting.b[73]==16&&setting.b[74]==0)switch(v){case 7:case 8:return true;}
-if(id==13&&setting.b[10]==1&&setting.b[73]==17&&setting.b[74]==0)switch(v){case 7:case 8:return true;}
-if(id==13&&setting.b[10]==1&&setting.b[73]==18&&setting.b[74]==0)switch(v){case 7:case 8:return true;}
-if(id==13&&setting.b[10]==1&&setting.b[73]==19&&setting.b[74]==0)switch(v){case 7:case 8:return true;}
-if(id==13&&setting.b[10]==1&&setting.b[73]==20&&setting.b[74]==0)switch(v){case 7:case 8:return true;}
-if(id==13&&setting.b[10]==1&&setting.b[73]==21&&setting.b[74]==0)switch(v){case 7:case 8:return true;}
-if(id==13&&setting.b[10]==1&&setting.b[73]==22&&setting.b[74]==0)switch(v){case 7:case 8:return true;}
-if(id==13&&setting.b[10]==1&&setting.b[73]==23&&setting.b[74]==0)switch(v){case 7:case 8:return true;}
 if(id==18&&setting.b[69]==0)switch(v){case 0:case 1:case 2:return true;}
 if(id==19&&setting.b[69]==0)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:return true;}
 if(id==19&&setting.b[69]==1)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:return true;}
 if(id==18&&setting.b[69]==2)switch(v){case 0:case 1:case 2:return true;}
-if(id==22&&setting.b[21]==0)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:case 7:return true;}
+if(id==22&&setting.b[21]==0)switch(v){case 0:case 1:case 2:case 3:case 4:return true;}
 if(id==23&&setting.b[21]==0)switch(v){case 0:case 1:return true;}
 if(id==25&&setting.b[21]==0)switch(v){case 0:case 1:case 2:return true;}
-if(id==75&&setting.b[21]==0)switch(v){case 0:case 1:case 2:case 3:return true;}
 if(id==24&&setting.b[21]==0)switch(v){case 0:case 1:case 2:case 3:return true;}
 if(id==26&&setting.b[21]==0)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 8:return true;}
 if(id==22&&setting.b[69]==2&&setting.b[19]==1)switch(v){case 0:return true;}
@@ -1456,12 +1257,6 @@ if(id==26&&setting.b[69]==2&&setting.b[19]==3)switch(v){case 0:case 1:case 2:cas
 if(id==26&&setting.b[69]==2&&setting.b[19]==4)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 8:return true;}
 if(id==26&&setting.b[69]==2&&setting.b[19]==5)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 8:return true;}
 if(id==26&&setting.b[69]==2&&setting.b[19]==6)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 8:return true;}
-if(id==24&&setting.b[75]==2)switch(v){case 3:return true;}
-if(id==24&&setting.b[75]==1)switch(v){case 2:case 3:return true;}
-if(id==24&&setting.b[75]==0)switch(v){case 1:case 2:case 3:return true;}
-if(id==75&&setting.b[24]==1)switch(v){case 0:return true;}
-if(id==75&&setting.b[24]==2)switch(v){case 0:case 1:return true;}
-if(id==75&&setting.b[24]==3)switch(v){case 0:case 1:case 2:return true;}
 if(id==31&&setting.b[70]==0)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:return true;}
 if(id==30&&setting.b[70]==0)switch(v){case 0:case 1:case 2:case 5:case 10:case 30:case 60:return true;}
 if(id==32&&setting.b[70]==0)switch(v){case 9:case 10:case 11:case 0:case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 8:return true;}
@@ -1481,10 +1276,9 @@ if(id==32&&setting.b[70]==2&&setting.b[31]==3)switch(v){case 10:case 11:case 0:r
 if(id==32&&setting.b[70]==2&&setting.b[31]==4)switch(v){case 10:case 11:case 0:case 1:return true;}
 if(id==32&&setting.b[70]==2&&setting.b[31]==5)switch(v){case 10:case 11:case 0:case 1:case 2:return true;}
 if(id==32&&setting.b[70]==2&&setting.b[31]==6)switch(v){case 10:case 11:case 0:case 1:case 2:case 3:return true;}
-if(id==35&&setting.b[34]==0)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:case 7:return true;}
+if(id==35&&setting.b[34]==0)switch(v){case 0:case 1:case 2:case 3:case 4:return true;}
 if(id==36&&setting.b[34]==0)switch(v){case 0:case 1:return true;}
 if(id==38&&setting.b[34]==0)switch(v){case 0:case 1:case 2:return true;}
-if(id==76&&setting.b[34]==0)switch(v){case 0:case 1:case 2:case 3:return true;}
 if(id==37&&setting.b[34]==0)switch(v){case 0:case 1:case 2:case 3:return true;}
 if(id==39&&setting.b[34]==0)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 8:return true;}
 if(id==39&&setting.b[70]==2&&setting.b[31]==1)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 8:return true;}
@@ -1493,43 +1287,34 @@ if(id==39&&setting.b[70]==2&&setting.b[31]==3)switch(v){case 0:case 1:case 2:cas
 if(id==39&&setting.b[70]==2&&setting.b[31]==4)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 8:return true;}
 if(id==39&&setting.b[70]==2&&setting.b[31]==5)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 8:return true;}
 if(id==39&&setting.b[70]==2&&setting.b[31]==6)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 8:return true;}
-if(id==37&&setting.b[70]==1&&setting.b[30]==0)switch(v){case 2:case 3:return true;}
-if(id==37&&setting.b[70]==1&&setting.b[30]==1)switch(v){case 2:case 3:return true;}
-if(id==37&&setting.b[76]==2)switch(v){case 3:return true;}
-if(id==37&&setting.b[76]==1)switch(v){case 2:case 3:return true;}
-if(id==37&&setting.b[76]==0)switch(v){case 1:case 2:case 3:return true;}
-if(id==76&&setting.b[37]==1)switch(v){case 0:return true;}
-if(id==76&&setting.b[37]==2)switch(v){case 0:case 1:return true;}
-if(id==76&&setting.b[37]==3)switch(v){case 0:case 1:case 2:return true;}
 if(id==10&&setting.b[68]==1)switch(v){case 0:case 1:return true;}
-if(id==11&&setting.b[68]==1)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:case 7:return true;}
+if(id==11&&setting.b[68]==1)switch(v){case 0:case 1:case 2:case 3:case 4:return true;}
 if(id==12&&setting.b[68]==1)switch(v){case 0:case 1:return true;}
 if(id==14&&setting.b[68]==1)switch(v){case 0:case 1:case 2:return true;}
-if(id==13&&setting.b[68]==1)switch(v){case 0:case 1:case 2:case 3:case 4:case 7:case 8:return true;}
+if(id==13&&setting.b[68]==1)switch(v){case 0:case 1:case 2:case 3:case 4:return true;}
 if(id==15&&setting.b[68]==1)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 8:return true;}
-if(id==73&&setting.b[68]==1)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 8:case 9:case 10:case 11:case 12:case 13:case 14:case 15:case 16:case 17:case 18:case 19:case 20:case 21:case 22:case 23:return true;}
 if(id==4&&setting.b[68]==2&&setting.b[2]==12&&setting.b[3]==5)switch(v){case 0:return true;}
 if(id==10&&setting.b[68]==2)switch(v){case 0:case 1:return true;}
-if(id==11&&setting.b[68]==2)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:case 7:return true;}
+if(id==11&&setting.b[68]==2)switch(v){case 0:case 1:case 2:case 3:case 4:return true;}
 if(id==12&&setting.b[68]==2)switch(v){case 0:case 1:return true;}
 if(id==14&&setting.b[68]==2)switch(v){case 0:case 1:case 2:return true;}
-if(id==13&&setting.b[68]==2)switch(v){case 0:case 1:case 2:case 3:case 4:case 7:case 8:return true;}
+if(id==13&&setting.b[68]==2)switch(v){case 0:case 1:case 2:case 3:case 4:return true;}
 if(id==15&&setting.b[68]==2)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 8:return true;}
-if(id==73&&setting.b[68]==2)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 8:case 9:case 10:case 11:case 12:case 13:case 14:case 15:case 16:case 17:case 18:case 19:case 20:case 21:case 22:case 23:return true;}
 if(id==10&&setting.b[68]==3)switch(v){case 0:case 1:return true;}
-if(id==11&&setting.b[68]==3)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:case 7:return true;}
+if(id==11&&setting.b[68]==3)switch(v){case 0:case 1:case 2:case 3:case 4:return true;}
 if(id==12&&setting.b[68]==3)switch(v){case 0:case 1:return true;}
 if(id==14&&setting.b[68]==3)switch(v){case 0:case 1:case 2:return true;}
-if(id==13&&setting.b[68]==3)switch(v){case 0:case 1:case 2:case 3:case 4:case 7:case 8:return true;}
+if(id==13&&setting.b[68]==3)switch(v){case 0:case 1:case 2:case 3:case 4:return true;}
 if(id==15&&setting.b[68]==3)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 8:return true;}
-if(id==15&&setting.b[68]==3)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 8:return true;}
-if(id==73&&setting.b[68]==3)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 8:case 9:case 10:case 11:case 12:case 13:case 14:case 15:case 16:case 17:case 18:case 19:case 20:case 21:case 22:case 23:return true;}
-if(id==74&&setting.b[10]==1&&setting.b[73]==0)switch(v){case 0:case 1:return true;}
 if(id==16&&setting.b[53]==0)switch(v){case 0:case 1:case 2:return true;}
 if(id==27&&setting.b[53]==0)switch(v){case 0:case 1:case 2:return true;}
 if(id==1&&setting.b[53]==1)switch(v){case 0:case 1:case 2:case 3:return true;}
 if(id==27&&setting.b[53]==1)switch(v){case 0:case 1:case 2:return true;}
 if(id==1&&setting.b[53]==2)switch(v){case 0:case 1:case 2:case 3:return true;}
 if(id==16&&setting.b[53]==2)switch(v){case 0:case 1:case 2:return true;}
+///////////////////////////////////////////////////
+/* yet unsupported video modes */
+if(id==2)switch(v){case 12:case 13:return true;}
+if(id==3&&setting.b[2]==9)switch(v){case 1:case 7:case 8:case 9:return true;}
 return false;
 }

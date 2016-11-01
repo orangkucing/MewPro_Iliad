@@ -14,7 +14,7 @@ void ROM_Read()
      f &= (EEPROM.read(i) == tmp[i]);
   }
   if (!f) {
-    Serial.println("factory reset");
+    SERIAL.println("factory reset");
     base = 0;
     for (i = 0; i < EEPROM_ID_LEN; i++) {
       EEPROM.write(i, tmp[i]);
@@ -39,17 +39,9 @@ void ROM_Read()
     }
   }
   setting.p.mode = setting.p.setup.default_app_mode;
-  switch (setting.p.mode) {
-    case MODE_VIDEO:
-      setting.p.current_submode[MODE_VIDEO] = setting.p.video.default_sub_mode;
-      break;
-    case MODE_PHOTO:
-      setting.p.current_submode[MODE_PHOTO] = setting.p.photo.default_sub_mode;
-      break;
-    case MODE_MULTI_SHOT:
-      setting.p.current_submode[MODE_MULTI_SHOT] = setting.p.multi_shot.default_sub_mode;
-      break;
-  }
+  setting.p.current_submode[MODE_VIDEO] = setting.p.video.default_sub_mode;
+  setting.p.current_submode[MODE_PHOTO] = setting.p.photo.default_sub_mode;
+  setting.p.current_submode[MODE_MULTI_SHOT] = setting.p.multi_shot.default_sub_mode;
   loadSetupValue();
 }
 

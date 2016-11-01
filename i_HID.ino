@@ -41,6 +41,9 @@ void checkSwitchCommands()
 
   // read switch with debounce
   char reading = (digitalRead(SETUP_SWITCH) ? 0 : KEY_MENU) | (digitalRead(SHUTTER_SWITCH) ? 0 : KEY_OK) | (digitalRead(MODE_SWITCH) ? 0 : KEY_DOWN);
+  if (recording_state) {
+    reading &= KEY_OK;
+  }
   if (reading != lastButtonState) {
     lastDebounceTime = millis();
   }
@@ -70,10 +73,12 @@ void checkIRremoteCommands()
       Iliad_Setting_Learn(IR_results.value);
       updateLCD();
     } else {
-      for (int i = 0; i < sizeof(IRkey) / sizeof(unsigned long); i++) {
-        if (IR_results.value == IRkey.l[i]) {
-          navigateMenu(_BV(i));
-          break;
+      if (IR_results.value == IRkey.p.OK || !recording_state) {
+        for (int i = 0; i < sizeof(IRkey) / sizeof(unsigned long); i++) {
+          if (IR_results.value == IRkey.l[i]) {
+            navigateMenu(_BV(i));
+            break;
+          }
         }
       }
     }
@@ -112,17 +117,34 @@ void navigateMenu(char key)
           Broadcast_ChangeMode();
           break;
         case KEY_OK:
-          if (setting.p.mode == MODE_SETUP) { // if current mode is Setting then
-            disp_state = MENU_SUB;            // goto setup menu
-          } else {
-            switch (recording_state) {
-              case 0:
-                Broadcast_StartRecording();
-                break;
-              case 3:
+          switch (setting.p.mode) {
+            case MODE_SETUP:
+              disp_state = MENU_SUB;            // goto setup menu
+              break;
+            case MODE_VIDEO:
+              switch (recording_state) {
+                case 0:
+                  Broadcast_StartRecording();
+                  break;
+                case 3:
+                  Broadcast_StopRecording();
+                  break;
+              }
+              break;
+            case MODE_PHOTO:
+              if (setting.p.current_submode[MODE_PHOTO] == 1 /* continuous */ && recording_state == 3) {
                 Broadcast_StopRecording();
-                break;
-            }
+              } else if (recording_state == 0) {
+                Broadcast_StartRecording();
+              }
+              break;
+            case MODE_MULTI_SHOT:
+              if (setting.p.current_submode[MODE_MULTI_SHOT] != 0 /* burst */ && recording_state == 3 ) {
+                Broadcast_StopRecording();
+              } else if (recording_state == 0) {
+                Broadcast_StartRecording();
+              }
+              break;
           }
           break;
         default:

@@ -6,7 +6,7 @@ void loadSetupValue()
     memcpy(&setting.p.video, &storage[current_submode].p.video, sizeof(setting.p.video));
     memcpy(&setting.p.photo, &storage[current_submode].p.photo, sizeof(setting.p.photo));
     memcpy(&setting.p.multi_shot, &storage[current_submode].p.multi_shot, sizeof(setting.p.multi_shot));
-    memcpy(&setting.p.v4, &storage[current_submode].p.v4, sizeof(setting.p.v4));
+//  memcpy(&setting.p.v4, &storage[current_submode].p.v4, sizeof(setting.p.v4));
   }
 }
 
@@ -41,11 +41,19 @@ void storeSetupValue()
     memcpy(&storage[current_submode].p.video, &setting.p.video, sizeof(setting.p.video));
     memcpy(&storage[current_submode].p.photo, &setting.p.photo, sizeof(setting.p.photo));
     memcpy(&storage[current_submode].p.multi_shot, &setting.p.multi_shot, sizeof(setting.p.multi_shot));
-    memcpy(&storage[current_submode].p.v4, &setting.p.v4, sizeof(setting.p.v4));
+//  memcpy(&storage[current_submode].p.v4, &setting.p.v4, sizeof(setting.p.v4));
   }
-  storeDefaultSubMode(MODE_VIDEO, setting.p.video.default_sub_mode);
-  storeDefaultSubMode(MODE_PHOTO, setting.p.photo.default_sub_mode);
-  storeDefaultSubMode(MODE_MULTI_SHOT, setting.p.multi_shot.default_sub_mode);
+  switch (setting.p.mode) {
+    case MODE_VIDEO:
+      storeDefaultSubMode(MODE_VIDEO, setting.p.video.default_sub_mode);
+      break;
+    case MODE_PHOTO:
+      storeDefaultSubMode(MODE_PHOTO, setting.p.photo.default_sub_mode);
+      break;
+    case MODE_MULTI_SHOT:
+      storeDefaultSubMode(MODE_MULTI_SHOT, setting.p.multi_shot.default_sub_mode);
+      break;
+  }
 }
 
 void initWidget()
@@ -104,7 +112,7 @@ boolean nextWidget()
         if (blacklist(id, setting.b[id])) {
           // current value is blacklisted
           setting.b[id] = val;
-          if (&setting.b[id] < &setting.p.reserved0 || &setting.b[id] >= &setting.p.v4) {
+          if (&setting.b[id] < &setting.p.reserved0 /* || &setting.b[id] >= &setting.p.v4 */) {
             storeSetupValue();
           }
           Broadcast_ChangeSetting(id);
@@ -115,6 +123,10 @@ boolean nextWidget()
     }
   } while (1);
 }
+
+const char __fps[] = {
+  0, 1, 2, 3, 4, 6, 5, 7, 9, 8, 10, 12, 11
+};
 
 void setNextValue()
 {
@@ -144,7 +156,14 @@ void setNextValue()
     }
     if (!blacklist(setup_id, c)) {
       setting.b[setup_id] = c;
-      if (&setting.b[setup_id] < &setting.p.reserved0 || &setting.b[setup_id] >= &setting.p.v4) {
+      if (&setting.b[setup_id] == &setting.p.setup.video_format) {
+        // a video mode can have different fps for NTSC and PAL 
+        setting.p.video.fps = __fps[setting.p.video.fps];
+        for (int i = 0; i < 4; i++) {
+          storage[i].p.video.fps = __fps[storage[i].p.video.fps];
+        }
+      }
+      if (&setting.b[setup_id] < &setting.p.reserved0 /* || &setting.b[setup_id] >= &setting.p.v4 */) {
         storeSetupValue();
       }
       Broadcast_ChangeSetting(setup_id);

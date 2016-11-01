@@ -5,7 +5,7 @@
 #include "MenuText.h"
 #include <EEPROM.h>
 
-#define __VERSION_STRING__ "v1.0.0"
+#define __VERSION_STRING__ "v1.0.1"
 
 #include <LiquidCrystal.h>
 // initialize the library with the numbers of the interface pins
@@ -73,19 +73,30 @@ decode_results IR_results;
 char setup_id = 0;
 char disp_state = MENU_START;
 char recording_state = 0;
+unsigned long start_time;
+unsigned int record_time;
 
 // startup
 #define STARTUP_HALT (-1)
 char startupSession = STARTUP_HALT;
 // function prototype declaration required here
-// for current Arduino IDE can't automatically do this
+// because current Arduino IDE can't automatically do this
+void startup_delay0(void);
 void startup_delay(void);
 void startup0(void);
 void startup1(void);
 void startup2(void);
 void startup3(void);
+void startup4(void);
+void startup5(void);
 
 void (*startup[])(void) = {
-  startup_delay, startup_delay, startup_delay, startup_delay, startup_delay, startup0, startup_delay, startup_delay, startup1, startup_delay, startup2, startup_delay, startup3, startup_delay,startup_delay, NULL
+  startup_delay0,
+  startup0, startup_delay,
+  startup1, startup_delay, 
+  startup2, startup_delay, 
+  startup3, startup_delay,
+  startup4, startup_delay,
+  startup5, NULL
 };
 

@@ -43,39 +43,75 @@ void updateLCD()
               case 3: lcd.print(F("Looping")); break;
             }
             lcd.setCursor(0, 1);
-            switch (setting.p.video.resolution) {
-              case 1: lcd.print(F("4K")); break;
-              case 2: lcd.print(F("4K S")); break;
-              case 4: lcd.print(F("2.7K")); break;
-              case 5: lcd.print(F("2.7K S")); break;
-              case 6: lcd.print(F("2.7K4:3")); break;
-              case 7: lcd.print(F("1440")); break;
-              case 8: lcd.print(F("1080 S")); break;
-              case 9: lcd.print(F("1080")); break;
-              case 10: lcd.print(F("960")); break;
-              case 11: lcd.print(F("720 S")); break;
-              case 12: lcd.print(F("720")); break;
-              case 13: lcd.print(F("WVGA")); break;
-            }
-            lcd.setCursor(8, 1);
-            switch (setting.p.video.fov) {
-              case 0: lcd.print('W'); break;
-              case 1: lcd.print('M'); break;
-              case 2: lcd.print('N'); break;
-            }
-            lcd.setCursor(10, 1);
-            switch (setting.p.video.fps) {
-              case 0: lcd.print(F("240fps")); break;
-              case 1: lcd.print(F("120fps")); break;
-              case 2: lcd.print(F("100fps")); break;
-              case 3: lcd.print(F("90fps")); break;
-              case 4: lcd.print(F("80fps")); break;
-              case 5: lcd.print(F("60fps")); break;
-              case 6: lcd.print(F("50fps")); break;
-              case 7: lcd.print(F("48fps")); break;
-              case 8: lcd.print(F("30fps")); break;
-              case 9: lcd.print(F("25fps")); break;
-              case 10: lcd.print(F("24fps")); break;
+            if (recording_state == 3) {
+              lcd.print(F("Recording..."));
+            } else {
+              switch (setting.p.video.resolution) {
+                case 1: lcd.print(F("4K")); break;
+                case 2: lcd.print(F("4K S")); break;
+                case 4: lcd.print(F("2.7K")); break;
+                case 5: lcd.print(F("2.7K S")); break;
+                case 6: lcd.print(F("2.7K4:3")); break;
+                case 7: lcd.print(F("1440")); break;
+                case 8: lcd.print(F("1080 S")); break;
+                case 9: lcd.print(F("1080")); break;
+                case 10: lcd.print(F("960")); break;
+                case 11: lcd.print(F("720 S")); break;
+                case 12: lcd.print(F("720")); break;
+                case 13: lcd.print(F("WVGA")); break;
+              }
+              lcd.setCursor(8, 1);
+              switch (setting.p.video.fov) {
+                case 0: lcd.print('W'); break;
+                case 1: lcd.print('M'); break;
+                case 2: lcd.print('N'); break;
+              }
+              lcd.setCursor(10, 1);
+              switch (setting.p.current_submode[MODE_VIDEO]) {
+                case 0:
+                  switch (setting.p.video.fps) {
+                    case 0: lcd.print(F("240fps")); break;
+                    case 1: lcd.print(F("120fps")); break;
+                    case 2: lcd.print(F("100fps")); break;
+                    case 3: lcd.print(F("90fps")); break;
+                    case 4: lcd.print(F("80fps")); break;
+                    case 5: lcd.print(F("60fps")); break;
+                    case 6: lcd.print(F("50fps")); break;
+                    case 7: lcd.print(F("48fps")); break;
+                    case 8: lcd.print(F("30fps")); break;
+                    case 9: lcd.print(F("25fps")); break;
+                    case 10: lcd.print(F("24fps")); break;
+                  }
+                  break;
+                case 1:
+                  switch (setting.p.video.timelapse_rate) {
+                    case 0: lcd.print(F("0.5s")); break;
+                    case 1: lcd.print(F("1s")); break;
+                    case 2: lcd.print(F("2s")); break;
+                    case 3: lcd.print(F("5s")); break;
+                    case 4: lcd.print(F("10s")); break;
+                    case 5: lcd.print(F("30s")); break;
+                    case 6: lcd.print(F("60s")); break;
+                  }
+                  break;
+                case 2:
+                  switch (setting.p.video.piv) {
+                    case 1: lcd.print(F("5s")); break;
+                    case 2: lcd.print(F("10s")); break;
+                    case 3: lcd.print(F("30s")); break;
+                    case 4: lcd.print(F("60s")); break;
+                  }
+                  break;
+                case 3:
+                  switch (setting.p.video.looping) {
+                    case 0: lcd.print(F("Max")); break;
+                    case 1: lcd.print(F("5m")); break;
+                    case 2: lcd.print(F("20m")); break;
+                    case 3: lcd.print(F("60m")); break;
+                    case 4: lcd.print(F("120m")); break;
+                  }
+                  break;
+              }             
             }
             break;
           case MODE_PHOTO:

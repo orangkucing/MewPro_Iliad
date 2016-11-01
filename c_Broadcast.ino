@@ -1,29 +1,60 @@
 // these functions are called after camera power on
-void startup_delay()
+void startup_delay0()
 {
-  delay(2000);
+  delay(8000);
 }
 
+void startup_delay()
+{
+  delay(1000);
+}
 void startup0()
 {
-  Broadcast_ChangeSettings(MODE_VIDEO);
+  // since MODE_SETUP's options includes video_format (NTSC/PAL), it must be sent before MODE_VIDEO
+  Broadcast_ChangeSettings(MODE_SETUP);
 }
 
 void startup1()
 {
-  Broadcast_ChangeSettings(MODE_PHOTO);
+  Broadcast_ChangeSettings(MODE_VIDEO);
 }
 
 void startup2()
 {
-  Broadcast_ChangeSettings(MODE_MULTI_SHOT);
+  Broadcast_ChangeSettings(MODE_PHOTO);
 }
 
 void startup3()
 {
-  Broadcast_ChangeSettings(MODE_SETUP);
+  Broadcast_ChangeSettings(MODE_MULTI_SHOT);
 }
 
+void startup4()
+{
+  // default_app_mode is ignored by the camera so must manually change the start up mode.
+  // first, it's impossible to set MODE_SETUP as starting let's change there 
+  FIFOCPY_P(0, F("YY000101000100\n"), 15);
+  sprintHex(12, MODE_SETUP);
+  FIFO_INC(15);
+}
+
+void startup5()
+{
+  // next, change to the desired default_app_mode
+  setting.p.mode = setting.p.setup.default_app_mode;
+  switch (setting.p.mode) {
+    case MODE_VIDEO:
+      setting.p.current_submode[MODE_VIDEO] = setting.p.video.default_sub_mode;
+      break;
+    case MODE_PHOTO:
+      setting.p.current_submode[MODE_VIDEO] = setting.p.photo.default_sub_mode;
+      break;
+    case MODE_MULTI_SHOT:
+      setting.p.current_submode[MODE_MULTI_SHOT] = setting.p.multi_shot.default_sub_mode;
+      break;
+  }
+  Broadcast_ChangeSubMode();
+}
 //
 
 void sprintHex(int index, uint8_t d)
@@ -67,10 +98,11 @@ void Broadcast_ChangeMode()
       break;
   }
   if (setting.p.mode == MODE_SETUP) {
-    // setup mode has no sub-modes
-    FIFOCPY_P(0, F("YY000101000105\n"), 15);
+    FIFOCPY_P(0, F("YY000101000100\n"), 15);
+    sprintHex(12, setting.p.mode);
     FIFO_INC(15);
   } else {
+    // there is a firmware bug that doesn't sync current sub mode...
     Broadcast_ChangeSubMode();
   }
 }
@@ -78,8 +110,8 @@ void Broadcast_ChangeMode()
 void Broadcast_ChangeSubMode()
 {
   FIFOCPY_P(0, F("YY00010500020000\n"), 17);
-  FIFO(13) = '0' + setting.p.mode;
-  FIFO(15) = '0' + setting.p.current_submode[setting.p.mode];
+  sprintHex(12, setting.p.mode);
+  sprintHex(14, setting.p.current_submode[setting.p.mode]);
   FIFO_INC(17);
 }
 
@@ -87,6 +119,7 @@ void Broadcast_ChangeSettings(char mode)
 {
   DateTime now;
   if (startupSession == STARTUP_HALT) {
+    // not within startup sessions
     while (nextWidget()) { // update to permissible options
       ; 
     }
@@ -115,8 +148,8 @@ void Broadcast_ChangeSettings(char mode)
       sprintHex((6 + 13) * 2, storage[0].p.video.protune_iso);
       sprintHex((6 + 14) * 2, storage[0].p.video.protune_ev);
       sprintHex((6 + 15) * 2, storage[0].p.video.protune_white_balance);
-      sprintHex((6 + 16) * 2, storage[0].p.v4.videoExposure_time);
-      sprintHex((6 + 17) * 2, storage[0].p.v4.videoProtune_iso_mode);
+      sprintHex((6 + 16) * 2, 0 /* storage[0].p.v4.videoExposure_time */);
+      sprintHex((6 + 17) * 2, 0 /* storage[0].p.v4.videoProtune_iso_mode */);
       FIFOCPY_P(48, F("000000000000"), 12); // reserved
       // sub mode: timelapse video
       sprintHex((30 + 0) * 2, 0);
@@ -135,8 +168,8 @@ void Broadcast_ChangeSettings(char mode)
       sprintHex((30 + 13) * 2, storage[0].p.video.protune_iso);
       sprintHex((30 + 14) * 2, storage[0].p.video.protune_ev);
       sprintHex((30 + 15) * 2, storage[0].p.video.protune_white_balance);
-      sprintHex((30 + 16) * 2, storage[0].p.v4.videoExposure_time);
-      sprintHex((30 + 17) * 2, storage[0].p.v4.videoProtune_iso_mode);
+      sprintHex((30 + 16) * 2, 0 /* storage[0].p.v4.videoExposure_time */);
+      sprintHex((30 + 17) * 2, 0 /* storage[0].p.v4.videoProtune_iso_mode */);
       FIFOCPY_P(96, F("000000000000"), 12); // reserved
       // sub mode: video + photo
       sprintHex((54 + 0) * 2, 0);
@@ -155,8 +188,8 @@ void Broadcast_ChangeSettings(char mode)
       sprintHex((54 + 13) * 2, storage[0].p.video.protune_iso);
       sprintHex((54 + 14) * 2, storage[0].p.video.protune_ev);
       sprintHex((54 + 15) * 2, storage[0].p.video.protune_white_balance);
-      sprintHex((54 + 16) * 2, storage[0].p.v4.videoExposure_time);
-      sprintHex((54 + 17) * 2, storage[0].p.v4.videoProtune_iso_mode);
+      sprintHex((54 + 16) * 2, 0 /* storage[0].p.v4.videoExposure_time */);
+      sprintHex((54 + 17) * 2, 0 /* storage[0].p.v4.videoProtune_iso_mode */);
       FIFOCPY_P(144, F("000000000000"), 12); // reserved
       // sub mode: looping
       sprintHex((78 + 0) * 2, 0);
@@ -175,8 +208,8 @@ void Broadcast_ChangeSettings(char mode)
       sprintHex((78 + 13) * 2, storage[0].p.video.protune_iso);
       sprintHex((78 + 14) * 2, storage[0].p.video.protune_ev);
       sprintHex((78 + 15) * 2, storage[0].p.video.protune_white_balance);
-      sprintHex((78 + 16) * 2, storage[0].p.v4.videoExposure_time);
-      sprintHex((78 + 17) * 2, storage[0].p.v4.videoProtune_iso_mode);
+      sprintHex((78 + 16) * 2, 0 /* storage[0].p.v4.videoExposure_time */);
+      sprintHex((78 + 17) * 2, 0 /* storage[0].p.v4.videoProtune_iso_mode */);
       FIFOCPY_P(192, F("000000000000"), 12); // reserved
       //
       FIFO(204) = '\n';
@@ -197,7 +230,7 @@ void Broadcast_ChangeSettings(char mode)
       sprintHex((6 + 9) * 2, storage[0].p.photo.protune_iso);
       sprintHex((6 + 10) * 2, storage[0].p.photo.protune_ev);
       sprintHex((6 + 11) * 2, storage[0].p.photo.protune_white_balance);
-      sprintHex((6 + 12) * 2, storage[0].p.v4.photoProtune_iso_min);
+      sprintHex((6 + 12) * 2, 3 /* storage[0].p.v4.photoProtune_iso_min */);
       FIFOCPY_P(38, F("00000000000000"), 14); // reserved
       // sub mode: continuous
       sprintHex((26 + 0) * 2, 0);
@@ -212,7 +245,7 @@ void Broadcast_ChangeSettings(char mode)
       sprintHex((26 + 9) * 2, storage[1].p.photo.protune_iso);
       sprintHex((26 + 10) * 2, storage[1].p.photo.protune_ev);
       sprintHex((26 + 11) * 2, storage[1].p.photo.protune_white_balance);
-      sprintHex((26 + 12) * 2, storage[1].p.v4.photoProtune_iso_min);
+      sprintHex((26 + 12) * 2, 3 /* storage[1].p.v4.photoProtune_iso_min */);
       FIFOCPY_P(78, F("00000000000000"), 14); // reserved
       // sub mode: night
       sprintHex((46 + 0) * 2, 0);
@@ -227,7 +260,7 @@ void Broadcast_ChangeSettings(char mode)
       sprintHex((46 + 9) * 2, storage[2].p.photo.protune_iso);
       sprintHex((46 + 10) * 2, storage[2].p.photo.protune_ev);
       sprintHex((46 + 11) * 2, storage[2].p.photo.protune_white_balance);
-      sprintHex((46 + 12) * 2, storage[2].p.v4.photoProtune_iso_min);
+      sprintHex((46 + 12) * 2, 3 /* storage[2].p.v4.photoProtune_iso_min */);
       FIFOCPY_P(118, F("00000000000000"), 14); // reserved
       //
       FIFO(132) = '\n';
@@ -250,7 +283,7 @@ void Broadcast_ChangeSettings(char mode)
       sprintHex((6 + 11) * 2, storage[0].p.multi_shot.protune_iso);
       sprintHex((6 + 12) * 2, storage[0].p.multi_shot.protune_ev);
       sprintHex((6 + 13) * 2, storage[0].p.multi_shot.protune_white_balance);
-      sprintHex((6 + 14) * 2, storage[0].p.v4.multi_shotProtune_iso_min);
+      sprintHex((6 + 14) * 2, 4 /* storage[0].p.v4.multi_shotProtune_iso_min */);
       FIFOCPY_P(42, F("00000000000000"), 14); // reserved
       // sub mode: timelapse
       sprintHex((28 + 0) * 2, 0);
@@ -267,7 +300,7 @@ void Broadcast_ChangeSettings(char mode)
       sprintHex((28 + 11) * 2, storage[1].p.multi_shot.protune_iso);
       sprintHex((28 + 12) * 2, storage[1].p.multi_shot.protune_ev);
       sprintHex((28 + 13) * 2, storage[1].p.multi_shot.protune_white_balance);
-      sprintHex((28 + 14) * 2, storage[1].p.v4.multi_shotProtune_iso_min);
+      sprintHex((28 + 14) * 2, 4 /* storage[1].p.v4.multi_shotProtune_iso_min */);
       FIFOCPY_P(86, F("00000000000000"), 14); // reserved
       // sub mode: night lapse
       sprintHex((50 + 0) * 2, 0);
@@ -284,7 +317,7 @@ void Broadcast_ChangeSettings(char mode)
       sprintHex((50 + 11) * 2, storage[2].p.multi_shot.protune_iso);
       sprintHex((50 + 12) * 2, storage[2].p.multi_shot.protune_ev);
       sprintHex((50 + 13) * 2, storage[2].p.multi_shot.protune_white_balance);
-      sprintHex((50 + 14) * 2, storage[2].p.v4.multi_shotProtune_iso_min);
+      sprintHex((50 + 14) * 2, 4 /* storage[2].p.v4.multi_shotProtune_iso_min */);
       FIFOCPY_P(130, F("00000000000000"), 14); // reserved
       //
       FIFO(144) = '\n';
@@ -353,7 +386,7 @@ void Broadcast_ChangeSetting(char id)
     case &setting.p.video.fps - setting.b:
     case &setting.p.video.fov - setting.b:
       if (!blacklist((char)(&setting.p.video.fps - setting.b), setting.p.video.fps) && !blacklist((char)(&setting.p.video.fov - setting.b), setting.p.video.fov)) {
-        FIFOCPY_P(0, F("YY0004030003000000\n"), 19);
+        FIFOCPY_P(0, F("YY0002030003000000\n"), 19);
         sprintHex(12, setting.p.video.resolution);
         sprintHex(14, setting.p.video.fps);
         sprintHex(16, setting.p.video.fov);
@@ -453,37 +486,59 @@ void Broadcast_ChangeSetting(char id)
     case &setting.p.current_submode[MODE_MULTI_SHOT] - setting.b:
       Broadcast_ChangeSubMode(); break;
     //
-    case &setting.p.v4.videoExposure_time - setting.b:
-      __queueIn(2, 40, setting.p.v4.videoExposure_time); break;
-    case &setting.p.v4.videoProtune_iso_mode - setting.b:
-      __queueIn(2, 42, setting.p.v4.videoProtune_iso_mode); break;
-    case &setting.p.v4.photoProtune_iso_min - setting.b:
-      __queueIn(3, 29, setting.p.v4.photoProtune_iso_min); break;
-    case &setting.p.v4.multi_shotProtune_iso_min - setting.b:
-      __queueIn(4, 34, setting.p.v4.multi_shotProtune_iso_min); break;
+//  case &setting.p.v4.videoExposure_time - setting.b:
+//    __queueIn(2, 40, setting.p.v4.videoExposure_time); break;
+//  case &setting.p.v4.videoProtune_iso_mode - setting.b:
+//    __queueIn(2, 42, setting.p.v4.videoProtune_iso_mode); break;
+//  case &setting.p.v4.photoProtune_iso_min - setting.b:
+//    __queueIn(3, 29, setting.p.v4.photoProtune_iso_min); break;
+//  case &setting.p.v4.multi_shotProtune_iso_min - setting.b:
+//    __queueIn(4, 34, setting.p.v4.multi_shotProtune_iso_min); break;
   }
 #endif /* not BULK_SETTING_TRANSFER */
 }
 
 void Broadcast_StartRecording()
 {
-  // default firmware doesn't need current time info that will be truncated at MewPro
-  DateTime now = rtc.now();
-  FIFOCPY_P(0, F("YY00021B0004"), 12);
-  sprintHex(12, (uint8_t)now.day());
-  sprintHex(14, (uint8_t)now.hour());
-  sprintHex(16, (uint8_t)now.minute());
-  sprintHex(18, (uint8_t)now.second());
-  FIFO(20) = '\n';
-  FIFO_INC(21);
-  recording_state = 1;
+  DateTime now;
+  switch (setting.p.mode) {
+    case MODE_VIDEO:
+      // default firmware doesn't need current time info that will be automatically truncated at MewPro
+      now = rtc.now();
+      FIFOCPY_P(0, F("YY00021B0004"), 12);
+      // Omni firmware requires timestamp info
+      sprintHex(12, (uint8_t)now.day());
+      sprintHex(14, (uint8_t)now.hour());
+      sprintHex(16, (uint8_t)now.minute());
+      sprintHex(18, (uint8_t)now.second());
+      FIFO(20) = '\n';
+      FIFO_INC(21);
+      break;
+    case MODE_PHOTO:
+      FIFOCPY_P(0, F("YY0003170000\n"), 13);
+      FIFO_INC(13);
+      break;
+    case MODE_MULTI_SHOT:
+      FIFOCPY_P(0, F("YY00041B0000\n"), 13);
+      FIFO_INC(13);
+      break;
+  }
 }
 
 void Broadcast_StopRecording()
 {
-  FIFOCPY_P(0, F("YY00021C0000\n"), 13);
+  switch (setting.p.mode) {
+    case MODE_VIDEO:
+      FIFOCPY_P(0, F("YY00021C0000\n"), 13);
+      break;
+    case MODE_PHOTO:
+      FIFOCPY_P(0, F("YY0003180000\n"), 13);
+      break;
+    case MODE_MULTI_SHOT:
+      FIFOCPY_P(0, F("YY00041C0000\n"), 13);
+      break;
+  }
   FIFO_INC(13);
-  recording_state = 4;
 }
 
 void Broadcast_PowerOn()

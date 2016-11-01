@@ -1,8 +1,7 @@
 /*
  * GoPro Genlock signal Generator
  *    for Hero 4 Black and Hero 3+ Black
- *    using ATmega2560 16MHz 3.3V (Arduino Mega 2560 or Seeeduino Mega) 
- *    (sure, I usually don't mind if it's overclocked. :) )
+ *    using ATmega2560 16MHz (Arduino Mega 2560 or Seeeduino Mega) 
  * copyright (c) 2016 Hisashi ITO (info at mewpro.cc)
  * 
  * if the board runs 5V then a logic level converter to 3.3V such as 74HC4050 is needed for interfacing to the camera.
