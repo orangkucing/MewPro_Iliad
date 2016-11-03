@@ -18,31 +18,75 @@
  * D45 (OC5B/PL4) ------------------------- VSYNC
  * 
  */
+uint16_t clock_stretch;
+
+ISR(TIMER5_COMPC_vect) {
+  // compare match interrupt service routine (Timer 5 C)
+  // in order to know the exact delay by subtracting clock_stretch, we must use assembly here
+
+  // C code equivalent is the following:
+  
+  //   noInterrupts(); // temporary disable other high priority interrupts
+  //   TCNT4 -= clock_stretch; // this statement takes AVR microcontroller 13 clock cycles to update TCNT4 io location
+  //   interrupts(); // enable other interrupts again
+
+  asm volatile(          // number of clocks needed
+    // noInterrupts();
+    "in  r18,__SREG__\n"
+    "cli\n"
+    // TCNT4 -= clock_stretch;
+    "lds r16,%0\n"       // 2 TCNT4 is latched before this instruction
+    "lds r17,%1\n"       // 2
+    "ld  r18,Z+\n"       // 1
+    "ld  r19,Z\n"        // 1
+    "sub r16,r18\n"      // 1
+    "sbc r17,r19\n"      // 1
+    "sts %1,r17\n"       // 2
+    "sts %0,r16\n"       // 2 TCNT4 is updated after this instruction
+    // interrupts();
+    "out __SREG__,r18\n"
+    :: "M" (_SFR_MEM_ADDR(TCNT4L)), "M" (_SFR_MEM_ADDR(TCNT4H)), "z" (&clock_stretch)
+  );
+}
+
 void StartSyncSignal(int vidmode)
 {
+  static boolean firsttime = true;
+  noInterrupts();
   // Note: ATmega2560's fast PWM is buggy.
   //   1. fast PWM mode 15 doesn't work unless TOP < 256.
   //   2. the first match is ignored under certain conditions (see * and **).
-  
+
   // Timer 5 (VSYNC)
   // COM5B[1:0] = 2 : clear OC5B on compare match, set OC5B at BOTTOM
+  // COM5C[1:0] = 0 : OC5C pin disconnected
   // WGM5[3:0] = 14 : fast PWM mode 14
   TCCR5B = _BV(WGM53) | _BV(WGM52); // set no clock source
   TCCR5A = _BV(COM5B1) | _BV(WGM51);
-  noInterrupts();
   // the following registers can be set properly only after WGMn is set
   OCR5B = syncTime[vidmode][SYNC_TIME_VSYNC] - 2; // MATCH
+  OCR5C = syncTime[vidmode][SYNC_TIME_VSYNC] - 3; // ADVANCE MATCH
   TCNT5 = syncTime[vidmode][SYNC_TIME_VSYNC] - 3; // START
   ICR5 = syncTime[vidmode][SYNC_TIME_VSYNC] - 1; // TOP
-  interrupts();
   TCCR5B |= _BV(CS52) | _BV(CS51); // CS5[2:0] = 6 (external clock source on T5. clock on falling edge)
 
-  // * using an external clock source ATmega2560 has a bug that causes the first match ignored
-  // WORKAROUND: toggle T5 to go beyond the first
-  for (int i = 0; i < syncTime[vidmode][SYNC_TIME_VSYNC] + 1; i++) {
+  if (firsttime) {
+    // * using an external clock source ATmega2560 has a bug that causes the first match ignored
+    // WORKAROUND: toggle T5 to go beyond the first
+    for (int i = 0; i < syncTime[vidmode][SYNC_TIME_VSYNC] + 1; i++) {
+      TCCR4C |= _BV(FOC4C); TCCR4C |= _BV(FOC4C);
+    }
+    firsttime = false;
+  } else {
     TCCR4C |= _BV(FOC4C); TCCR4C |= _BV(FOC4C);
   }
   
+  if (syncTime[vidmode][SYNC_TIME_STRETCH] != 0) {
+    // number of ticks the 2nd last HSYNC before VSYNC longer than others
+    clock_stretch = syncTime[vidmode][SYNC_TIME_STRETCH] - 13; // updating TCNT4 requires 13 clock cycles (81.25ns)
+    TIMSK5 = _BV(OCIE5C); // output compare C match interrupt enable
+  }
+
   // Timer 4 (HSYNC)
   // ** keep COM4B[1:0] == COM4C[1:0] otherwise either of the first matches will be ignored
   // COM4B[1:0] = 2 : clear OC4B on compare match, set OC4B at BOTTOM
@@ -50,7 +94,6 @@ void StartSyncSignal(int vidmode)
   // WGM4[3:0] = 14 : fast PWM mode 14
   TCCR4B = _BV(WGM43) | _BV(WGM42); // set no clock source
   TCCR4A = _BV(COM4B1) | _BV(COM4C1) | _BV(WGM41);
-  noInterrupts();
   // the following registers can be set properly only after WGMn is set
   OCR4B = syncTime[vidmode][SYNC_TIME_HSYNC] - 3; // MATCH
   OCR4C = syncTime[vidmode][SYNC_TIME_HSYNC] - 5; // ADVANCE MATCH
@@ -69,6 +112,7 @@ void StopSyncSignal()
   // (cf. ATmega640/V-1280/V-1281/V-2560/V-2561/V [DATASHEET] p.119, 2549Q–AVR–02/2014)
 
   // Timer 5 (VSYNC)
+  TIMSK5 = 0; // disable timer 5 interrupts
   TCCR5B = 0;
   TCCR5A = _BV(COM5B0); // toggle on compare match
   if (!(PINL & _BV(4))) { // toggle if LOW

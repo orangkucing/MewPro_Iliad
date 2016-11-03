@@ -8,7 +8,7 @@ const int IR_RECEIVE         = 3; //      PE5 ( OC3C/INT5 )
 //                             5; //      PE3 ( OC3A/AIN1 )
 const int TRIG              =  6; //      PH3 ( OC4A )              // for Hero 3+ Black only
 const int HSYNC             =  7; //      PH4 ( OC4B )
-//      connect to D47 <----   8; //      PH5 ( OC4C )
+const int OC4C_PIN          =  8; //      PH5 ( OC4C ) ----> connect to D47
 const int SECONDARY_RESET   =  9; //      PH6 ( OC2B )
 const int MODE_SWITCH       = 10; //      PB4 ( OC2A/PCINT4 )
 const int SETUP_SWITCH      = 11; //      PB5 ( OC1A/PCINT5 )

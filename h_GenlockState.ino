@@ -9,7 +9,7 @@ void checkGenlockState()
         case MODE_VIDEO:
           break;
         case MODE_PHOTO:
-          if (setting.p.current_submode[MODE_PHOTO] != 1 /* not continuous */ && millis() - command_sent > 1500) {
+          if (setting.p.current_submode[MODE_PHOTO] != 1 /* not continuous */ && millis() - command_sent > 3500) {
             recording_state = 5;
           }
           break;
@@ -28,7 +28,7 @@ void checkGenlockState()
     case 2: 
       switch (setting.p.mode) {
         case MODE_VIDEO:
-          if (millis() - command_sent > 1000) {
+          if (millis() - command_sent > 2500) {
             SERIAL.print(F("genlock signal start: (resolution, fps) = (0x0"));
             SERIAL.print(setting.p.video.resolution, HEX);
             SERIAL.print(F(", 0x0"));
@@ -41,7 +41,7 @@ void checkGenlockState()
           break;
         case MODE_PHOTO:
         case MODE_MULTI_SHOT:
-          if (millis() - command_sent > 1000) {
+          if (millis() - command_sent > 2500) {
             SERIAL.print(F("genlock signal start: resolution = 0x0"));
             SERIAL.println(setting.p.photo.resolution, HEX);
             StartSyncSignal(14 * FPS_TABLE_SIZE); // photo mode is stored at the end of the video mode table
@@ -51,7 +51,7 @@ void checkGenlockState()
       }
       break;
     case 5: 
-      if (millis() - command_sent > 1000) {
+      if (millis() - command_sent > 2500) {
         SERIAL.println(F("genlock signal stop"));
         StopSyncSignal();
         recording_state = 0;
