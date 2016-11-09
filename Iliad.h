@@ -5,7 +5,7 @@
 #include "MenuText.h"
 #include <EEPROM.h>
 
-#define __VERSION_STRING__ "v1.1.0"
+#define __VERSION_STRING__ "v1.1.1"
 
 #include <LiquidCrystal.h>
 // initialize the library with the numbers of the interface pins
