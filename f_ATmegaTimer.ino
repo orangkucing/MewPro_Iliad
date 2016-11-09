@@ -29,7 +29,6 @@ ISR(TIMER5_COMPC_vect) {
 
 void StartSyncSignal(int vidmode)
 {
-  static boolean firsttime = true;
   noInterrupts();
   // Note: ATmega2560's fast PWM is buggy.
   //   1. fast PWM mode 15 doesn't work unless TOP < 256.
@@ -48,16 +47,11 @@ void StartSyncSignal(int vidmode)
   ICR5 = syncTime[vidmode][SYNC_TIME_VSYNC] - 1; // TOP
   TCCR5B |= _BV(CS52) | _BV(CS51); // CS5[2:0] = 6 (external clock source on T5. clock on falling edge)
 
-  if (firsttime) {
-    // * using an external clock source ATmega2560 has a bug that causes the first match ignored
-    // WORKAROUND: toggle T5 to go beyond the first
-    for (int i = 0; i < syncTime[vidmode][SYNC_TIME_VSYNC]; i++) {
-      TCCR4C |= _BV(FOC4C); TCCR4C |= _BV(FOC4C);
-    }
-    firsttime = false;
+  // * using an external clock source ATmega2560 has a bug that causes the first match ignored
+  // WORKAROUND: toggle T5 to go beyond the first
+  for (int i = 0; i < syncTime[vidmode][SYNC_TIME_VSYNC] + 1; i++) {
+    TCCR4C |= _BV(FOC4C); TCCR4C |= _BV(FOC4C);
   }
-
-  TCCR4C |= _BV(FOC4C); TCCR4C |= _BV(FOC4C);
 
   if (syncTime[vidmode][SYNC_TIME_STRETCH] != 0) {
     // number of ticks the 2nd last HSYNC before VSYNC longer than others
@@ -75,7 +69,7 @@ void StartSyncSignal(int vidmode)
   // the following registers can be set properly only after WGMn is set
   OCR4B = syncTime[vidmode][SYNC_TIME_HSYNC] - 3; // MATCH
   OCR4C = syncTime[vidmode][SYNC_TIME_HSYNC] - 5; // ADVANCE MATCH
-  TCNT4 = syncTime[vidmode][SYNC_TIME_HSYNC] - 6; // START
+  TCNT4 = syncTime[vidmode][SYNC_TIME_HSYNC] - 7; // START
   ICR4 = syncTime[vidmode][SYNC_TIME_HSYNC] - 1; // TOP
   interrupts();
   TCCR4B |= _BV(CS40); // CS4[2:0] = 1 (no prescaling)
