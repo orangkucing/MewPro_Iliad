@@ -18,35 +18,13 @@
  * D45 (OC5B/PL4) ------------------------- VSYNC
  * 
  */
-uint16_t clock_stretch;
+volatile uint16_t clock_stretch;
 
 ISR(TIMER5_COMPC_vect) {
   // compare match interrupt service routine (Timer 5 C)
-  // in order to know the exact delay by subtracting clock_stretch, we must use assembly here
-
-  // C code equivalent is the following:
-  
-  //   noInterrupts(); // temporary disable other high priority interrupts
-  //   TCNT4 -= clock_stretch; // this statement takes AVR microcontroller 13 clock cycles to update TCNT4 io location
-  //   interrupts(); // enable other interrupts again
-
-  asm volatile(          // number of clocks needed
-    // noInterrupts();
-    "in  r18,__SREG__\n"
-    "cli\n"
-    // TCNT4 -= clock_stretch;
-    "lds r16,%0\n"       // 2 TCNT4 is latched before this instruction
-    "lds r17,%1\n"       // 2
-    "ld  r18,Z+\n"       // 1
-    "ld  r19,Z\n"        // 1
-    "sub r16,r18\n"      // 1
-    "sbc r17,r19\n"      // 1
-    "sts %1,r17\n"       // 2
-    "sts %0,r16\n"       // 2 TCNT4 is updated after this instruction
-    // interrupts();
-    "out __SREG__,r18\n"
-    :: "M" (_SFR_MEM_ADDR(TCNT4L)), "M" (_SFR_MEM_ADDR(TCNT4H)), "z" (&clock_stretch)
-  );
+  noInterrupts(); // temporary disable other high priority interrupts
+  TCNT4 -= clock_stretch; // this statement takes AVR microcontroller 13 clock cycles to update TCNT4 io location
+  interrupts(); // enable other interrupts again
 }
 
 void StartSyncSignal(int vidmode)
@@ -73,14 +51,14 @@ void StartSyncSignal(int vidmode)
   if (firsttime) {
     // * using an external clock source ATmega2560 has a bug that causes the first match ignored
     // WORKAROUND: toggle T5 to go beyond the first
-    for (int i = 0; i < syncTime[vidmode][SYNC_TIME_VSYNC] + 1; i++) {
+    for (int i = 0; i < syncTime[vidmode][SYNC_TIME_VSYNC]; i++) {
       TCCR4C |= _BV(FOC4C); TCCR4C |= _BV(FOC4C);
     }
     firsttime = false;
-  } else {
-    TCCR4C |= _BV(FOC4C); TCCR4C |= _BV(FOC4C);
   }
-  
+
+  TCCR4C |= _BV(FOC4C); TCCR4C |= _BV(FOC4C);
+
   if (syncTime[vidmode][SYNC_TIME_STRETCH] != 0) {
     // number of ticks the 2nd last HSYNC before VSYNC longer than others
     clock_stretch = syncTime[vidmode][SYNC_TIME_STRETCH] - 13; // updating TCNT4 requires 13 clock cycles (81.25ns)
@@ -97,7 +75,7 @@ void StartSyncSignal(int vidmode)
   // the following registers can be set properly only after WGMn is set
   OCR4B = syncTime[vidmode][SYNC_TIME_HSYNC] - 3; // MATCH
   OCR4C = syncTime[vidmode][SYNC_TIME_HSYNC] - 5; // ADVANCE MATCH
-  TCNT4 = syncTime[vidmode][SYNC_TIME_HSYNC] - 7; // START
+  TCNT4 = syncTime[vidmode][SYNC_TIME_HSYNC] - 6; // START
   ICR4 = syncTime[vidmode][SYNC_TIME_HSYNC] - 1; // TOP
   interrupts();
   TCCR4B |= _BV(CS40); // CS4[2:0] = 1 (no prescaling)
@@ -115,17 +93,21 @@ void StopSyncSignal()
   TIMSK5 = 0; // disable timer 5 interrupts
   TCCR5B = 0;
   TCCR5A = _BV(COM5B0); // toggle on compare match
+  DDRL |= _BV(4); // set OC5B to output
+  noInterrupts();
   if (!(PINL & _BV(4))) { // toggle if LOW
     TCCR5C |= _BV(FOC5B);
   }
-  DDRL |= _BV(4); // set OC5B to output
+  interrupts();
 
   // Timer 4 (HSYNC)
   TCCR4B = 0;
   TCCR4A = _BV(COM4B0) | _BV(COM4C0); // toggle on compare match
+  DDRH |= _BV(4) | _BV(5); // set OC4B and OC4C to output
+  noInterrupts();
   if (!(PINH & _BV(4)) || !(PINH & _BV(5))) { // toggle if LOW
     TCCR4C |= (PINH & _BV(4) ? 0 : _BV(FOC4B)) | (PINH & _BV(5) ? 0 : _BV(FOC4C));
   }
-  DDRH |= _BV(4) | _BV(5); // set OC4B and OC4C to output
+  interrupts();
 }
 
