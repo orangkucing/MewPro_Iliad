@@ -1,11 +1,14 @@
 #include <Arduino.h>
 #include <avr/wdt.h>
+#include <EEPROM.h>
 #include "Pins.h"
 #include "Videomode.h"
+// define camera to use with Iliad. if you mix B and S then video modes are restricted to those both can do.
+#define HERO_4_BLACK
+#undef  HERO_4_SILVER
 #include "MenuText.h"
-#include <EEPROM.h>
 
-#define __VERSION_STRING__ "v1.1.2"
+#define __VERSION_STRING__ "v1.1.3"
 
 #include <LiquidCrystal.h>
 // initialize the library with the numbers of the interface pins

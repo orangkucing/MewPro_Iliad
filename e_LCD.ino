@@ -81,6 +81,8 @@ void updateLCD()
                     case 8: lcd.print(F("30fps")); break;
                     case 9: lcd.print(F("25fps")); break;
                     case 10: lcd.print(F("24fps")); break;
+                    case 11: lcd.print(F("15fps")); break;
+                    case 12: lcd.print(F("12.5")); break;
                   }
                   break;
                 case 1:

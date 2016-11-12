@@ -1162,7 +1162,7 @@ Setting storage[MAX_SUBMODE_SIZE] = {
 },  
 };
 
-boolean blacklist(byte id, byte v)
+boolean blacklist_4_black(byte id, byte v)
 {
 if(id==3&&setting.b[2]==13&&setting.b[57]==0)switch(v){case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 8:case 9:case 10:case 11:case 12:return true;}
 if(id==3&&setting.b[2]==11&&setting.b[57]==0)switch(v){case 0:case 2:case 3:case 4:case 6:case 7:case 8:case 9:case 10:case 11:case 12:return true;}
@@ -1315,4 +1315,158 @@ if(id==16&&setting.b[53]==2)switch(v){case 0:case 1:case 2:return true;}
 // disable WVGA
 if(id==2&&v==13)return true;
 return false;
+}
+
+boolean blacklist_4_silver(byte id, byte v)
+{
+if(id==3&&setting.b[2]==1&&setting.b[57]==0)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 8:case 9:case 10:case 12:return true;}
+if(id==3&&setting.b[2]==4&&setting.b[57]==0)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 9:case 11:case 12:return true;}
+if(id==3&&setting.b[2]==7&&setting.b[57]==0)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:case 9:case 11:case 12:return true;}
+if(id==3&&setting.b[2]==9&&setting.b[57]==0)switch(v){case 0:case 1:case 2:case 3:case 4:case 6:case 9:case 11:case 12:return true;}
+if(id==3&&setting.b[2]==8&&setting.b[57]==0)switch(v){case 0:case 1:case 2:case 3:case 4:case 6:case 9:case 11:case 12:return true;}
+if(id==3&&setting.b[2]==10&&setting.b[57]==0)switch(v){case 0:case 1:case 3:case 4:case 6:case 7:case 8:case 9:case 10:case 11:case 12:return true;}
+if(id==3&&setting.b[2]==12&&setting.b[57]==0)switch(v){case 0:case 2:case 3:case 4:case 6:case 7:case 9:case 10:case 11:case 12:return true;}
+if(id==3&&setting.b[2]==11&&setting.b[57]==0)switch(v){case 0:case 1:case 3:case 4:case 6:case 7:case 8:case 9:case 10:case 11:case 12:return true;}
+if(id==3&&setting.b[2]==13&&setting.b[57]==0)switch(v){case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 8:case 9:case 10:case 11:case 12:return true;}
+if(id==3&&setting.b[2]==1&&setting.b[57]==1)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 8:case 9:case 10:case 11:return true;}
+if(id==3&&setting.b[2]==4&&setting.b[57]==1)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 8:case 11:case 12:return true;}
+if(id==3&&setting.b[2]==7&&setting.b[57]==1)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:case 8:case 11:case 12:return true;}
+if(id==3&&setting.b[2]==9&&setting.b[57]==1)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 8:case 11:case 12:return true;}
+if(id==3&&setting.b[2]==8&&setting.b[57]==1)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 8:case 11:case 12:return true;}
+if(id==3&&setting.b[2]==10&&setting.b[57]==1)switch(v){case 0:case 1:case 3:case 4:case 5:case 7:case 8:case 9:case 10:case 11:case 12:return true;}
+if(id==3&&setting.b[2]==12&&setting.b[57]==1)switch(v){case 0:case 2:case 3:case 4:case 5:case 7:case 8:case 10:case 11:case 12:return true;}
+if(id==3&&setting.b[2]==11&&setting.b[57]==1)switch(v){case 0:case 1:case 3:case 4:case 5:case 7:case 8:case 9:case 10:case 11:case 12:return true;}
+if(id==3&&setting.b[2]==13&&setting.b[57]==1)switch(v){case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 8:case 9:case 10:case 11:case 12:return true;}
+if(id==4&&setting.b[2]==1)switch(v){case 1:case 2:return true;}
+if(id==4&&setting.b[2]==4)switch(v){case 2:return true;}
+if(id==4&&setting.b[2]==7)switch(v){case 1:case 2:return true;}
+if(id==4&&setting.b[2]==8)switch(v){case 1:case 2:return true;}
+if(id==4&&setting.b[2]==10)switch(v){case 1:case 2:return true;}
+if(id==4&&setting.b[2]==11)switch(v){case 1:case 2:return true;}
+if(id==4&&setting.b[2]==13)switch(v){case 1:case 2:return true;}
+if(id==2&&setting.b[68]==0)switch(v){case 2:case 3:case 5:case 6:return true;}
+if(id==2&&setting.b[68]==2)switch(v){case 1:case 2:case 3:case 4:case 5:case 6:case 8:case 10:case 11:case 13:return true;}
+if(id==2&&setting.b[68]==3)switch(v){case 2:case 3:case 5:case 6:return true;}
+if(id==3&&setting.b[68]==2&&setting.b[2]==7)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 8:case 9:case 11:case 12:return true;}
+if(id==3&&setting.b[68]==2&&setting.b[2]==9)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 11:case 12:return true;}
+if(id==3&&setting.b[68]==2&&setting.b[2]==8)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 11:case 12:return true;}
+if(id==3&&setting.b[68]==2&&setting.b[2]==11)switch(v){case 0:case 1:case 2:case 3:case 4:case 7:case 8:case 9:case 10:case 11:case 12:return true;}
+if(id==3&&setting.b[68]==2&&setting.b[2]==12)switch(v){case 0:case 1:case 2:case 3:case 4:case 7:case 10:case 11:case 12:return true;}
+if(id==4&&setting.b[68]==2&&setting.b[2]==12&&setting.b[3]==5)switch(v){case 0:return true;}
+if(id==8&&setting.b[68]==1)switch(v){case 0:case 1:return true;}
+if(id==8&&setting.b[3]==0)switch(v){case 0:case 1:return true;}
+if(id==8&&setting.b[3]==8)switch(v){case 0:case 1:return true;}
+if(id==8&&setting.b[3]==9)switch(v){case 0:case 1:return true;}
+if(id==8&&setting.b[3]==10)switch(v){case 0:case 1:return true;}
+if(id==8&&setting.b[3]==11)switch(v){case 0:case 1:return true;}
+if(id==8&&setting.b[3]==12)switch(v){case 0:case 1:return true;}
+if(id==11&&setting.b[10]==0)switch(v){case 0:case 1:case 2:case 3:case 4:return true;}
+if(id==12&&setting.b[10]==0)switch(v){case 0:case 1:return true;}
+if(id==14&&setting.b[10]==0)switch(v){case 0:case 1:case 2:return true;}
+if(id==13&&setting.b[10]==0)switch(v){case 0:case 1:case 2:case 3:case 4:return true;}
+if(id==15&&setting.b[10]==0)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 8:return true;}
+if(id==5&&setting.b[68]==0)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:return true;}
+if(id==6&&setting.b[68]==0)switch(v){case 0:case 1:case 2:case 3:case 4:return true;}
+if(id==7&&setting.b[68]==0)switch(v){case 0:case 1:case 2:case 3:case 4:return true;}
+if(id==6&&setting.b[68]==1)switch(v){case 0:case 1:case 2:case 3:case 4:return true;}
+if(id==7&&setting.b[68]==1)switch(v){case 0:case 1:case 2:case 3:case 4:return true;}
+if(id==6&&setting.b[68]==2)switch(v){case 0:case 1:case 2:case 3:case 4:return true;}
+if(id==5&&setting.b[68]==2)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:return true;}
+if(id==7&&setting.b[68]==3)switch(v){case 0:case 1:case 2:case 3:case 4:return true;}
+if(id==5&&setting.b[68]==3)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:return true;}
+if(id==4&&setting.b[68]==1)switch(v){case 0:case 1:case 2:return true;}
+if(id==9&&setting.b[68]==1)switch(v){case 0:case 1:return true;}
+if(id==2&&setting.b[68]==1)switch(v){case 2:case 3:case 4:case 5:case 7:case 8:case 9:case 10:case 11:case 12:case 13:return true;}
+if(id==3&&setting.b[68]==1)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 8:case 9:case 10:case 11:case 12:return true;}
+if(id==18&&setting.b[69]==0)switch(v){case 0:case 1:case 2:return true;}
+if(id==19&&setting.b[69]==0)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:return true;}
+if(id==19&&setting.b[69]==1)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:return true;}
+if(id==18&&setting.b[69]==2)switch(v){case 0:case 1:case 2:return true;}
+if(id==22&&setting.b[21]==0)switch(v){case 0:case 1:case 2:case 3:case 4:return true;}
+if(id==23&&setting.b[21]==0)switch(v){case 0:case 1:return true;}
+if(id==25&&setting.b[21]==0)switch(v){case 0:case 1:case 2:return true;}
+if(id==24&&setting.b[21]==0)switch(v){case 0:case 1:case 2:case 3:return true;}
+if(id==26&&setting.b[21]==0)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 8:return true;}
+if(id==22&&setting.b[69]==2&&setting.b[19]==1)switch(v){case 0:return true;}
+if(id==22&&setting.b[69]==2&&setting.b[19]==2)switch(v){case 0:return true;}
+if(id==22&&setting.b[69]==2&&setting.b[19]==3)switch(v){case 0:return true;}
+if(id==22&&setting.b[69]==2&&setting.b[19]==4)switch(v){case 0:return true;}
+if(id==22&&setting.b[69]==2&&setting.b[19]==5)switch(v){case 0:return true;}
+if(id==22&&setting.b[69]==2&&setting.b[19]==6)switch(v){case 0:return true;}
+if(id==26&&setting.b[69]==2&&setting.b[19]==1)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 8:return true;}
+if(id==26&&setting.b[69]==2&&setting.b[19]==2)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 8:return true;}
+if(id==26&&setting.b[69]==2&&setting.b[19]==3)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 8:return true;}
+if(id==26&&setting.b[69]==2&&setting.b[19]==4)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 8:return true;}
+if(id==26&&setting.b[69]==2&&setting.b[19]==5)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 8:return true;}
+if(id==26&&setting.b[69]==2&&setting.b[19]==6)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 8:return true;}
+if(id==31&&setting.b[70]==0)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:return true;}
+if(id==30&&setting.b[70]==0)switch(v){case 0:case 1:case 2:case 5:case 10:case 30:case 60:return true;}
+if(id==32&&setting.b[70]==0)switch(v){case 9:case 10:case 11:case 0:case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 8:return true;}
+if(id==31&&setting.b[70]==1)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:return true;}
+if(id==29&&setting.b[70]==1)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 8:return true;}
+if(id==32&&setting.b[70]==1)switch(v){case 9:case 10:case 11:case 0:case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 8:return true;}
+if(id==29&&setting.b[70]==2)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 8:return true;}
+if(id==30&&setting.b[70]==2)switch(v){case 0:case 1:case 2:case 5:case 10:case 30:case 60:return true;}
+if(id==35&&setting.b[70]==2&&setting.b[31]==1)switch(v){case 0:return true;}
+if(id==35&&setting.b[70]==2&&setting.b[31]==2)switch(v){case 0:return true;}
+if(id==35&&setting.b[70]==2&&setting.b[31]==3)switch(v){case 0:return true;}
+if(id==35&&setting.b[70]==2&&setting.b[31]==4)switch(v){case 0:return true;}
+if(id==35&&setting.b[70]==2&&setting.b[31]==5)switch(v){case 0:return true;}
+if(id==35&&setting.b[70]==2&&setting.b[31]==6)switch(v){case 0:return true;}
+if(id==32&&setting.b[70]==2&&setting.b[31]==2)switch(v){case 10:case 11:return true;}
+if(id==32&&setting.b[70]==2&&setting.b[31]==3)switch(v){case 10:case 11:case 0:return true;}
+if(id==32&&setting.b[70]==2&&setting.b[31]==4)switch(v){case 10:case 11:case 0:case 1:return true;}
+if(id==32&&setting.b[70]==2&&setting.b[31]==5)switch(v){case 10:case 11:case 0:case 1:case 2:return true;}
+if(id==32&&setting.b[70]==2&&setting.b[31]==6)switch(v){case 10:case 11:case 0:case 1:case 2:case 3:return true;}
+if(id==35&&setting.b[34]==0)switch(v){case 0:case 1:case 2:case 3:case 4:return true;}
+if(id==36&&setting.b[34]==0)switch(v){case 0:case 1:return true;}
+if(id==38&&setting.b[34]==0)switch(v){case 0:case 1:case 2:return true;}
+if(id==37&&setting.b[34]==0)switch(v){case 0:case 1:case 2:case 3:return true;}
+if(id==39&&setting.b[34]==0)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 8:return true;}
+if(id==39&&setting.b[70]==2&&setting.b[31]==1)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 8:return true;}
+if(id==39&&setting.b[70]==2&&setting.b[31]==2)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 8:return true;}
+if(id==39&&setting.b[70]==2&&setting.b[31]==3)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 8:return true;}
+if(id==39&&setting.b[70]==2&&setting.b[31]==4)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 8:return true;}
+if(id==39&&setting.b[70]==2&&setting.b[31]==5)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 8:return true;}
+if(id==39&&setting.b[70]==2&&setting.b[31]==6)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 8:return true;}
+if(id==10&&setting.b[68]==1)switch(v){case 0:case 1:return true;}
+if(id==11&&setting.b[68]==1)switch(v){case 0:case 1:case 2:case 3:case 4:return true;}
+if(id==12&&setting.b[68]==1)switch(v){case 0:case 1:return true;}
+if(id==14&&setting.b[68]==1)switch(v){case 0:case 1:case 2:return true;}
+if(id==13&&setting.b[68]==1)switch(v){case 0:case 1:case 2:case 3:case 4:return true;}
+if(id==15&&setting.b[68]==1)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 8:return true;}
+if(id==4&&setting.b[68]==2&&setting.b[2]==12&&setting.b[3]==5)switch(v){case 0:return true;}
+if(id==10&&setting.b[68]==2)switch(v){case 0:case 1:return true;}
+if(id==11&&setting.b[68]==2)switch(v){case 0:case 1:case 2:case 3:case 4:return true;}
+if(id==12&&setting.b[68]==2)switch(v){case 0:case 1:return true;}
+if(id==14&&setting.b[68]==2)switch(v){case 0:case 1:case 2:return true;}
+if(id==13&&setting.b[68]==2)switch(v){case 0:case 1:case 2:case 3:case 4:return true;}
+if(id==15&&setting.b[68]==2)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 8:return true;}
+if(id==10&&setting.b[68]==3)switch(v){case 0:case 1:return true;}
+if(id==11&&setting.b[68]==3)switch(v){case 0:case 1:case 2:case 3:case 4:return true;}
+if(id==12&&setting.b[68]==3)switch(v){case 0:case 1:return true;}
+if(id==14&&setting.b[68]==3)switch(v){case 0:case 1:case 2:return true;}
+if(id==13&&setting.b[68]==3)switch(v){case 0:case 1:case 2:case 3:case 4:return true;}
+if(id==15&&setting.b[68]==3)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 8:return true;}
+if(id==16&&setting.b[53]==0)switch(v){case 0:case 1:case 2:return true;}
+if(id==27&&setting.b[53]==0)switch(v){case 0:case 1:case 2:return true;}
+if(id==1&&setting.b[53]==1)switch(v){case 0:case 1:case 2:case 3:return true;}
+if(id==27&&setting.b[53]==1)switch(v){case 0:case 1:case 2:return true;}
+if(id==1&&setting.b[53]==2)switch(v){case 0:case 1:case 2:case 3:return true;}
+if(id==16&&setting.b[53]==2)switch(v){case 0:case 1:case 2:return true;}
+// disable WVGA
+if(id==2&&v==13)return true;
+return false;
+}
+
+boolean blacklist(byte id, byte v)
+{
+  boolean flag = true;
+#ifdef HERO_4_BLACK
+  flag &= blacklist_4_black(id, v);
+#endif
+#ifdef HERO_4_SILVER
+  flag &= blacklist_4_silver(id, v);
+#endif
+  return flag;
 }
