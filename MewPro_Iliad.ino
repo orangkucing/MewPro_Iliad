@@ -4,12 +4,18 @@ void setup()
 {
   SERIAL.begin(57600);    // baud rate ignored for USB virtual serial
   ROM_Read();
+
   // setup LCD
   lcd.begin(LCD_SIZE_X, LCD_SIZE_Y);
   updateLCD();
 
   // setup IR remote
   irrecv.enableIRIn();
+
+  // momentary switches
+  pinMode(SETUP_SWITCH, INPUT_PULLUP);
+  pinMode(SHUTTER_SWITCH, INPUT_PULLUP);
+  pinMode(MODE_SWITCH, INPUT_PULLUP);
 
   // RTC
   rtc.begin();
@@ -26,11 +32,6 @@ void setup()
   pinMode(SECONDARY_RESET, OUTPUT);
   delay(100);
   digitalWrite(SECONDARY_RESET, HIGH);
-
-  // momentary switches
-  pinMode(SETUP_SWITCH, INPUT_PULLUP);
-  pinMode(SHUTTER_SWITCH, INPUT_PULLUP);
-  pinMode(MODE_SWITCH, INPUT_PULLUP);
 }
 
 void loop()

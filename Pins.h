@@ -13,7 +13,7 @@ const int SECONDARY_RESET   =  9; //      PH6 ( OC2B )
 const int MODE_SWITCH       = 10; //      PB4 ( OC2A/PCINT4 )
 const int SETUP_SWITCH      = 11; //      PB5 ( OC1A/PCINT5 )
 const int SHUTTER_SWITCH    = 12; //      PB6 ( OC1B/PCINT6 )
-//                            13; //      PB7 ( OC0A/OC1C/PCINT7 )
+//                            13; //      PB7 ( OC0A/OC1C/PCINT7 )  // on-board LED
 //                            14; //      PJ1 ( TXD3/PCINT10 )
 //                            15; //      PJ0 ( RXD3/PCINT9 )
 //    broadcast to MewPro     16; //      PH1 ( TXD2 )
@@ -91,3 +91,8 @@ const int LCD_DATA7         = 59; //  A5; PF5 ( ADC5/TMS )
 //                            N/C; // PE6 ( T3/INT6 )
 //                            N/C; // PE2 ( XCK0/AIN0 )
 
+// Serial commands are broadcasted through the following port
+#define BROADCAST Serial2
+#define BROADCAST_UART_RECEIVER_DISABLE do { \
+  UCSR2B &= (~_BV(RXEN2)); \
+} while (0)

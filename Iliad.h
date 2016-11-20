@@ -8,7 +8,7 @@
 #undef  HERO_4_SILVER
 #include "MenuText.h"
 
-#define __VERSION_STRING__ "v1.1.3"
+#define __VERSION_STRING__ "v1.1.4"
 
 #include <LiquidCrystal.h>
 // initialize the library with the numbers of the interface pins
@@ -24,20 +24,14 @@ LiquidCrystal lcd(LCD_RS, LCD_ENABLE, LCD_DATA4, LCD_DATA5, LCD_DATA6, LCD_DATA7
 #include <IRremote.h>
 IRrecv irrecv(IR_RECEIVE);
 
-// Serial commands are broadcasted through the following port
-#define BROADCAST Serial2
-#define BROADCAST_UART_RECEIVER_DISABLE do { \
-  UCSR2B &= (~_BV(RXEN2)); \
-} while (0)
-
-// Input from PC
-#define SERIAL Serial
-
 #include <Wire.h>
 // using RTClib at
 //     https://learn.adafruit.com/adafruit-ds3231-precision-rtc-breakout/wiring-and-test
 #include "RTClib.h"
 RTC_DS3231 rtc;
+
+// Input from PC or master camera
+#define SERIAL Serial
 
 #define MEWPRO_BUFFER_LENGTH 256
 
@@ -50,7 +44,6 @@ int fifo_writeindex = 0;
 byte buf[MEWPRO_BUFFER_LENGTH];
 int bufp = 6;
 unsigned char session = 0xFF;
-
 
 int protocol = 1;
 int state = 0;
@@ -65,7 +58,6 @@ union {
     unsigned long POWER;
   } p;
 } IRkey;
-decode_results IR_results;
 
 // menu
 #define MENU_START   0
@@ -100,6 +92,7 @@ void (*startup[])(void) = {
   startup2, startup_delay, 
   startup3, startup_delay,
   startup4, startup_delay,
-  startup5, NULL
+  startup5,
+  NULL
 };
 

@@ -68,6 +68,7 @@ boolean learning = false; // disable navigation while learning IR code
 
 void checkIRremoteCommands()
 {
+  decode_results IR_results;
   if (irrecv.decode(&IR_results)) {
     if (learning) { // learning IR code
       Iliad_Setting_Learn(IR_results.value);

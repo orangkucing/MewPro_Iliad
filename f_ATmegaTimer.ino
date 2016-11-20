@@ -7,7 +7,7 @@
  * if the board runs 5V then a logic level converter to 3.3V such as 74HC4050 is needed for interfacing to the camera.
  * 
  * Connection:
- * Arduino Mega
+ * Arduino Mega 2560
  * 
  * D7  (OC4B/PH4) ------------------------- HSYNC
  * 
@@ -29,6 +29,10 @@ ISR(TIMER5_COMPC_vect) {
 
 void StartSyncSignal(int vidmode)
 {
+  unsigned int hsync, vsync, stretch;
+  hsync = (unsigned int)pgm_read_word(&syncTime[vidmode][SYNC_TIME_HSYNC]);
+  vsync = (unsigned int)pgm_read_word(&syncTime[vidmode][SYNC_TIME_VSYNC]);
+  stretch = (unsigned int)pgm_read_word(&syncTime[vidmode][SYNC_TIME_STRETCH]);
   noInterrupts();
   // Note: ATmega2560's fast PWM is buggy.
   //   1. fast PWM mode 15 doesn't work unless TOP < 256.
@@ -41,21 +45,21 @@ void StartSyncSignal(int vidmode)
   TCCR5B = _BV(WGM53) | _BV(WGM52); // set no clock source
   TCCR5A = _BV(COM5B1) | _BV(WGM51);
   // the following registers can be set properly only after WGMn is set
-  OCR5B = syncTime[vidmode][SYNC_TIME_VSYNC] - 2; // MATCH
-  OCR5C = syncTime[vidmode][SYNC_TIME_VSYNC] - 3; // ADVANCE MATCH
-  TCNT5 = syncTime[vidmode][SYNC_TIME_VSYNC] - 3; // START
-  ICR5 = syncTime[vidmode][SYNC_TIME_VSYNC] - 1; // TOP
+  OCR5B = vsync - 2; // MATCH
+  OCR5C = vsync - 3; // ADVANCE MATCH
+  TCNT5 = vsync - 3; // START
+  ICR5 = vsync - 1; // TOP
   TCCR5B |= _BV(CS52) | _BV(CS51); // CS5[2:0] = 6 (external clock source on T5. clock on falling edge)
 
   // * using an external clock source ATmega2560 has a bug that causes the first match ignored
   // WORKAROUND: toggle T5 to go beyond the first
-  for (int i = 0; i < syncTime[vidmode][SYNC_TIME_VSYNC] + 1; i++) {
+  for (int i = 0; i < vsync + 1; i++) {
     TCCR4C |= _BV(FOC4C); TCCR4C |= _BV(FOC4C);
   }
 
-  if (syncTime[vidmode][SYNC_TIME_STRETCH] != 0) {
+  if (stretch != 0) {
     // number of ticks the 2nd last HSYNC before VSYNC longer than others
-    clock_stretch = syncTime[vidmode][SYNC_TIME_STRETCH] - 13; // updating TCNT4 requires 13 clock cycles (81.25ns)
+    clock_stretch = stretch - 13; // updating TCNT4 requires 13 clock cycles (81.25ns)
     TIMSK5 = _BV(OCIE5C); // output compare C match interrupt enable
   }
 
@@ -67,10 +71,10 @@ void StartSyncSignal(int vidmode)
   TCCR4B = _BV(WGM43) | _BV(WGM42); // set no clock source
   TCCR4A = _BV(COM4B1) | _BV(COM4C1) | _BV(WGM41);
   // the following registers can be set properly only after WGMn is set
-  OCR4B = syncTime[vidmode][SYNC_TIME_HSYNC] - 3; // MATCH
-  OCR4C = syncTime[vidmode][SYNC_TIME_HSYNC] - 5; // ADVANCE MATCH
-  TCNT4 = syncTime[vidmode][SYNC_TIME_HSYNC] - 7; // START
-  ICR4 = syncTime[vidmode][SYNC_TIME_HSYNC] - 1; // TOP
+  OCR4B = hsync - 3; // MATCH
+  OCR4C = hsync - 5; // ADVANCE MATCH
+  TCNT4 = hsync - 7; // START
+  ICR4 = hsync - 1; // TOP
   interrupts();
   TCCR4B |= _BV(CS40); // CS4[2:0] = 1 (no prescaling)
 }

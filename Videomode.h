@@ -5,7 +5,7 @@
 
 #define _NA_ {0,0,0}
 
-const unsigned int syncTime[][3] = {
+const unsigned int syncTime[][3] PROGMEM = {
 // HSYNC duration unit is the number of clock cycles in 16MHz AVR, i.e. 1 clock = 62.5 ns
 // VSYNC duration unit is the number of HSYNC pulses
 // Note: the 2nd last HSYNC duration followed by VSYNC will be longer than others by STRETCH (clock)
