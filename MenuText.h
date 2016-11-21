@@ -1461,12 +1461,15 @@ return false;
 
 boolean blacklist(byte id, byte v)
 {
-  boolean flag = true;
+  boolean flag = false;
+#if defined(HERO_4_BLACK) && defined(HERO_4_SILVER)
+  if(id==2&&v==1)return true; // no common fps in 4K
+#endif
 #ifdef HERO_4_BLACK
-  flag &= blacklist_4_black(id, v);
+  flag |= blacklist_4_black(id, v);
 #endif
 #ifdef HERO_4_SILVER
-  flag &= blacklist_4_silver(id, v);
+  flag |= blacklist_4_silver(id, v);
 #endif
   return flag;
 }
