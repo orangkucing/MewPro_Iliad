@@ -8,7 +8,7 @@
 #undef  HERO_4_SILVER
 #include "MenuText.h"
 
-#define __VERSION_STRING__ "v1.1.5"
+#define __VERSION_STRING__ "v1.1.6"
 
 #include <LiquidCrystal.h>
 // initialize the library with the numbers of the interface pins

@@ -55,7 +55,6 @@ void Iliad_Setting_Begin() {
 
 void Iliad_Setting_End() {
   rtc.adjust(DateTime(tm.year, tm.month, tm.day, tm.hour, tm.minute, 0));
-  disp_state = MENU_START;
   digitalWrite(SECONDARY_RESET, HIGH);
 }
 

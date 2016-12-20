@@ -156,6 +156,7 @@ void setNextValue()
     }
     if (!blacklist(setup_id, c)) {
       setting.b[setup_id] = c;
+      Broadcast_ChangeSetting(setup_id);
       if (&setting.b[setup_id] == &setting.p.setup.video_format) {
         // a video mode can have different fps for NTSC and PAL 
         setting.p.video.fps = __fps[setting.p.video.fps];
@@ -166,7 +167,6 @@ void setNextValue()
       if (&setting.b[setup_id] < &setting.p.reserved0 /* || &setting.b[setup_id] >= &setting.p.v4 */) {
         storeSetupValue();
       }
-      Broadcast_ChangeSetting(setup_id);
       return;
     }
   } while (1);
