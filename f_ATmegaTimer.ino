@@ -54,14 +54,15 @@ void StartSyncSignal(int vidmode)
   noInterrupts();
   // Note: ATmega2560's fast PWM is buggy.
   //   1. fast PWM mode 15 doesn't work unless TOP < 256.
-  //   2. the first match is ignored under certain conditions (see *, **, and ***).
+  //   2. the first compare match interrupt call is bogus (see *).
+  //   3. the first match is ignored under certain conditions (see ** and ***).
 
   // Timer 5 (VSYNC)
   // COM5B[1:0] = 2 : clear OC5B on compare match, set OC5B at BOTTOM
   // COM5C[1:0] = 0 : OC5C pin disconnected
   // WGM5[3:0] = 14 : fast PWM mode 14
   TCCR5B = _BV(WGM53) | _BV(WGM52); // set no clock source
-  TCCR5A = _BV(COM5B1) | _BV(WGM51);
+  TCCR5A = _BV(WGM51); // disconnect OC5B pin (PORTL & _BV(4) is HIGH)
   // the following registers can be set properly only after WGMn is set
   OCR5B = vsync - 2; // MATCH
   OCR5C = vsync - 3; // ADVANCE MATCH
@@ -69,13 +70,14 @@ void StartSyncSignal(int vidmode)
   ICR5 = vsync - 1; // TOP
   TCCR5B |= _BV(CS52) | _BV(CS51); // CS5[2:0] = 6 (external clock source on T5. clock on falling edge)
 
-  // * using an external clock source ATmega2560 has a bug that causes the first match ignored
+  // ** using an external clock source ATmega2560 has a bug that causes the first match ignored
   // WORKAROUND: toggle T5 to go beyond the first
   for (int i = 0; i < vsync; i++) {
     TCCR4C |= _BV(FOC4C); TCCR4C |= _BV(FOC4C);
   }
+  TCCR5A |= _BV(COM5B1); // connect OC5B pin (the internal OC5B register is HIGH)
 
-  // ** the first compare match interrupt call is bogus.
+  // * the first compare match interrupt call is bogus.
   firstcall = true;
   
   if (stretch != 0) {
@@ -112,7 +114,7 @@ void StopSyncSignal()
   TIMSK5 = 0; // disable timer 5 interrupts
   TCCR5B = 0;
   TCCR5A = _BV(COM5B0); // toggle on compare match
-  DDRL |= _BV(4); // set OC5B to output
+  PORTL |= _BV(4); DDRL |= _BV(4); // set OC5B to output
   noInterrupts();
   if (!(PINL & _BV(4))) { // toggle if LOW
     TCCR5C |= _BV(FOC5B);
