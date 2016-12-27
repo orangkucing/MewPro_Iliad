@@ -19,11 +19,29 @@
  * 
  */
 volatile uint16_t clock_stretch;
+volatile boolean firstcall;
 
 ISR(TIMER5_COMPC_vect) {
+  if (firstcall) {
+    firstcall = false;
+    return;
+  }
   // compare match interrupt service routine (Timer 5 C)
   noInterrupts(); // temporary disable other high priority interrupts
-  TCNT4 -= clock_stretch; // this statement takes AVR microcontroller 13 clock cycles to update TCNT4 io location
+  asm volatile(
+    // This part of assembly code is equivalent to
+    // TCNT4 -= clock_stretch; // this statement takes AVR microcontroller 10 clock cycles to update TCNT4 I/O location
+    //
+    "lds     r24, %1"   "\n\t"     // 2 clocks
+    "lds     r25, %2"   "\n\t"     // 2 clocks
+    "sub     r24, %A0"  "\n\t"     // 1 clock
+    "sbc     r25, %B0"  "\n\t"     // 1 clock
+    "sts     %2, r25"   "\n\t"     // 2 clocks
+    "sts     %1, r24"   "\n\t"     // 2 clocks
+    :
+    : "r" (clock_stretch), "M" (_SFR_MEM_ADDR(TCNT4L)), "M" (_SFR_MEM_ADDR(TCNT4H))
+    : "r24", "r25"
+  );
   interrupts(); // enable other interrupts again
 }
 
@@ -36,7 +54,7 @@ void StartSyncSignal(int vidmode)
   noInterrupts();
   // Note: ATmega2560's fast PWM is buggy.
   //   1. fast PWM mode 15 doesn't work unless TOP < 256.
-  //   2. the first match is ignored under certain conditions (see * and **).
+  //   2. the first match is ignored under certain conditions (see *, **, and ***).
 
   // Timer 5 (VSYNC)
   // COM5B[1:0] = 2 : clear OC5B on compare match, set OC5B at BOTTOM
@@ -47,24 +65,27 @@ void StartSyncSignal(int vidmode)
   // the following registers can be set properly only after WGMn is set
   OCR5B = vsync - 2; // MATCH
   OCR5C = vsync - 3; // ADVANCE MATCH
-  TCNT5 = vsync - 3; // START
+  TCNT5 = vsync - 2; // START
   ICR5 = vsync - 1; // TOP
   TCCR5B |= _BV(CS52) | _BV(CS51); // CS5[2:0] = 6 (external clock source on T5. clock on falling edge)
 
   // * using an external clock source ATmega2560 has a bug that causes the first match ignored
   // WORKAROUND: toggle T5 to go beyond the first
-  for (int i = 0; i < vsync + 1; i++) {
+  for (int i = 0; i < vsync; i++) {
     TCCR4C |= _BV(FOC4C); TCCR4C |= _BV(FOC4C);
   }
 
+  // ** the first compare match interrupt call is bogus.
+  firstcall = true;
+  
   if (stretch != 0) {
-    // number of ticks the 2nd last HSYNC before VSYNC longer than others
-    clock_stretch = stretch - 13; // updating TCNT4 requires 13 clock cycles (81.25ns)
+    // number of ticks the last HSYNC before VSYNC longer than others
+    clock_stretch = stretch - 10; // updating TCNT4 requires 10 clock cycles (625.0ns)
     TIMSK5 = _BV(OCIE5C); // output compare C match interrupt enable
   }
 
   // Timer 4 (HSYNC)
-  // ** keep COM4B[1:0] == COM4C[1:0] otherwise either of the first matches will be ignored
+  // *** keep COM4B[1:0] == COM4C[1:0] otherwise either of the first matches will be ignored
   // COM4B[1:0] = 2 : clear OC4B on compare match, set OC4B at BOTTOM
   // COM4C[1:0] = 2 : clear OC4C on compare match, set OC4C at BOTTOM
   // WGM4[3:0] = 14 : fast PWM mode 14
