@@ -203,7 +203,6 @@ void navigateMenu(char key)
         case KEY_POWER:
         case KEY_MENU:
           Iliad_Setting_End();
-          disp_state = MENU_START;
           break;
         case KEY_OK:
           Iliad_Setting_Shutter();
