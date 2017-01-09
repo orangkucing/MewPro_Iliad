@@ -41,7 +41,7 @@ void checkSwitchCommands()
 
   // read switch with debounce
   char reading = (digitalRead(SETUP_SWITCH) ? 0 : KEY_MENU) | (digitalRead(SHUTTER_SWITCH) ? 0 : KEY_OK) | (digitalRead(MODE_SWITCH) ? 0 : KEY_DOWN);
-  if (recording_state) {
+  if (recording_state != STATE_IDLE) {
     reading &= KEY_OK;
   }
   if (reading != lastButtonState) {
@@ -74,7 +74,7 @@ void checkIRremoteCommands()
       Iliad_Setting_Learn(IR_results.value);
       updateLCD();
     } else {
-      if (IR_results.value == IRkey.p.OK || !recording_state) {
+      if (IR_results.value == IRkey.p.OK || recording_state == STATE_IDLE) {
         for (int i = 0; i < sizeof(IRkey) / sizeof(unsigned long); i++) {
           if (IR_results.value == IRkey.l[i]) {
             navigateMenu(_BV(i));
@@ -124,25 +124,25 @@ void navigateMenu(char key)
               break;
             case MODE_VIDEO:
               switch (recording_state) {
-                case 0:
+                case STATE_IDLE:
                   Broadcast_StartRecording();
                   break;
-                case 3:
+                case STATE_RECORDING:
                   Broadcast_StopRecording();
                   break;
               }
               break;
             case MODE_PHOTO:
-              if (setting.p.current_submode[MODE_PHOTO] == 1 /* continuous */ && recording_state == 3) {
+              if (setting.p.current_submode[MODE_PHOTO] == 1 /* continuous */ && recording_state == STATE_RECORDING) {
                 Broadcast_StopRecording();
-              } else if (recording_state == 0) {
+              } else if (recording_state == STATE_IDLE) {
                 Broadcast_StartRecording();
               }
               break;
             case MODE_MULTI_SHOT:
-              if (setting.p.current_submode[MODE_MULTI_SHOT] != 0 /* burst */ && recording_state == 3 ) {
+              if (setting.p.current_submode[MODE_MULTI_SHOT] != 0 /* burst */ && recording_state == STATE_RECORDING ) {
                 Broadcast_StopRecording();
-              } else if (recording_state == 0) {
+              } else if (recording_state == STATE_IDLE) {
                 Broadcast_StartRecording();
               }
               break;

@@ -8,7 +8,7 @@
 #undef  HERO_4_SILVER
 #include "MenuText.h"
 
-#define __VERSION_STRING__ "v1.1.8"
+#define __VERSION_STRING__ "v1.1.9"
 
 #include <LiquidCrystal.h>
 // initialize the library with the numbers of the interface pins
@@ -65,9 +65,17 @@ union {
 #define MENU_SUB     2
 #define MENU_EXIT    3
 #define MENU_SETTING 4
+// recording_state
+#define STATE_IDLE      0
+#define STATE_START     1
+#define STATE_SYNC_ON   2
+#define STATE_RECORDING 3
+#define STATE_STOP      4
+#define STATE_END       5
+#define STATE_SYNC_OFF  6
 char setup_id = 0;
 char disp_state = MENU_START;
-char recording_state = 0;
+char recording_state = STATE_IDLE;
 unsigned long start_time;
 unsigned int record_time;
 

@@ -144,10 +144,10 @@ int extendedYYcommand()
         case 26: // reset protune. argc = 0
           break;
         case 27: // shutter button depressed. start
-          recording_state = 1;
+          recording_state = STATE_START;
           break;
         case 28: // sync stop
-          recording_state = 4;
+          recording_state = STATE_STOP;
           break;
         case 38: // all video settings
           for (int i = 0; i < 4; i++) {
@@ -217,10 +217,10 @@ int extendedYYcommand()
         case 22: // reset protune. argc = 0
           break;
         case 23: // shutter button depressed. start
-          recording_state = 1;
+          recording_state = STATE_START;
           break;
         case 24: // stop (continuous sub mode only)
-          recording_state = 4;
+          recording_state = STATE_STOP;
           break;
         case 27: // all photo settings
           for (int i = 0; i < 3; i++) {
@@ -288,10 +288,10 @@ int extendedYYcommand()
         case 26: // reset protune. arg = 0
           break;
         case 27: // shutter button depressed. start
-          recording_state = 1;
+          recording_state = STATE_START;
           break;
         case 28: // stop
-          recording_state = 4;
+          recording_state = STATE_STOP;
           break;
         case 32: // bulk transfer multi-shot settings
           for (int i = 0; i < 3; i++) {
