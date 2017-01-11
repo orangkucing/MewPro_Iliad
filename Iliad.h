@@ -8,7 +8,7 @@
 #undef  HERO_4_SILVER
 #include "MenuText.h"
 
-#define __VERSION_STRING__ "v1.1.9"
+#define __VERSION_STRING__ "v1.1.10"
 
 #include <LiquidCrystal.h>
 // initialize the library with the numbers of the interface pins
@@ -40,6 +40,7 @@ int fifo_readindex = 0;
 int fifo_writeindex = 0;
 #define FIFO(i) (command_buf[(fifo_writeindex + (i)) % MEWPRO_BUFFER_LENGTH])
 #define FIFO_INC(n) do { fifo_writeindex = (fifo_writeindex + (n)) % MEWPRO_BUFFER_LENGTH; } while (0)
+#define WRITE_CHAR(c) do { BROADCAST.write(c); SERIAL.print(c); } while (0)
 
 byte buf[MEWPRO_BUFFER_LENGTH];
 int bufp = 6;
@@ -73,9 +74,11 @@ union {
 #define STATE_STOP      4
 #define STATE_END       5
 #define STATE_SYNC_OFF  6
+#define STATE_RESTART   7
+#define STATE_PAUSE     8
 char setup_id = 0;
 char disp_state = MENU_START;
-char recording_state = STATE_IDLE;
+volatile char recording_state = STATE_IDLE;
 unsigned long start_time;
 unsigned int record_time;
 

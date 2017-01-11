@@ -20,8 +20,7 @@ void checkTerminalCommands()
       c = command_buf[fifo_readindex];
       ++fifo_readindex %= MEWPRO_BUFFER_LENGTH;
     }
-    BROADCAST.write(c);
-    SERIAL.print(c);
+    WRITE_CHAR(c);
     
     switch (c) {
       case ' ':

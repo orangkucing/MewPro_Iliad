@@ -147,11 +147,21 @@ void updateLCD()
                 break;
             }
             lcd.setCursor(0, 1);
-            switch (setting.p.photo.resolution) {
-              case 0: lcd.print(F("12MP W")); break;
-              case 1: lcd.print(F("7MP W")); break;
-              case 2: lcd.print(F("7MP M")); break;
-              case 3: lcd.print(F("5MP M")); break;
+            switch (recording_state) {
+              case STATE_START:
+              case STATE_SYNC_ON:
+              case STATE_RECORDING:
+              case STATE_SYNC_OFF:
+                lcd.print(F("Shooting...     "));
+                break;
+              default:
+                switch (setting.p.photo.resolution) {
+                  case 0: lcd.print(F("12MP W")); break;
+                  case 1: lcd.print(F("7MP W")); break;
+                  case 2: lcd.print(F("7MP M")); break;
+                  case 3: lcd.print(F("5MP M")); break;
+                }
+                break;
             }
             break;
           case MODE_MULTI_SHOT:
@@ -177,10 +187,10 @@ void updateLCD()
                   case 0: lcd.print(F("0.5s")); break;
                   case 1: lcd.print(F("1s")); break;
                   case 2: lcd.print(F("2s")); break;
-                  case 5: lcd.print(F("5s")); break;
-                  case 10:lcd.print(F("10s")); break;
-                  case 30:lcd.print(F("30s")); break;
-                  case 60:lcd.print(F("60s")); break;
+                  case 3: lcd.print(F("5s")); break;
+                  case 4: lcd.print(F("10s")); break;
+                  case 5: lcd.print(F("30s")); break;
+                  case 6: lcd.print(F("60s")); break;
                 }
                 break;
               case 2: lcd.print(F("N.L."));
@@ -212,11 +222,23 @@ void updateLCD()
                 break;
             }
             lcd.setCursor(0, 1);
-            switch (setting.p.multi_shot.resolution) {
-              case 0: lcd.print(F("12MP W")); break;
-              case 1: lcd.print(F("7MP W")); break;
-              case 2: lcd.print(F("7MP M")); break;
-              case 3: lcd.print(F("5MP M")); break;
+            switch (recording_state) {
+              case STATE_START:
+              case STATE_SYNC_ON:
+              case STATE_RECORDING:
+              case STATE_SYNC_OFF:
+              case STATE_RESTART:
+              case STATE_PAUSE:
+                lcd.print(F("Shooting...     "));
+                break;
+              default:
+                switch (setting.p.multi_shot.resolution) {
+                  case 0: lcd.print(F("12MP W")); break;
+                  case 1: lcd.print(F("7MP W")); break;
+                  case 2: lcd.print(F("7MP M")); break;
+                  case 3: lcd.print(F("5MP M")); break;
+                }
+                break;
             }
             break;
           case MODE_SETUP:

@@ -140,10 +140,17 @@ void navigateMenu(char key)
               }
               break;
             case MODE_MULTI_SHOT:
-              if (setting.p.current_submode[MODE_MULTI_SHOT] != 0 /* burst */ && recording_state == STATE_RECORDING ) {
-                Broadcast_StopRecording();
-              } else if (recording_state == STATE_IDLE) {
-                Broadcast_StartRecording();
+              switch (recording_state) {
+                case STATE_IDLE:
+                  Broadcast_StartRecording();
+                  break;
+                case STATE_SYNC_ON:
+                case STATE_RECORDING:
+                case STATE_SYNC_OFF:
+                case STATE_RESTART:
+                case STATE_PAUSE:
+                  Broadcast_StopRecording();
+                  break;
               }
               break;
           }
