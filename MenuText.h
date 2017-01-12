@@ -716,7 +716,7 @@ Setting setting =
   0,     //  5 video/timelapse_rate
   1,     //  6 video/looping
   1,     //  7 video/piv
-  1,     //  8 video/low_light
+  0,     //  8 video/low_light
   0,     //  9 video/spot_meter
   0,     // 10 video/protune
   0,     // 11 video/protune_white_balance
@@ -810,7 +810,7 @@ Setting storage[MAX_SUBMODE_SIZE] = {
   0,     //  5 video/timelapse_rate
   1,     //  6 video/looping
   1,     //  7 video/piv
-  1,     //  8 video/low_light
+  0,     //  8 video/low_light
   0,     //  9 video/spot_meter
   0,     // 10 video/protune
   0,     // 11 video/protune_white_balance
@@ -900,7 +900,7 @@ Setting storage[MAX_SUBMODE_SIZE] = {
   0,     //  5 video/timelapse_rate
   1,     //  6 video/looping
   1,     //  7 video/piv
-  1,     //  8 video/low_light
+  0,     //  8 video/low_light
   0,     //  9 video/spot_meter
   0,     // 10 video/protune
   0,     // 11 video/protune_white_balance
@@ -990,7 +990,7 @@ Setting storage[MAX_SUBMODE_SIZE] = {
   0,     //  5 video/timelapse_rate
   1,     //  6 video/looping
   1,     //  7 video/piv
-  1,     //  8 video/low_light
+  0,     //  8 video/low_light
   0,     //  9 video/spot_meter
   0,     // 10 video/protune
   0,     // 11 video/protune_white_balance
@@ -1080,7 +1080,7 @@ Setting storage[MAX_SUBMODE_SIZE] = {
   0,     //  5 video/timelapse_rate
   1,     //  6 video/looping
   1,     //  7 video/piv
-  1,     //  8 video/low_light
+  0,     //  8 video/low_light
   0,     //  9 video/spot_meter
   0,     // 10 video/protune
   0,     // 11 video/protune_white_balance
@@ -1164,6 +1164,7 @@ Setting storage[MAX_SUBMODE_SIZE] = {
 
 boolean blacklist_4_black(byte id, byte v)
 {
+if(id==8)switch(v){case 1:return true;}
 if(id==3&&setting.b[2]==13&&setting.b[57]==0)switch(v){case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 8:case 9:case 10:case 11:case 12:return true;}
 if(id==3&&setting.b[2]==11&&setting.b[57]==0)switch(v){case 0:case 2:case 3:case 4:case 6:case 7:case 8:case 9:case 10:case 11:case 12:return true;}
 if(id==3&&setting.b[2]==12&&setting.b[57]==0)switch(v){case 2:case 3:case 4:case 6:case 7:case 9:case 10:case 11:case 12:return true;}
@@ -1319,6 +1320,7 @@ return false;
 
 boolean blacklist_4_silver(byte id, byte v)
 {
+if(id==8)switch(v){case 1:return true;}
 if(id==3&&setting.b[2]==1&&setting.b[57]==0)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 8:case 9:case 10:case 12:return true;}
 if(id==3&&setting.b[2]==4&&setting.b[57]==0)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 9:case 11:case 12:return true;}
 if(id==3&&setting.b[2]==7&&setting.b[57]==0)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:case 9:case 11:case 12:return true;}

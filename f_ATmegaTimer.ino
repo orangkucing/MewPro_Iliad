@@ -73,7 +73,7 @@ void StartSyncSignal(int vidmode)
   
   if (stretch != 0) {
     // number of ticks the last HSYNC before VSYNC longer than others
-    clock_stretch = stretch - 10; // updating TCNT4 requires 10 clock cycles (625.0ns)
+    clock_stretch = stretch - 9; // updating TCNT4 requires 9 clock cycles (562.5ns)
     TIFR5 = _BV(OCF5C);   // clear output compare C match flag
     TIMSK5 = _BV(OCIE5C); // output compare C match interrupt enable
   }
