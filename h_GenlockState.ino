@@ -125,20 +125,20 @@ void checkGenlockState_Timelapse()
     case STATE_IDLE:
       break;
     case STATE_START:
-      delay(100);
+      delay(1000);
       StartTimerInterrupt((int)pgm_read_byte(timelapse_rate_table[setting.p.multi_shot.timelapse_rate]));
       command_sent = millis();
       recording_state = STATE_SYNC_ON;
       break;
     case STATE_SYNC_ON: 
-      if (millis() - command_sent > 20) {
+      if (millis() - command_sent > 200) {
         SERIAL.print(F("genlock signal start: resolution = 0x0"));
         SERIAL.println(setting.p.photo.resolution, HEX);
         StartSyncSignal(14 * FPS_TABLE_SIZE); // photo mode is stored at the end of the video mode table
         recording_state = STATE_RECORDING;
       }
     case STATE_RECORDING:
-      if (millis() - command_sent > 100) {
+      if (millis() - command_sent > 280) {
         recording_state = STATE_SYNC_OFF;
       }
       break;
@@ -175,27 +175,26 @@ void checkGenlockState_Timelapse()
 
 void checkGenlockState_Nightlapse()
 {
+  unsigned long exposure = (unsigned long)pgm_read_word(exposure_time_table[setting.p.multi_shot.exposure_time]) * 100;
+  
   switch (recording_state) {
     case STATE_IDLE:
       break;
     case STATE_START:
-      delay(100);
-      if (setting.p.multi_shot.timelapse_rate != 9) {
-        // not continuous
-        StartTimerInterrupt((int)pgm_read_word(nightlapse_rate_table[setting.p.multi_shot.timelapse_rate]));
-      }
+      delay(1000);
+      StartTimerInterrupt((int)pgm_read_word(nightlapse_rate_table[setting.p.multi_shot.timelapse_rate]));
       command_sent = millis();
       recording_state = STATE_SYNC_ON;
       break;
     case STATE_SYNC_ON: 
-      if (millis() - command_sent > 20) {
+      if (millis() - command_sent > 200) {
         SERIAL.print(F("genlock signal start: resolution = 0x0"));
         SERIAL.println(setting.p.photo.resolution, HEX);
         StartSyncSignal(14 * FPS_TABLE_SIZE); // photo mode is stored at the end of the video mode table
         recording_state = STATE_RECORDING;
       }
     case STATE_RECORDING:
-      if (millis() - command_sent > (unsigned long)(pgm_read_word(exposure_time_table[setting.p.multi_shot.exposure_time]) * 100UL) + 20) {
+      if (millis() - command_sent > exposure + 1500) {
         recording_state = STATE_SYNC_OFF;
       }
       break;
@@ -205,9 +204,6 @@ void checkGenlockState_Nightlapse()
       recording_state = STATE_PAUSE;
       break;
     case STATE_PAUSE:
-      if (setting.p.multi_shot.timelapse_rate == 9) {
-        recording_state = STATE_RESTART;
-      }
       break;
     case STATE_RESTART:
       command_sent = millis();

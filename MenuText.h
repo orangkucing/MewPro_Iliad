@@ -305,7 +305,7 @@ option_txt_2_1_0, option_txt_2_1_1, option_txt_2_1_2, NULL
 };
 
 const char title_txt_2_2[] PROGMEM = "\x1f""Shutter";
-const char option_txt_2_2_0[] PROGMEM = "\x00""Auto";
+//const char option_txt_2_2_0[] PROGMEM = "\x00""Auto"; // auto exposure is not supported
 const char option_txt_2_2_1[] PROGMEM = "\x01""2 Seconds";
 const char option_txt_2_2_2[] PROGMEM = "\x02""5 Seconds";
 const char option_txt_2_2_3[] PROGMEM = "\x03""10 Seconds";
@@ -313,7 +313,7 @@ const char option_txt_2_2_4[] PROGMEM = "\x04""15 Seconds";
 const char option_txt_2_2_5[] PROGMEM = "\x05""20 Seconds";
 const char option_txt_2_2_6[] PROGMEM = "\x06""30 Seconds";
 const char* const option_txt_2_2[] PROGMEM = {
-option_txt_2_2_0, option_txt_2_2_1, option_txt_2_2_2, option_txt_2_2_3, option_txt_2_2_4, option_txt_2_2_5, option_txt_2_2_6, NULL
+/* option_txt_2_2_0, */ option_txt_2_2_1, option_txt_2_2_2, option_txt_2_2_3, option_txt_2_2_4, option_txt_2_2_5, option_txt_2_2_6, NULL
 };
 
 const char title_txt_2_3[] PROGMEM = "\x1d""Burst Rate";
@@ -343,7 +343,7 @@ option_txt_2_4_0, option_txt_2_4_1, option_txt_2_4_2, option_txt_2_4_3, option_t
 };
 
 const char title_txt_2_5[] PROGMEM = "\x20""Interval";
-const char option_txt_2_5_0[] PROGMEM = "\x09""Continuous";
+//const char option_txt_2_5_0[] PROGMEM = "\x09""Continuous"; // continuous mode is not supported
 const char option_txt_2_5_1[] PROGMEM = "\x0a""4 Seconds";
 const char option_txt_2_5_2[] PROGMEM = "\x0b""5 Seconds";
 const char option_txt_2_5_3[] PROGMEM = "\x00""10 Seconds";
@@ -356,7 +356,7 @@ const char option_txt_2_5_9[] PROGMEM = "\x06""5 Minutes";
 const char option_txt_2_5_10[] PROGMEM = "\x07""30 Minutes";
 const char option_txt_2_5_11[] PROGMEM = "\x08""60 Minutes";
 const char* const option_txt_2_5[] PROGMEM = {
-option_txt_2_5_0, option_txt_2_5_1, option_txt_2_5_2, option_txt_2_5_3, option_txt_2_5_4, option_txt_2_5_5, option_txt_2_5_6, option_txt_2_5_7, option_txt_2_5_8, option_txt_2_5_9, option_txt_2_5_10, option_txt_2_5_11, NULL
+/* option_txt_2_5_0, */ option_txt_2_5_1, option_txt_2_5_2, option_txt_2_5_3, option_txt_2_5_4, option_txt_2_5_5, option_txt_2_5_6, option_txt_2_5_7, option_txt_2_5_8, option_txt_2_5_9, option_txt_2_5_10, option_txt_2_5_11, NULL
 };
 
 const char title_txt_2_6[] PROGMEM = "\x1c""Megapixels";
@@ -739,8 +739,8 @@ Setting setting =
   0,     // 28 multi_shot/resolution
   5,     // 29 multi_shot/burst_rate
   0,     // 30 multi_shot/timelapse_rate
-  0,     // 31 multi_shot/exposure_time
-  9,     // 32 multi_shot/nightlapse_rate
+  1,     // 31 multi_shot/exposure_time
+  0,     // 32 multi_shot/nightlapse_rate
   0,     // 33 multi_shot/spot_meter
   0,     // 34 multi_shot/protune
   0,     // 35 multi_shot/protune_white_balance
@@ -833,8 +833,8 @@ Setting storage[MAX_SUBMODE_SIZE] = {
   0,     // 28 multi_shot/resolution
   5,     // 29 multi_shot/burst_rate
   0,     // 30 multi_shot/timelapse_rate
-  0,     // 31 multi_shot/exposure_time
-  9,     // 32 multi_shot/nightlapse_rate
+  1,     // 31 multi_shot/exposure_time
+  0,     // 32 multi_shot/nightlapse_rate
   0,     // 33 multi_shot/spot_meter
   0,     // 34 multi_shot/protune
   0,     // 35 multi_shot/protune_white_balance
@@ -923,8 +923,8 @@ Setting storage[MAX_SUBMODE_SIZE] = {
   0,     // 28 multi_shot/resolution
   5,     // 29 multi_shot/burst_rate
   0,     // 30 multi_shot/timelapse_rate
-  0,     // 31 multi_shot/exposure_time
-  9,     // 32 multi_shot/nightlapse_rate
+  1,     // 31 multi_shot/exposure_time
+  0,     // 32 multi_shot/nightlapse_rate
   0,     // 33 multi_shot/spot_meter
   0,     // 34 multi_shot/protune
   0,     // 35 multi_shot/protune_white_balance
@@ -1013,8 +1013,8 @@ Setting storage[MAX_SUBMODE_SIZE] = {
   0,     // 28 multi_shot/resolution
   5,     // 29 multi_shot/burst_rate
   0,     // 30 multi_shot/timelapse_rate
-  0,     // 31 multi_shot/exposure_time
-  9,     // 32 multi_shot/nightlapse_rate
+  1,     // 31 multi_shot/exposure_time
+  0,     // 32 multi_shot/nightlapse_rate
   0,     // 33 multi_shot/spot_meter
   0,     // 34 multi_shot/protune
   0,     // 35 multi_shot/protune_white_balance
@@ -1103,8 +1103,8 @@ Setting storage[MAX_SUBMODE_SIZE] = {
   0,     // 28 multi_shot/resolution
   5,     // 29 multi_shot/burst_rate
   0,     // 30 multi_shot/timelapse_rate
-  0,     // 31 multi_shot/exposure_time
-  9,     // 32 multi_shot/nightlapse_rate
+  1,     // 31 multi_shot/exposure_time
+  0,     // 32 multi_shot/nightlapse_rate
   0,     // 33 multi_shot/spot_meter
   0,     // 34 multi_shot/protune
   0,     // 35 multi_shot/protune_white_balance
