@@ -32,6 +32,8 @@ void setup()
   pinMode(SECONDARY_RESET, OUTPUT);
   delay(100);
   digitalWrite(SECONDARY_RESET, HIGH);
+  digitalWrite(TRIG, LOW); // unused. fix LOW to reduce noise
+  pinMode(TRIG, OUTPUT);
 }
 
 void loop()

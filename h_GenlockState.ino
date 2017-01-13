@@ -14,7 +14,7 @@ void checkGenlockState_Video()
       recording_state = STATE_SYNC_ON;
       break;
     case STATE_SYNC_ON:
-      if (millis() - command_sent > 2500) {
+      if (millis() - command_sent > 200) {
         SERIAL.print(F("genlock signal start: (resolution, fps) = (0x0"));
         SERIAL.print(setting.p.video.resolution, HEX);
         SERIAL.print(F(", 0x0"));
