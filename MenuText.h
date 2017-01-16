@@ -1314,7 +1314,7 @@ if(id==27&&setting.b[53]==1)switch(v){case 0:case 1:case 2:return true;}
 if(id==1&&setting.b[53]==2)switch(v){case 0:case 1:case 2:case 3:return true;}
 if(id==16&&setting.b[53]==2)switch(v){case 0:case 1:case 2:return true;}
 // disable WVGA
-if(id==2&&v==13)return true;
+//if(id==2&&v==13)return true;
 return false;
 }
 
@@ -1457,7 +1457,7 @@ if(id==27&&setting.b[53]==1)switch(v){case 0:case 1:case 2:return true;}
 if(id==1&&setting.b[53]==2)switch(v){case 0:case 1:case 2:case 3:return true;}
 if(id==16&&setting.b[53]==2)switch(v){case 0:case 1:case 2:return true;}
 // disable WVGA
-if(id==2&&v==13)return true;
+//if(id==2&&v==13)return true;
 return false;
 }
 

@@ -20,6 +20,8 @@
  */
 volatile uint16_t clock_stretch;
 
+#define SYNC_SIGNAL_DEFAULT HIGH
+
 ISR(TIMER5_COMPC_vect) {
   // compare match interrupt service routine (Timer 5 C)
   noInterrupts(); // temporary disable other high priority interrupts
@@ -56,7 +58,7 @@ void StartSyncSignal(int vidmode)
   // COM5C[1:0] = 0 : OC5C pin disconnected
   // WGM5[3:0] = 14 : fast PWM mode 14
   TCCR5B = _BV(WGM53) | _BV(WGM52); // set no clock source
-  TCCR5A = _BV(WGM51); // disconnect OC5B pin (PORTL & _BV(4) is HIGH)
+  TCCR5A = _BV(WGM51); // disconnect OC5B pin (PORTL & _BV(4) is SYNC_SIGNAL_DEFAULT)
   // the following registers can be set properly only after WGMn is set
   OCR5B = vsync - 2; // MATCH
   OCR5C = vsync - 3; // ADVANCE MATCH
@@ -66,10 +68,13 @@ void StartSyncSignal(int vidmode)
 
   // * using an external clock source ATmega2560 has a bug that causes the first match ignored
   // WORKAROUND: toggle T5 to go beyond the first
+#if SYNC_SIGNAL_DEFAULT==LOW
+  TCCR4C |= _BV(FOC4C); TCCR4C |= _BV(FOC4C);
+#endif
   for (int i = 0; i < vsync; i++) {
     TCCR4C |= _BV(FOC4C); TCCR4C |= _BV(FOC4C);
   }
-  TCCR5A |= _BV(COM5B1); // connect OC5B pin (the internal OC5B register is HIGH)
+  TCCR5A |= _BV(COM5B1); // connect OC5B pin (the internal OC5B register is SYNC_SIGNAL_DEFAULT
   
   if (stretch != 0) {
     // number of ticks the last HSYNC before VSYNC longer than others
@@ -99,18 +104,25 @@ void StopSyncSignal()
   // set OC5B = PL4, OC4B = PH4, and OC4C = PH5 to output and set their initial value to HIGH (D45, D7, and D8 in Arduino Mega, respectively)
   // Also T5 = PL2 is used to input external clock (D47)
 
-  // initialize the signals to HIGH using FOC bits toggle on comapre match, normal mode
+  // initialize the signals to SYNC_SIGNAL_DEFAULT using FOC bits toggle on comapre match, normal mode
   // (cf. ATmega640/V-1280/V-1281/V-2560/V-2561/V [DATASHEET] p.119, 2549Q–AVR–02/2014)
 
   // Timer 5 (VSYNC)
   TIMSK5 = 0; // disable timer 5 interrupts
   TCCR5B = 0;
   TCCR5A = _BV(COM5B0); // toggle on compare match
-  PORTL |= _BV(4); DDRL |= _BV(4); // set OC5B to output
+#if SYNC_SIGNAL_DEFAULT==LOW
+  PORTL &= ~_BV(4);
+#else
+  PORTL |= _BV(4);
+#endif
+  DDRL |= _BV(4); // set OC5B to output
   noInterrupts();
-  if (!(PINL & _BV(4))) { // toggle if LOW
-    TCCR5C |= _BV(FOC5B);
-  }
+#if SYNC_SIGNAL_DEFAULT==LOW
+  TCCR5C |= (PINL & _BV(4) ? _BV(FOC5B) : 0); // toggle if HIGH
+#else
+  TCCR5C |= (PINL & _BV(4) ? 0 : _BV(FOC5B)); // toggle if LOW
+#endif
   interrupts();
 
   // Timer 4 (HSYNC)
@@ -118,9 +130,11 @@ void StopSyncSignal()
   TCCR4A = _BV(COM4B0) | _BV(COM4C0); // toggle on compare match
   DDRH |= _BV(4) | _BV(5); // set OC4B and OC4C to output
   noInterrupts();
-  if (!(PINH & _BV(4)) || !(PINH & _BV(5))) { // toggle if LOW
-    TCCR4C |= (PINH & _BV(4) ? 0 : _BV(FOC4B)) | (PINH & _BV(5) ? 0 : _BV(FOC4C));
-  }
+#if SYNC_SIGNAL_DEFAULT==LOW
+  TCCR4C |= (PINH & _BV(4) ? _BV(FOC4B) : 0) | (PINH & _BV(5) ? _BV(FOC4C) : 0); // toggle if HIGH
+#else
+  TCCR4C |= (PINH & _BV(4) ? 0 : _BV(FOC4B)) | (PINH & _BV(5) ? 0 : _BV(FOC4C)); // toggle if LOW
+#endif
   interrupts();
 }
 
@@ -154,7 +168,7 @@ void StartTimerInterrupt(int r)
   TCCR3B = _BV(WGM33) | _BV(WGM32); // set no clock source
   TCCR3A = 0;
   // the following registers can be set properly only after WGMn is set
-  ICR3 = TIMER3_COUNTS - 1;       // TOP (1s)
+  ICR3 = TIMER3_COUNTS - 1;       // TOP (0.5s)
   TCNT3 = 0;
   TIFR3 = _BV(OCF3C);   // clear output compare C match flag
   TIMSK3 = _BV(OCIE3C); // output compare C match interrupt enable

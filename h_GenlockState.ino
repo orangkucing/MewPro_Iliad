@@ -14,13 +14,24 @@ void checkGenlockState_Video()
       recording_state = STATE_SYNC_ON;
       break;
     case STATE_SYNC_ON:
-      if (millis() - command_sent > 200) {
+      if (millis() - command_sent > 2000) {
         SERIAL.print(F("genlock signal start: (resolution, fps) = (0x0"));
         SERIAL.print(setting.p.video.resolution, HEX);
         SERIAL.print(F(", 0x0"));
         SERIAL.print(setting.p.video.fps, HEX);
         SERIAL.println(F(")"));
-        StartSyncSignal(setting.p.video.resolution * FPS_TABLE_SIZE + setting.p.video.fps);
+        if (setting.p.video.fov != 2) { // WIDE or MEDIUM
+          StartSyncSignal(setting.p.video.resolution * FPS_TABLE_SIZE + setting.p.video.fps);
+        } else { // NARROW
+          switch (setting.p.video.resolution) {
+            case 12: // 720p
+              StartSyncSignal(SYNC_TIME_720_NARROW * FPS_TABLE_SIZE + setting.p.video.fps);
+              break;
+            case 9: // 1080p
+              StartSyncSignal(SYNC_TIME_1080_NARROW * FPS_TABLE_SIZE + setting.p.video.fps);
+              break;            
+          }
+        }
         recording_state = STATE_RECORDING;
         updateLCD();
       }
@@ -55,7 +66,7 @@ void checkGenlockState_Photo()
       if (millis() - command_sent > 1000) {
         SERIAL.print(F("genlock signal start: resolution = 0x0"));
         SERIAL.println(setting.p.photo.resolution, HEX);
-        StartSyncSignal(14 * FPS_TABLE_SIZE); // photo mode is stored at the end of the video mode table
+        StartSyncSignal(SYNC_TIME_PHOTO * FPS_TABLE_SIZE); // photo mode is stored at the end of the video mode table
         recording_state = STATE_RECORDING;
       }
       break;
@@ -101,7 +112,7 @@ void checkGenlockState_Burst()
       if (millis() - command_sent > 1000) {
         SERIAL.print(F("genlock signal start: resolution = 0x0"));
         SERIAL.println(setting.p.photo.resolution, HEX);
-        StartSyncSignal(14 * FPS_TABLE_SIZE); // photo mode is stored at the end of the video mode table
+        StartSyncSignal(SYNC_TIME_PHOTO * FPS_TABLE_SIZE); // photo mode is stored at the end of the video mode table
         recording_state = STATE_RECORDING;
       }
       break;
@@ -134,7 +145,7 @@ void checkGenlockState_Timelapse()
       if (millis() - command_sent > 200) {
         SERIAL.print(F("genlock signal start: resolution = 0x0"));
         SERIAL.println(setting.p.photo.resolution, HEX);
-        StartSyncSignal(14 * FPS_TABLE_SIZE); // photo mode is stored at the end of the video mode table
+        StartSyncSignal(SYNC_TIME_PHOTO * FPS_TABLE_SIZE); // photo mode is stored at the end of the video mode table
         recording_state = STATE_RECORDING;
       }
     case STATE_RECORDING:
@@ -190,7 +201,7 @@ void checkGenlockState_Nightlapse()
       if (millis() - command_sent > 200) {
         SERIAL.print(F("genlock signal start: resolution = 0x0"));
         SERIAL.println(setting.p.photo.resolution, HEX);
-        StartSyncSignal(14 * FPS_TABLE_SIZE); // photo mode is stored at the end of the video mode table
+        StartSyncSignal(SYNC_TIME_PHOTO * FPS_TABLE_SIZE); // photo mode is stored at the end of the video mode table
         recording_state = STATE_RECORDING;
       }
     case STATE_RECORDING:
