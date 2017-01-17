@@ -11,7 +11,7 @@ The following video modes are known to work with Iliad + MewPro and Hero 4 Black
 
 | Resolution | fps | FOV |
 | ---------- | -------- | --- |
-| 4K         | 30, 25, 24 | W   |
+| 4K         | (30), 25, 24 | W   |
 | 4K S       | 24 | W |
 | 2.7K       | 60, 50, 48, 30, 25, 24 | W, M|
 | 2.7K S     | 30, 25 | W |
@@ -25,5 +25,7 @@ The following video modes are known to work with Iliad + MewPro and Hero 4 Black
 | 720p       | 240, 60, 50, 30, 25   | N |
 | 720p       | 120, 60, 50, 30, 25 | W, M |
 | WVGA       | 240    | W |
+
+4K30 is not work well under daylight.
 
 (Currently we don't have Hero 4 Silver in our lab. As soon as we borrow the camera from someone, we'll publish the table for Silver, too.)
