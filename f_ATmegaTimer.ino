@@ -74,7 +74,7 @@ void StartSyncSignal(int vidmode)
   for (int i = 0; i < vsync; i++) {
     TCCR4C |= _BV(FOC4C); TCCR4C |= _BV(FOC4C);
   }
-  TCCR5A |= _BV(COM5B1); // connect OC5B pin (the internal OC5B register is SYNC_SIGNAL_DEFAULT
+  TCCR5A |= _BV(COM5B1); // connect OC5B pin (the internal OC5B register is SYNC_SIGNAL_DEFAULT)
   
   if (stretch != 0) {
     // number of ticks the last HSYNC before VSYNC longer than others
@@ -101,7 +101,7 @@ void StartSyncSignal(int vidmode)
 
 void StopSyncSignal()
 {
-  // set OC5B = PL4, OC4B = PH4, and OC4C = PH5 to output and set their initial value to HIGH (D45, D7, and D8 in Arduino Mega, respectively)
+  // set OC5B = PL4, OC4B = PH4, and OC4C = PH5 to output and set their initial value to SYNC_SIGNAL_DEFAULT (D45, D7, and D8 in Arduino Mega, respectively)
   // Also T5 = PL2 is used to input external clock (D47)
 
   // initialize the signals to SYNC_SIGNAL_DEFAULT using FOC bits toggle on comapre match, normal mode
@@ -138,7 +138,7 @@ void StopSyncSignal()
   interrupts();
 }
 
-// For Time Lapse and Night Lapse
+// For Time Lapse and Night Lapse (Hero 4)
 // generating periodic shutter by using Timer3 Compare Match C interrupt
 
 volatile int lapse;
