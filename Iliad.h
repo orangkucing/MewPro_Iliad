@@ -4,8 +4,8 @@
 #include "Pins.h"
 #include "Videomode.h"
 // define camera to use with Iliad. if you mix B and S then video modes are restricted to those both can do.
-#undef HERO_4_BLACK
-#define HERO_4_SILVER
+#define HERO_4_BLACK
+#undef  HERO_4_SILVER
 #include "MenuText.h"
 
 #define __VERSION_STRING__ "v1.2.10"
