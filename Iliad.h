@@ -4,11 +4,11 @@
 #include "Pins.h"
 #include "Videomode.h"
 // define camera to use with Iliad. if you mix B and S then video modes are restricted to those both can do.
-#define HERO_4_BLACK
-#undef  HERO_4_SILVER
+#undef HERO_4_BLACK
+#define HERO_4_SILVER
 #include "MenuText.h"
 
-#define __VERSION_STRING__ "v1.2.9"
+#define __VERSION_STRING__ "v1.2.10"
 
 #include <LiquidCrystal.h>
 // initialize the library with the numbers of the interface pins
