@@ -8,7 +8,11 @@ const char MODE_AUDIO = 6;
 const char GPCAMERA_GROUP_VIDEO[] PROGMEM = { 5, 6, 7, 2, 3, 4, 8, 9, 10, 11, 12, 13, 14, 15, 0 };
 const char GPCAMERA_GROUP_PHOTO[] PROGMEM = { 18, 19, 17, 20, 21, 22, 23, 24, 25, 26, 0 };
 const char GPCAMERA_GROUP_MULTI_SHOT[] PROGMEM = { 31, 29, 30, 32, 28, 33, 34, 35, 36, 37, 38, 39, 0 };
+#ifdef HERO_4_SILVER
+const char GPCAMERA_GROUP_SETUP[] PROGMEM = { 51, 50, 49, 72, 52, 53, 1, 16, 27, 54, 55, 56, 57, 58, 59, 0 };
+#else
 const char GPCAMERA_GROUP_SETUP[] PROGMEM = { 52, 53, 1, 16, 27, 54, 55, 56, 57, 58, 59, 0 };
+#endif
 const char GPCAMERA_GROUP_DELETE_ID[] PROGMEM = { 0 };
 const char GPCAMERA_GROUP_CAMERA_INFO[] PROGMEM = { 0 };
 const char GPCAMERA_GROUP_WIRELESS_CONTROLS[] PROGMEM = { 0 };
@@ -1454,6 +1458,8 @@ if(id==1&&setting.b[53]==1)switch(v){case 0:case 1:case 2:case 3:return true;}
 if(id==27&&setting.b[53]==1)switch(v){case 0:case 1:case 2:return true;}
 if(id==1&&setting.b[53]==2)switch(v){case 0:case 1:case 2:case 3:return true;}
 if(id==16&&setting.b[53]==2)switch(v){case 0:case 1:case 2:return true;}
+// WVGA is impossible for Silver
+if(id=2)switch(v){case 13:return true;}
 return false;
 }
 
