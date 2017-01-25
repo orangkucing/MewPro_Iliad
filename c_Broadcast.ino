@@ -10,6 +10,13 @@ void startup_delay()
 }
 void startup0()
 {
+#ifdef HERO_4_SILVER
+  if (!setting.p.lcd) {
+    // this setting will be ignored by the camera
+    FIFOCPY_P(0, F("YY000707000100\n"), 15);
+    FIFO_INC(15);
+  }
+#endif
   // since MODE_SETUP's options includes video_format (NTSC/PAL), it must be sent before MODE_VIDEO
   Broadcast_ChangeSettings(MODE_SETUP);
 }
@@ -332,10 +339,10 @@ void Broadcast_ChangeSettings(char mode)
       sprintHex(15 * 2, setting.p.setup.led);
       sprintHex(16 * 2, setting.p.setup.quick_capture);
       sprintHex(17 * 2, setting.p.setup.orientation);
-      sprintHex(18 * 2, 0); // unknown
-      sprintHex(19 * 2, 1); // unknown
-      sprintHex(20 * 2, 1); // unknown
-      sprintHex(21 * 2, 1); // unknown
+      sprintHex(18 * 2, setting.p.setup.lcd_brightness);
+      sprintHex(19 * 2, setting.p.setup.lcd_sleep);
+      sprintHex(20 * 2, setting.p.setup.lcd_lock);
+      sprintHex(21 * 2, setting.p.lcd);
       sprintHex(22 * 2, setting.p.setup.video_format);
       sprintHex(23 * 2, 0); // 0: English, 1: Simplified Chinese
       FIFOCPY_P(48, F("00000000000000"), 14); // reserved
@@ -464,6 +471,14 @@ void Broadcast_ChangeSetting(char id)
       __queueIn(4, 21, setting.p.multi_shot.protune_sharpness); break;
     case &setting.p.multi_shot.protune_ev - setting.b:
       __queueIn(4, 25, setting.p.multi_shot.protune_ev); break;
+    case &setting.p.setup.lcd_brightness - setting.b:
+      __queueIn(7, 1, setting.p.setup.lcd_brightness); break;
+    case &setting.p.setup.lcd_sleep - setting.b:
+      __queueIn(7, 3, setting.p.setup.lcd_sleep); break;
+    case &setting.p.setup.lcd_lock - setting.b:
+      __queueIn(7, 5, setting.p.setup.lcd_lock); break;
+    case &setting.p.lcd - setting.b:
+      __queueIn(7, 7, setting.p.lcd); break;
     case &setting.p.setup.orientation - setting.b:
       __queueIn(7, 9, setting.p.setup.orientation); break;
     case &setting.p.setup.default_app_mode - setting.b:

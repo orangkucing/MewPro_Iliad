@@ -318,6 +318,18 @@ int extendedYYcommand()
       break;
     case 7: // global settings
       switch (buf[10]) {
+        case 1: // LCD brightness
+          setting.p.setup.lcd_brightness = buf[13];
+          break;
+        case 3: // LCD sleep
+          setting.p.setup.lcd_sleep = buf[13];
+          break;
+        case 5: // LCD lock
+          setting.p.setup.lcd_lock = buf[13];
+          break;
+        case 7: // LCD power
+          setting.p.lcd = buf[13];
+          break;
         case 9: // orientation
           // there's a bug in v4.0.0 firmware that prevents from setting orientation to AUTO
           setting.p.setup.orientation = buf[13];
@@ -357,10 +369,10 @@ int extendedYYcommand()
           setting.p.setup.led = buf[22];
           setting.p.setup.quick_capture = buf[23];
           setting.p.setup.orientation = buf[24];
-          // buf[25]; // const 0; unknown
-          // buf[26]; // const 1; unknown
-          // buf[27]; // const 1; unknown
-          // buf[28]; // const 1; unknown
+          setting.p.setup.lcd_brightness = buf[25];
+          setting.p.setup.lcd_sleep = buf[26];
+          setting.p.setup.lcd_lock = buf[27];
+          setting.p.lcd = buf[28];
           setting.p.setup.video_format = buf[29];
           // buf[30]; // 0: English, 1: Simplified Chinese
           // buf[31:37] // reserved

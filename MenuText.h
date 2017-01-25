@@ -690,7 +690,9 @@ typedef union Setting {
       byte stream_window_size;
     } setup;
     byte reserved1[3];
-    byte current_submode[5];
+    byte current_submode[3];
+    byte reserved2;
+    byte lcd;
 /*
     struct {
       byte videoExposure_time;
