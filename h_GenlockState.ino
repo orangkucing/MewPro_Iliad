@@ -20,17 +20,33 @@ void checkGenlockState_Video()
         SERIAL.print(F(", 0x0"));
         SERIAL.print(setting.p.video.fps, HEX);
         SERIAL.println(F(")"));
-        if (setting.p.video.fov != 2) { // WIDE or MEDIUM
-          StartSyncSignal(setting.p.video.resolution * FPS_TABLE_SIZE + setting.p.video.fps);
-        } else { // NARROW
-          switch (setting.p.video.resolution) {
-            case 12: // 720p
-              StartSyncSignal(SYNC_TIME_720_NARROW * FPS_TABLE_SIZE + setting.p.video.fps);
-              break;
-            case 9: // 1080p
-              StartSyncSignal(SYNC_TIME_1080_NARROW * FPS_TABLE_SIZE + setting.p.video.fps);
-              break;            
-          }
+        switch (setting.p.video.fov) {
+          case 0: // WIDE
+            StartSyncSignal(setting.p.video.resolution * FPS_TABLE_SIZE + setting.p.video.fps);
+            break;
+          case 1: // MEDIUM
+            switch (setting.p.video.resolution) {
+              case 4: // 2.7K 16:9
+                StartSyncSignal(SYNC_TIME_2_7K_MEDIUM * FPS_TABLE_SIZE + setting.p.video.fps);
+                break;
+              case 9: // 1080p
+                StartSyncSignal(SYNC_TIME_1080_MEDIUM * FPS_TABLE_SIZE + setting.p.video.fps);
+                break;            
+              case 12: // 720p
+                StartSyncSignal(SYNC_TIME_720_MEDIUM * FPS_TABLE_SIZE + setting.p.video.fps);
+                break;
+            }
+            break;
+          case 2: // NARROW
+            switch (setting.p.video.resolution) {
+              case 9: // 1080p
+                StartSyncSignal(SYNC_TIME_1080_NARROW * FPS_TABLE_SIZE + setting.p.video.fps);
+                break;            
+              case 12: // 720p
+                StartSyncSignal(SYNC_TIME_720_NARROW * FPS_TABLE_SIZE + setting.p.video.fps);
+                break;
+            }
+            break;
         }
         recording_state = STATE_RECORDING;
         updateLCD();

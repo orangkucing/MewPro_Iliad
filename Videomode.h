@@ -3,9 +3,12 @@
 #define SYNC_TIME_STRETCH 2
 #define FPS_TABLE_SIZE 14
 
-#define SYNC_TIME_720_NARROW  14
-#define SYNC_TIME_1080_NARROW 15
-#define SYNC_TIME_PHOTO       16
+#define SYNC_TIME_2_7K_MEDIUM 14
+#define SYNC_TIME_1080_MEDIUM 15
+#define SYNC_TIME_720_MEDIUM  16
+#define SYNC_TIME_1080_NARROW 17
+#define SYNC_TIME_720_NARROW  18
+#define SYNC_TIME_PHOTO       19
 
 #define _NA_ {0,0,0}
 
@@ -16,7 +19,7 @@ const unsigned int syncTime[][3] PROGMEM = {
 //
 // frame per second = 16000000 / (HSYNC * VSYNC + STRETCH)
 //
-// video modes
+// video modes WIDE
 // {HSYNC (clock), VSYNC (pulse), STRETCH (clock)}
 //240      120          100          90           80           60             50            48              30            25              24              15           12.5          12
 // 0x00: 4K 17:9             4096x2160
@@ -48,12 +51,20 @@ _NA_,      {118,1131,0},_NA_,        _NA_,        _NA_,        {121,2206,0},  {1
 // 0x0d: WVGA 16:9           848x480
 {86,776,0},_NA_,        _NA_,        _NA_,        _NA_,        _NA_,          _NA_,         _NA_,           _NA_,         _NA_,           _NA_,           _NA_,        _NA_,         _NA_,
 //
+// video modes MEDIUM
+// 14:   2.7K 16:9           2704x1520
+_NA_,      _NA_,        _NA_,        _NA_,        _NA_,        {150,1779,0},  {150,2133,0}, {155,2153,0},   {234,2281,0}, {284,2250,1000},{293,2277,173}, _NA_,        _NA_,         _NA_,
+// 15:   1080 16:9           1920x1080   
+_NA_,      _NA_,        _NA_,        _NA_,        _NA_,        {146,1828,0},  {146,2192,0}, {155,2153,0},   {234,2281,0}, {284,2250,1000},{293,2277,173}, _NA_,        _NA_,         _NA_,
+// 16:   720 16:9            1280x720
+_NA_,      {118,1131,0},_NA_,        _NA_,        _NA_,        {139,1919,193},{139,2302,0}, _NA_,           {234,2281,0}, {284,2250,1000},_NA_,           _NA_,        _NA_,         _NA_,
+//
 // video modes NARROW
-// 14:   720 NARROW
-{83,804,1},{113,1180,0},_NA_,        _NA_,        _NA_,        {139,1919,193},{132,2424,0}, _NA_,           {133,4014,0}, {132,4848,0},   _NA_,           _NA_,        _NA_,         _NA_,
-// 15:   1080 NARROW
+// 17:   1080 NARROW
 _NA_,      {113,1180,0},_NA_,        {113,1574,0},_NA_,        {139,1919,193},{139,2302,22},{141,2366,0},   {141,3786,41},{139,4604,44},  {141,4732,122}, _NA_,        _NA_,         _NA_,
+// 18:   720 NARROW
+{83,804,1},{113,1180,0},_NA_,        _NA_,        _NA_,        {139,1919,193},{132,2424,0}, _NA_,           {133,4014,0}, {132,4848,0},   _NA_,           _NA_,        _NA_,         _NA_,
 // 
-// 16:   photo mode
+// 19:   photo mode
 {146,3640,0}
 };
