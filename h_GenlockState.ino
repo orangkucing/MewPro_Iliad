@@ -165,6 +165,7 @@ void checkGenlockState_Timelapse()
         StartSyncSignal(SYNC_TIME_PHOTO * FPS_TABLE_SIZE); // photo mode is stored at the end of the video mode table
         recording_state = STATE_RECORDING;
       }
+      break;
     case STATE_RECORDING:
       if (millis() - command_sent > 280) {
         recording_state = STATE_SYNC_OFF;
@@ -221,6 +222,7 @@ void checkGenlockState_Nightlapse()
         StartSyncSignal(SYNC_TIME_PHOTO * FPS_TABLE_SIZE); // photo mode is stored at the end of the video mode table
         recording_state = STATE_RECORDING;
       }
+      break;
     case STATE_RECORDING:
       if (millis() - command_sent > exposure + 1500) {
         recording_state = STATE_SYNC_OFF;
