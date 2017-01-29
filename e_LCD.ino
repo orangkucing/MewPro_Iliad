@@ -69,6 +69,7 @@ void updateLCD()
                   case 0: lcd.print('W'); break;
                   case 1: lcd.print('M'); break;
                   case 2: lcd.print('N'); break;
+                  case 4: lcd.print('L'); break;
                 }
                 lcd.setCursor(10, 1);
                 switch (setting.p.current_submode[MODE_VIDEO]) {

@@ -25,6 +25,7 @@ void checkGenlockState_Video()
             StartSyncSignal(setting.p.video.resolution * FPS_TABLE_SIZE + setting.p.video.fps);
             break;
           case 1: // MEDIUM
+          case 4: // LINEAR
             switch (setting.p.video.resolution) {
               case 4: // 2.7K 16:9
                 StartSyncSignal(SYNC_TIME_2_7K_MEDIUM * FPS_TABLE_SIZE + setting.p.video.fps);
