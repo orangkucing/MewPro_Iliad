@@ -1,5 +1,11 @@
-# MewPro_Iliad
+# MewPro Iliad
 A Sync Generator/Controller for Hero 4 Black/Silver and MewPro.
+
+### Supported MewPro boards
+
+MewPro 2 or MewPro Cable work with MewPro Iliad.
+
+MewPro 2/Cable boards must be installed MewPro4 software for Hero 4 Black/Silver.
 
 ### Supported video modes
 
