@@ -9,9 +9,7 @@ MewPro 2/Cable boards must be installed MewPro4 software for Hero 4 Black/Silver
 
 ### Supported video modes
 
-Note: _Some users have reported us that several video modes have flicker under bright light. We still cannot reproduce the phenomena even in very fine weather at Tokyo but we are trying to fix it now.__
-
-All the video modes that GoPro Hero 4 Black/Silver can shoot are supported. However, bug reports on flicker or overexposure are extremely welcome!
+All the video modes that GoPro Hero 4 Black/Silver can shoot are supported.
 
 # How To Update Iliad Software
 
