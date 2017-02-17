@@ -144,11 +144,7 @@ void navigateMenu(char key)
                 case STATE_IDLE:
                   Broadcast_StartRecording();
                   break;
-                case STATE_SYNC_ON:
                 case STATE_RECORDING:
-                case STATE_SYNC_OFF:
-                case STATE_RESTART:
-                case STATE_PAUSE:
                   Broadcast_StopRecording();
                   break;
               }

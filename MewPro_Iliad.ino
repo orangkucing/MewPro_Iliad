@@ -6,8 +6,7 @@ void setup()
   ROM_Read();
 
   // setup LCD
-  lcd.begin(LCD_SIZE_X, LCD_SIZE_Y);
-  updateLCD();
+  initLCD();
 
   // setup IR remote
   irrecv.enableIRIn();

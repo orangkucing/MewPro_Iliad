@@ -1,7 +1,4 @@
-const char timelapse_rate_table[] PROGMEM = {1, 2, 4, 10, 20, 60, 120}; // unit in 0.5 seconds
 const int exposure_time_table[] PROGMEM = {19, 20, 50, 100, 150, 200, 300}; // unit in 0.1 second
-const int nightlapse_rate_table[] PROGMEM = {20, 30, 40, 60, 120, 240, 600, 3600, 7200, 0, 8, 10}; // unit in 0.5 seconds
-
 unsigned long command_sent;
 
 void checkGenlockState_Video()
@@ -103,11 +100,8 @@ void checkGenlockState_Photo()
           break;
       }
       break;
-    case STATE_STOP:
-      command_sent = millis();
-      recording_state = STATE_SYNC_OFF;
-      break;
-    case STATE_SYNC_OFF: 
+    case STATE_STOP: // continuous only
+    case STATE_SYNC_OFF:
       SERIAL.println(F("genlock signal stop"));
       StopSyncSignal();
       recording_state = STATE_IDLE;
@@ -123,26 +117,13 @@ void checkGenlockState_Burst()
       break;
     case STATE_START:
       command_sent = millis();
-      recording_state = STATE_SYNC_ON;
-      break;
-    case STATE_SYNC_ON: 
-      if (millis() - command_sent > 1000) {
-        SERIAL.print(F("genlock signal start: resolution = 0x0"));
-        SERIAL.println(setting.p.photo.resolution, HEX);
-        StartSyncSignal(SYNC_TIME_PHOTO * FPS_TABLE_SIZE); // photo mode is stored at the end of the video mode table
-        recording_state = STATE_RECORDING;
-      }
+      recording_state = STATE_RECORDING;
       break;
     case STATE_RECORDING:
       if (millis() - command_sent > 5000) {
-        recording_state = STATE_SYNC_OFF;
+        recording_state = STATE_IDLE;
+        updateLCD();
       }
-      break;
-    case STATE_SYNC_OFF: 
-      SERIAL.println(F("genlock signal stop"));
-      StopSyncSignal();
-      recording_state = STATE_IDLE;
-      updateLCD();
       break;
   }
 }
@@ -153,106 +134,11 @@ void checkGenlockState_Timelapse()
     case STATE_IDLE:
       break;
     case STATE_START:
-      delay(1000);
-      StartTimerInterrupt((int)pgm_read_byte(timelapse_rate_table[setting.p.multi_shot.timelapse_rate]));
-      command_sent = millis();
-      recording_state = STATE_SYNC_ON;
-      break;
-    case STATE_SYNC_ON: 
-      if (millis() - command_sent > 200) {
-        SERIAL.print(F("genlock signal start: resolution = 0x0"));
-        SERIAL.println(setting.p.photo.resolution, HEX);
-        StartSyncSignal(SYNC_TIME_PHOTO * FPS_TABLE_SIZE); // photo mode is stored at the end of the video mode table
-        recording_state = STATE_RECORDING;
-      }
+      recording_state = STATE_RECORDING;
       break;
     case STATE_RECORDING:
-      if (millis() - command_sent > 280) {
-        recording_state = STATE_SYNC_OFF;
-      }
-      break;
-    case STATE_SYNC_OFF: 
-      SERIAL.println(F("genlock signal stop"));
-      StopSyncSignal();
-      recording_state = STATE_PAUSE;
-      break;
-    case STATE_PAUSE:
-      break;
-    case STATE_RESTART:
-      command_sent = millis();
-      {
-        char tmp[] = "YY00041C0000\n";
-        int i = 0;
-        while (tmp[i]) {
-          WRITE_CHAR(tmp[i++]);
-        }
-      }
-      recording_state = STATE_SYNC_ON;
       break;
     case STATE_STOP:
-      SERIAL.println(F("genlock signal stop"));
-      StopSyncSignal();
-      recording_state = STATE_END;
-      break;
-    case STATE_END:
-      StopTimerInterrupt();
-      recording_state = STATE_IDLE;
-      updateLCD();
-      break;
-  }
-}
-
-void checkGenlockState_Nightlapse()
-{
-  unsigned long exposure = (unsigned long)pgm_read_word(exposure_time_table[setting.p.multi_shot.exposure_time]) * 100;
-  
-  switch (recording_state) {
-    case STATE_IDLE:
-      break;
-    case STATE_START:
-      delay(1000);
-      StartTimerInterrupt((int)pgm_read_word(nightlapse_rate_table[setting.p.multi_shot.timelapse_rate]));
-      command_sent = millis();
-      recording_state = STATE_SYNC_ON;
-      break;
-    case STATE_SYNC_ON: 
-      if (millis() - command_sent > 200) {
-        SERIAL.print(F("genlock signal start: resolution = 0x0"));
-        SERIAL.println(setting.p.photo.resolution, HEX);
-        StartSyncSignal(SYNC_TIME_PHOTO * FPS_TABLE_SIZE); // photo mode is stored at the end of the video mode table
-        recording_state = STATE_RECORDING;
-      }
-      break;
-    case STATE_RECORDING:
-      if (millis() - command_sent > exposure + 1500) {
-        recording_state = STATE_SYNC_OFF;
-      }
-      break;
-    case STATE_SYNC_OFF: 
-      SERIAL.println(F("genlock signal stop"));
-      StopSyncSignal();
-      recording_state = STATE_PAUSE;
-      break;
-    case STATE_PAUSE:
-      break;
-    case STATE_RESTART:
-      command_sent = millis();
-      {
-        char tmp[] = "YY00041C0000\n";
-        int i = 0;
-        while (tmp[i]) {
-          WRITE_CHAR(tmp[i++]);
-        }
-      }
-      recording_state = STATE_SYNC_ON;
-      break;
-    case STATE_STOP:
-      SERIAL.println(F("genlock signal stop"));
-      StopSyncSignal();
-      recording_state = STATE_END;
-      break;
-    case STATE_END:
-      StopTimerInterrupt();
       recording_state = STATE_IDLE;
       updateLCD();
       break;
@@ -268,16 +154,14 @@ void checkGenlockState()
     case MODE_PHOTO:
       checkGenlockState_Photo();
       break;
-    case MODE_MULTI_SHOT:
+    case MODE_MULTI_SHOT: // no genlock is possible in multi shot mode
       switch (setting.p.current_submode[MODE_MULTI_SHOT]) {
         case 0:
           checkGenlockState_Burst();
           break;
         case 1:
-          checkGenlockState_Timelapse();
-          break;
         case 2:
-          checkGenlockState_Nightlapse();
+          checkGenlockState_Timelapse();
           break;
       }
       break;

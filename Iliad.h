@@ -5,17 +5,22 @@
 #include "Videomode.h"
 // define camera to use with Iliad. if you mix B and S then video modes are restricted to those both can do.
 #define HERO_4_BLACK
-#undef HERO_4_SILVER
+#undef  HERO_4_SILVER
+
+#define  USE_LCD
+
 #include "MenuText.h"
 
-#define __VERSION_STRING__ "v1.2.21"
+#define __VERSION_STRING__ "v1.2.22"
 
+#ifdef USE_LCD
 #include <LiquidCrystal.h>
 // initialize the library with the numbers of the interface pins
 // lcd(RS, Enable, Data4, Data5, Data6, Data7)
 LiquidCrystal lcd(LCD_RS, LCD_ENABLE, LCD_DATA4, LCD_DATA5, LCD_DATA6, LCD_DATA7);
 #define LCD_SIZE_X 16
 #define LCD_SIZE_Y 2
+#endif
 
 // using IRremote library at
 //     https://github.com/z3t0/Arduino-IRremote
@@ -72,10 +77,7 @@ union {
 #define STATE_SYNC_ON   2
 #define STATE_RECORDING 3
 #define STATE_STOP      4
-#define STATE_END       5
-#define STATE_SYNC_OFF  6
-#define STATE_RESTART   7
-#define STATE_PAUSE     8
+#define STATE_SYNC_OFF  5
 char setup_id = 0;
 char disp_state = MENU_START;
 volatile char recording_state = STATE_IDLE;

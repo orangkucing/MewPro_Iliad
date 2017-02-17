@@ -1,4 +1,12 @@
+#ifdef USE_LCD
+
 #define BLINK() do { lcd.setCursor(0, 1); lcd.blink(); } while (0)
+
+void initLCD()
+{
+  lcd.begin(LCD_SIZE_X, LCD_SIZE_Y);
+  updateLCD();
+}
 
 void LCDprint_P(int row, char *txt)
 {
@@ -228,8 +236,6 @@ void updateLCD()
               case STATE_SYNC_ON:
               case STATE_RECORDING:
               case STATE_SYNC_OFF:
-              case STATE_RESTART:
-              case STATE_PAUSE:
                 lcd.print(F("Shooting...     "));
                 break;
               default:
@@ -283,3 +289,18 @@ void updateLCD()
   }
 }
 
+#else 
+
+void initLCD()
+{
+}
+
+void LCDprint_P(int row, char *txt)
+{
+}
+
+void updateLCD()
+{
+}
+
+#endif

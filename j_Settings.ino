@@ -1,3 +1,5 @@
+#ifdef USE_LCD
+
 // Iliad Setup Menu
 // 
 #define ILIAD_SETTING_DATETIME  0
@@ -289,3 +291,25 @@ void Iliad_updateLCD() {
   }
 }
 
+#else
+
+void Iliad_Setting_Begin() {
+}
+
+void Iliad_Setting_End() {
+}
+
+void Iliad_Setting_Shutter() {
+}
+
+void Iliad_Setting_Mode() {
+}
+
+void Iliad_Setting_Learn(unsigned long code)
+{
+}
+
+void Iliad_updateLCD() {
+}
+
+#endif

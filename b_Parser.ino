@@ -398,8 +398,8 @@ int extendedYYcommand()
 void extendedZZcommand()
 {
   switch (buf[9]) {
-    case 0: // protocol revision
-      // current protocol revision is 1 0 0
+    case 0: // init external sync
+      // use external sync 1 0 *
       break;
     case 1: // sync
       switch (buf[10]) {

@@ -19,523 +19,529 @@ const char GPCAMERA_GROUP_WIRELESS_CONTROLS[] PROGMEM = { 0 };
 const char GPCAMERA_GROUP_CAMERA_STATUS[] PROGMEM = { 0 };
 
 //
-const char title_txt_0_0[] PROGMEM = "\x01""Default Sub Mode";
-const char option_txt_0_0_0[] PROGMEM = "\x00""Video";
-const char option_txt_0_0_1[] PROGMEM = "\x01""Time Lapse Video";
-const char option_txt_0_0_2[] PROGMEM = "\x02""Video + Photo";
-const char option_txt_0_0_3[] PROGMEM = "\x03""Looping";
+#ifdef USE_LCD
+#define MENU_TEXT(a, b) a b
+#else
+#define MENU_TEXT(a, b) a
+#endif
+
+const char title_txt_0_0[] PROGMEM = MENU_TEXT("\x01", "Default Sub Mode");
+const char option_txt_0_0_0[] PROGMEM = MENU_TEXT("\x00", "Video");
+const char option_txt_0_0_1[] PROGMEM = MENU_TEXT("\x01", "Time Lapse Video");
+const char option_txt_0_0_2[] PROGMEM = MENU_TEXT("\x02", "Video + Photo");
+const char option_txt_0_0_3[] PROGMEM = MENU_TEXT("\x03", "Looping");
 const char* const option_txt_0_0[] PROGMEM = {
 option_txt_0_0_0, option_txt_0_0_1, option_txt_0_0_2, option_txt_0_0_3, NULL
 };
 
-const char title_txt_0_1[] PROGMEM = "\x44""Video Sub Mode";
-const char option_txt_0_1_0[] PROGMEM = "\x00""Video";
-const char option_txt_0_1_1[] PROGMEM = "\x01""Time Lapse Video";
-const char option_txt_0_1_2[] PROGMEM = "\x02""Video + Photo";
-const char option_txt_0_1_3[] PROGMEM = "\x03""Looping";
+const char title_txt_0_1[] PROGMEM = MENU_TEXT("\x44", "Video Sub Mode");
+const char option_txt_0_1_0[] PROGMEM = MENU_TEXT("\x00", "Video");
+const char option_txt_0_1_1[] PROGMEM = MENU_TEXT("\x01", "Time Lapse Video");
+const char option_txt_0_1_2[] PROGMEM = MENU_TEXT("\x02", "Video + Photo");
+const char option_txt_0_1_3[] PROGMEM = MENU_TEXT("\x03", "Looping");
 const char* const option_txt_0_1[] PROGMEM = {
 option_txt_0_1_0, option_txt_0_1_1, option_txt_0_1_2, option_txt_0_1_3, NULL
 };
 
-const char title_txt_0_2[] PROGMEM = "\x02""Resolution";
-const char option_txt_0_2_0[] PROGMEM = "\x02""4K SuperView";
-const char option_txt_0_2_1[] PROGMEM = "\x01""4K";
-const char option_txt_0_2_2[] PROGMEM = "\x05""2.7K SuperView";
-const char option_txt_0_2_3[] PROGMEM = "\x04""2.7K";
-const char option_txt_0_2_4[] PROGMEM = "\x06""2.7K 4:3";
-const char option_txt_0_2_5[] PROGMEM = "\x07""1440";
-const char option_txt_0_2_6[] PROGMEM = "\x08""1080 SuperView";
-const char option_txt_0_2_7[] PROGMEM = "\x09""1080";
-const char option_txt_0_2_8[] PROGMEM = "\x0a""960";
-const char option_txt_0_2_9[] PROGMEM = "\x0b""720 SuperView";
-const char option_txt_0_2_10[] PROGMEM = "\x0c""720";
-const char option_txt_0_2_11[] PROGMEM = "\x0d""WVGA";
+const char title_txt_0_2[] PROGMEM = MENU_TEXT("\x02", "Resolution");
+const char option_txt_0_2_0[] PROGMEM = MENU_TEXT("\x02", "4K SuperView");
+const char option_txt_0_2_1[] PROGMEM = MENU_TEXT("\x01", "4K");
+const char option_txt_0_2_2[] PROGMEM = MENU_TEXT("\x05", "2.7K SuperView");
+const char option_txt_0_2_3[] PROGMEM = MENU_TEXT("\x04", "2.7K");
+const char option_txt_0_2_4[] PROGMEM = MENU_TEXT("\x06", "2.7K 4:3");
+const char option_txt_0_2_5[] PROGMEM = MENU_TEXT("\x07", "1440");
+const char option_txt_0_2_6[] PROGMEM = MENU_TEXT("\x08", "1080 SuperView");
+const char option_txt_0_2_7[] PROGMEM = MENU_TEXT("\x09", "1080");
+const char option_txt_0_2_8[] PROGMEM = MENU_TEXT("\x0a", "960");
+const char option_txt_0_2_9[] PROGMEM = MENU_TEXT("\x0b", "720 SuperView");
+const char option_txt_0_2_10[] PROGMEM = MENU_TEXT("\x0c", "720");
+const char option_txt_0_2_11[] PROGMEM = MENU_TEXT("\x0d", "WVGA");
 const char* const option_txt_0_2[] PROGMEM = {
 option_txt_0_2_0, option_txt_0_2_1, option_txt_0_2_2, option_txt_0_2_3, option_txt_0_2_4, option_txt_0_2_5, option_txt_0_2_6, option_txt_0_2_7, option_txt_0_2_8, option_txt_0_2_9, option_txt_0_2_10, option_txt_0_2_11, NULL
 };
 
-const char title_txt_0_3[] PROGMEM = "\x03""FPS";
-const char option_txt_0_3_0[] PROGMEM = "\x00""240";
-const char option_txt_0_3_1[] PROGMEM = "\x01""120";
-const char option_txt_0_3_2[] PROGMEM = "\x02""100";
-const char option_txt_0_3_3[] PROGMEM = "\x03""90";
-const char option_txt_0_3_4[] PROGMEM = "\x04""80";
-const char option_txt_0_3_5[] PROGMEM = "\x05""60";
-const char option_txt_0_3_6[] PROGMEM = "\x06""50";
-const char option_txt_0_3_7[] PROGMEM = "\x07""48";
-const char option_txt_0_3_8[] PROGMEM = "\x08""30";
-const char option_txt_0_3_9[] PROGMEM = "\x09""25";
-const char option_txt_0_3_10[] PROGMEM = "\x0a""24";
-const char option_txt_0_3_11[] PROGMEM = "\x0b""15";
-const char option_txt_0_3_12[] PROGMEM = "\x0c""12.5";
+const char title_txt_0_3[] PROGMEM = MENU_TEXT("\x03", "FPS");
+const char option_txt_0_3_0[] PROGMEM = MENU_TEXT("\x00", "240");
+const char option_txt_0_3_1[] PROGMEM = MENU_TEXT("\x01", "120");
+const char option_txt_0_3_2[] PROGMEM = MENU_TEXT("\x02", "100");
+const char option_txt_0_3_3[] PROGMEM = MENU_TEXT("\x03", "90");
+const char option_txt_0_3_4[] PROGMEM = MENU_TEXT("\x04", "80");
+const char option_txt_0_3_5[] PROGMEM = MENU_TEXT("\x05", "60");
+const char option_txt_0_3_6[] PROGMEM = MENU_TEXT("\x06", "50");
+const char option_txt_0_3_7[] PROGMEM = MENU_TEXT("\x07", "48");
+const char option_txt_0_3_8[] PROGMEM = MENU_TEXT("\x08", "30");
+const char option_txt_0_3_9[] PROGMEM = MENU_TEXT("\x09", "25");
+const char option_txt_0_3_10[] PROGMEM = MENU_TEXT("\x0a", "24");
+const char option_txt_0_3_11[] PROGMEM = MENU_TEXT("\x0b", "15");
+const char option_txt_0_3_12[] PROGMEM = MENU_TEXT("\x0c", "12.5");
 const char* const option_txt_0_3[] PROGMEM = {
 option_txt_0_3_0, option_txt_0_3_1, option_txt_0_3_2, option_txt_0_3_3, option_txt_0_3_4, option_txt_0_3_5, option_txt_0_3_6, option_txt_0_3_7, option_txt_0_3_8, option_txt_0_3_9, option_txt_0_3_10, option_txt_0_3_11, option_txt_0_3_12, NULL
 };
 
-const char title_txt_0_4[] PROGMEM = "\x04""Field of View";
-const char option_txt_0_4_0[] PROGMEM = "\x00""Wide";
-const char option_txt_0_4_1[] PROGMEM = "\x01""Medium";
-const char option_txt_0_4_2[] PROGMEM = "\x04""Linear";
-const char option_txt_0_4_3[] PROGMEM = "\x02""Narrow";
+const char title_txt_0_4[] PROGMEM = MENU_TEXT("\x04", "Field of View");
+const char option_txt_0_4_0[] PROGMEM = MENU_TEXT("\x00", "Wide");
+const char option_txt_0_4_1[] PROGMEM = MENU_TEXT("\x01", "Medium");
+const char option_txt_0_4_2[] PROGMEM = MENU_TEXT("\x04", "Linear");
+const char option_txt_0_4_3[] PROGMEM = MENU_TEXT("\x02", "Narrow");
 const char* const option_txt_0_4[] PROGMEM = {
 option_txt_0_4_0, option_txt_0_4_1, option_txt_0_4_2, option_txt_0_4_3, NULL
 };
 
-const char title_txt_0_5[] PROGMEM = "\x05""Interval";
-const char option_txt_0_5_0[] PROGMEM = "\x00""0.5 Seconds";
-const char option_txt_0_5_1[] PROGMEM = "\x01""1 Second";
-const char option_txt_0_5_2[] PROGMEM = "\x02""2 Seconds";
-const char option_txt_0_5_3[] PROGMEM = "\x03""5 Seconds";
-const char option_txt_0_5_4[] PROGMEM = "\x04""10 Seconds";
-const char option_txt_0_5_5[] PROGMEM = "\x05""30 Seconds";
-const char option_txt_0_5_6[] PROGMEM = "\x06""60 Seconds";
+const char title_txt_0_5[] PROGMEM = MENU_TEXT("\x05", "Interval");
+const char option_txt_0_5_0[] PROGMEM = MENU_TEXT("\x00", "0.5 Seconds");
+const char option_txt_0_5_1[] PROGMEM = MENU_TEXT("\x01", "1 Second");
+const char option_txt_0_5_2[] PROGMEM = MENU_TEXT("\x02", "2 Seconds");
+const char option_txt_0_5_3[] PROGMEM = MENU_TEXT("\x03", "5 Seconds");
+const char option_txt_0_5_4[] PROGMEM = MENU_TEXT("\x04", "10 Seconds");
+const char option_txt_0_5_5[] PROGMEM = MENU_TEXT("\x05", "30 Seconds");
+const char option_txt_0_5_6[] PROGMEM = MENU_TEXT("\x06", "60 Seconds");
 const char* const option_txt_0_5[] PROGMEM = {
 option_txt_0_5_0, option_txt_0_5_1, option_txt_0_5_2, option_txt_0_5_3, option_txt_0_5_4, option_txt_0_5_5, option_txt_0_5_6, NULL
 };
 
-const char title_txt_0_6[] PROGMEM = "\x06""Interval";
-const char option_txt_0_6_0[] PROGMEM = "\x00""Max";
-const char option_txt_0_6_1[] PROGMEM = "\x01""5 Minutes";
-const char option_txt_0_6_2[] PROGMEM = "\x02""20 Minutes";
-const char option_txt_0_6_3[] PROGMEM = "\x03""60 Minutes";
-const char option_txt_0_6_4[] PROGMEM = "\x04""120 Minutes";
+const char title_txt_0_6[] PROGMEM = MENU_TEXT("\x06", "Interval");
+const char option_txt_0_6_0[] PROGMEM = MENU_TEXT("\x00", "Max");
+const char option_txt_0_6_1[] PROGMEM = MENU_TEXT("\x01", "5 Minutes");
+const char option_txt_0_6_2[] PROGMEM = MENU_TEXT("\x02", "20 Minutes");
+const char option_txt_0_6_3[] PROGMEM = MENU_TEXT("\x03", "60 Minutes");
+const char option_txt_0_6_4[] PROGMEM = MENU_TEXT("\x04", "120 Minutes");
 const char* const option_txt_0_6[] PROGMEM = {
 option_txt_0_6_0, option_txt_0_6_1, option_txt_0_6_2, option_txt_0_6_3, option_txt_0_6_4, NULL
 };
 
-const char title_txt_0_7[] PROGMEM = "\x07""Interval";
-const char option_txt_0_7_0[] PROGMEM = "\x01""1 P / 5 Sec";
-const char option_txt_0_7_1[] PROGMEM = "\x02""1 P / 10 Sec";
-const char option_txt_0_7_2[] PROGMEM = "\x03""1 P / 30 Sec";
-const char option_txt_0_7_3[] PROGMEM = "\x04""1 P / 60 Sec";
+const char title_txt_0_7[] PROGMEM = MENU_TEXT("\x07", "Interval");
+const char option_txt_0_7_0[] PROGMEM = MENU_TEXT("\x01", "1 P / 5 Sec");
+const char option_txt_0_7_1[] PROGMEM = MENU_TEXT("\x02", "1 P / 10 Sec");
+const char option_txt_0_7_2[] PROGMEM = MENU_TEXT("\x03", "1 P / 30 Sec");
+const char option_txt_0_7_3[] PROGMEM = MENU_TEXT("\x04", "1 P / 60 Sec");
 const char* const option_txt_0_7[] PROGMEM = {
 option_txt_0_7_0, option_txt_0_7_1, option_txt_0_7_2, option_txt_0_7_3, NULL
 };
 
-const char title_txt_0_8[] PROGMEM = "\x08""Low Light";
-const char option_txt_0_8_0[] PROGMEM = "\x01""ON";
-const char option_txt_0_8_1[] PROGMEM = "\x00""OFF";
+const char title_txt_0_8[] PROGMEM = MENU_TEXT("\x08", "Low Light");
+const char option_txt_0_8_0[] PROGMEM = MENU_TEXT("\x01", "ON");
+const char option_txt_0_8_1[] PROGMEM = MENU_TEXT("\x00", "OFF");
 const char* const option_txt_0_8[] PROGMEM = {
 option_txt_0_8_0, option_txt_0_8_1, NULL
 };
 
-const char title_txt_0_9[] PROGMEM = "\x09""Spot Meter";
-const char option_txt_0_9_0[] PROGMEM = "\x01""ON";
-const char option_txt_0_9_1[] PROGMEM = "\x00""OFF";
+const char title_txt_0_9[] PROGMEM = MENU_TEXT("\x09", "Spot Meter");
+const char option_txt_0_9_0[] PROGMEM = MENU_TEXT("\x01", "ON");
+const char option_txt_0_9_1[] PROGMEM = MENU_TEXT("\x00", "OFF");
 const char* const option_txt_0_9[] PROGMEM = {
 option_txt_0_9_0, option_txt_0_9_1, NULL
 };
 
-const char title_txt_0_10[] PROGMEM = "\x0a""Protune";
-const char option_txt_0_10_0[] PROGMEM = "\x01""ON";
-const char option_txt_0_10_1[] PROGMEM = "\x00""OFF";
+const char title_txt_0_10[] PROGMEM = MENU_TEXT("\x0a", "Protune");
+const char option_txt_0_10_0[] PROGMEM = MENU_TEXT("\x01", "ON");
+const char option_txt_0_10_1[] PROGMEM = MENU_TEXT("\x00", "OFF");
 const char* const option_txt_0_10[] PROGMEM = {
 option_txt_0_10_0, option_txt_0_10_1, NULL
 };
 
-const char title_txt_0_11[] PROGMEM = "\x0b""White Balance";
-const char option_txt_0_11_0[] PROGMEM = "\x00""Auto";
-const char option_txt_0_11_1[] PROGMEM = "\x01""3000K";
-const char option_txt_0_11_2[] PROGMEM = "\x02""5500K";
-const char option_txt_0_11_3[] PROGMEM = "\x03""6500K";
-const char option_txt_0_11_4[] PROGMEM = "\x04""Native";
+const char title_txt_0_11[] PROGMEM = MENU_TEXT("\x0b", "White Balance");
+const char option_txt_0_11_0[] PROGMEM = MENU_TEXT("\x00", "Auto");
+const char option_txt_0_11_1[] PROGMEM = MENU_TEXT("\x01", "3000K");
+const char option_txt_0_11_2[] PROGMEM = MENU_TEXT("\x02", "5500K");
+const char option_txt_0_11_3[] PROGMEM = MENU_TEXT("\x03", "6500K");
+const char option_txt_0_11_4[] PROGMEM = MENU_TEXT("\x04", "Native");
 const char* const option_txt_0_11[] PROGMEM = {
 option_txt_0_11_0, option_txt_0_11_1, option_txt_0_11_2, option_txt_0_11_3, option_txt_0_11_4, NULL
 };
 
-const char title_txt_0_12[] PROGMEM = "\x0c""Color";
-const char option_txt_0_12_0[] PROGMEM = "\x00""GoPro Color";
-const char option_txt_0_12_1[] PROGMEM = "\x01""Flat";
+const char title_txt_0_12[] PROGMEM = MENU_TEXT("\x0c", "Color");
+const char option_txt_0_12_0[] PROGMEM = MENU_TEXT("\x00", "GoPro Color");
+const char option_txt_0_12_1[] PROGMEM = MENU_TEXT("\x01", "Flat");
 const char* const option_txt_0_12[] PROGMEM = {
 option_txt_0_12_0, option_txt_0_12_1, NULL
 };
 
-const char title_txt_0_13[] PROGMEM = "\x0e""Sharpness";
-const char option_txt_0_13_0[] PROGMEM = "\x00""High";
-const char option_txt_0_13_1[] PROGMEM = "\x01""Medium";
-const char option_txt_0_13_2[] PROGMEM = "\x02""Low";
+const char title_txt_0_13[] PROGMEM = MENU_TEXT("\x0e", "Sharpness");
+const char option_txt_0_13_0[] PROGMEM = MENU_TEXT("\x00", "High");
+const char option_txt_0_13_1[] PROGMEM = MENU_TEXT("\x01", "Medium");
+const char option_txt_0_13_2[] PROGMEM = MENU_TEXT("\x02", "Low");
 const char* const option_txt_0_13[] PROGMEM = {
 option_txt_0_13_0, option_txt_0_13_1, option_txt_0_13_2, NULL
 };
 
-const char title_txt_0_14[] PROGMEM = "\x0f""EV Comp";
-const char option_txt_0_14_0[] PROGMEM = "\x08""-2.0";
-const char option_txt_0_14_1[] PROGMEM = "\x07""-1.5";
-const char option_txt_0_14_2[] PROGMEM = "\x06""-1.0";
-const char option_txt_0_14_3[] PROGMEM = "\x05""-0.5";
-const char option_txt_0_14_4[] PROGMEM = "\x04""0.0";
-const char option_txt_0_14_5[] PROGMEM = "\x03""0.5";
-const char option_txt_0_14_6[] PROGMEM = "\x02""1.0";
-const char option_txt_0_14_7[] PROGMEM = "\x01""1.5";
-const char option_txt_0_14_8[] PROGMEM = "\x00""2.0";
+const char title_txt_0_14[] PROGMEM = MENU_TEXT("\x0f", "EV Comp");
+const char option_txt_0_14_0[] PROGMEM = MENU_TEXT("\x08", "-2.0");
+const char option_txt_0_14_1[] PROGMEM = MENU_TEXT("\x07", "-1.5");
+const char option_txt_0_14_2[] PROGMEM = MENU_TEXT("\x06", "-1.0");
+const char option_txt_0_14_3[] PROGMEM = MENU_TEXT("\x05", "-0.5");
+const char option_txt_0_14_4[] PROGMEM = MENU_TEXT("\x04", "0.0");
+const char option_txt_0_14_5[] PROGMEM = MENU_TEXT("\x03", "0.5");
+const char option_txt_0_14_6[] PROGMEM = MENU_TEXT("\x02", "1.0");
+const char option_txt_0_14_7[] PROGMEM = MENU_TEXT("\x01", "1.5");
+const char option_txt_0_14_8[] PROGMEM = MENU_TEXT("\x00", "2.0");
 const char* const option_txt_0_14[] PROGMEM = {
 option_txt_0_14_0, option_txt_0_14_1, option_txt_0_14_2, option_txt_0_14_3, option_txt_0_14_4, option_txt_0_14_5, option_txt_0_14_6, option_txt_0_14_7, option_txt_0_14_8, NULL
 };
 
-const char title_txt_0_15[] PROGMEM = "\x0d""ISO Limit";
-const char option_txt_0_15_0[] PROGMEM = "\x00""6400";
-const char option_txt_0_15_1[] PROGMEM = "\x01""1600";
-const char option_txt_0_15_2[] PROGMEM = "\x02""400";
-const char option_txt_0_15_3[] PROGMEM = "\x03""3200";
-const char option_txt_0_15_4[] PROGMEM = "\x04""800";
+const char title_txt_0_15[] PROGMEM = MENU_TEXT("\x0d", "ISO Limit");
+const char option_txt_0_15_0[] PROGMEM = MENU_TEXT("\x00", "6400");
+const char option_txt_0_15_1[] PROGMEM = MENU_TEXT("\x01", "1600");
+const char option_txt_0_15_2[] PROGMEM = MENU_TEXT("\x02", "400");
+const char option_txt_0_15_3[] PROGMEM = MENU_TEXT("\x03", "3200");
+const char option_txt_0_15_4[] PROGMEM = MENU_TEXT("\x04", "800");
 const char* const option_txt_0_15[] PROGMEM = {
 option_txt_0_15_0, option_txt_0_15_1, option_txt_0_15_2, option_txt_0_15_3, option_txt_0_15_4, NULL
 };
 
 
 //
-const char title_txt_1_0[] PROGMEM = "\x10""Default Sub Mode";
-const char option_txt_1_0_0[] PROGMEM = "\x00""Single";
-const char option_txt_1_0_1[] PROGMEM = "\x01""Continuous";
-const char option_txt_1_0_2[] PROGMEM = "\x02""Night";
+const char title_txt_1_0[] PROGMEM = MENU_TEXT("\x10", "Default Sub Mode");
+const char option_txt_1_0_0[] PROGMEM = MENU_TEXT("\x00", "Single");
+const char option_txt_1_0_1[] PROGMEM = MENU_TEXT("\x01", "Continuous");
+const char option_txt_1_0_2[] PROGMEM = MENU_TEXT("\x02", "Night");
 const char* const option_txt_1_0[] PROGMEM = {
 option_txt_1_0_0, option_txt_1_0_1, option_txt_1_0_2, NULL
 };
 
-const char title_txt_1_1[] PROGMEM = "\x45""Photo Sub Mode";
-const char option_txt_1_1_0[] PROGMEM = "\x00""Single";
-const char option_txt_1_1_1[] PROGMEM = "\x01""Continuous";
-const char option_txt_1_1_2[] PROGMEM = "\x02""Night";
+const char title_txt_1_1[] PROGMEM = MENU_TEXT("\x45", "Photo Sub Mode");
+const char option_txt_1_1_0[] PROGMEM = MENU_TEXT("\x00", "Single");
+const char option_txt_1_1_1[] PROGMEM = MENU_TEXT("\x01", "Continuous");
+const char option_txt_1_1_2[] PROGMEM = MENU_TEXT("\x02", "Night");
 const char* const option_txt_1_1[] PROGMEM = {
 option_txt_1_1_0, option_txt_1_1_1, option_txt_1_1_2, NULL
 };
 
-const char title_txt_1_2[] PROGMEM = "\x12""Continuous Rate";
-const char option_txt_1_2_0[] PROGMEM = "\x00""3 FPS";
-const char option_txt_1_2_1[] PROGMEM = "\x01""5 FPS";
-const char option_txt_1_2_2[] PROGMEM = "\x02""10 FPS";
+const char title_txt_1_2[] PROGMEM = MENU_TEXT("\x12", "Continuous Rate");
+const char option_txt_1_2_0[] PROGMEM = MENU_TEXT("\x00", "3 FPS");
+const char option_txt_1_2_1[] PROGMEM = MENU_TEXT("\x01", "5 FPS");
+const char option_txt_1_2_2[] PROGMEM = MENU_TEXT("\x02", "10 FPS");
 const char* const option_txt_1_2[] PROGMEM = {
 option_txt_1_2_0, option_txt_1_2_1, option_txt_1_2_2, NULL
 };
 
-const char title_txt_1_3[] PROGMEM = "\x11""Megapixels";
-const char option_txt_1_3_0[] PROGMEM = "\x00""12MP Wide";
-const char option_txt_1_3_1[] PROGMEM = "\x01""7MP Wide";
-const char option_txt_1_3_2[] PROGMEM = "\x02""7MP Med";
-const char option_txt_1_3_3[] PROGMEM = "\x03""5MP Med";
+const char title_txt_1_3[] PROGMEM = MENU_TEXT("\x11", "Megapixels");
+const char option_txt_1_3_0[] PROGMEM = MENU_TEXT("\x00", "12MP Wide");
+const char option_txt_1_3_1[] PROGMEM = MENU_TEXT("\x01", "7MP Wide");
+const char option_txt_1_3_2[] PROGMEM = MENU_TEXT("\x02", "7MP Med");
+const char option_txt_1_3_3[] PROGMEM = MENU_TEXT("\x03", "5MP Med");
 const char* const option_txt_1_3[] PROGMEM = {
 option_txt_1_3_0, option_txt_1_3_1, option_txt_1_3_2, option_txt_1_3_3, NULL
 };
 
-const char title_txt_1_4[] PROGMEM = "\x13""Shutter";
-const char option_txt_1_4_0[] PROGMEM = "\x00""Auto";
-const char option_txt_1_4_1[] PROGMEM = "\x01""2 Seconds";
-const char option_txt_1_4_2[] PROGMEM = "\x02""5 Seconds";
-const char option_txt_1_4_3[] PROGMEM = "\x03""10 Seconds";
-const char option_txt_1_4_4[] PROGMEM = "\x04""15 Seconds";
-const char option_txt_1_4_5[] PROGMEM = "\x05""20 Seconds";
-const char option_txt_1_4_6[] PROGMEM = "\x06""30 Seconds";
+const char title_txt_1_4[] PROGMEM = MENU_TEXT("\x13", "Shutter");
+const char option_txt_1_4_0[] PROGMEM = MENU_TEXT("\x00", "Auto");
+const char option_txt_1_4_1[] PROGMEM = MENU_TEXT("\x01", "2 Seconds");
+const char option_txt_1_4_2[] PROGMEM = MENU_TEXT("\x02", "5 Seconds");
+const char option_txt_1_4_3[] PROGMEM = MENU_TEXT("\x03", "10 Seconds");
+const char option_txt_1_4_4[] PROGMEM = MENU_TEXT("\x04", "15 Seconds");
+const char option_txt_1_4_5[] PROGMEM = MENU_TEXT("\x05", "20 Seconds");
+const char option_txt_1_4_6[] PROGMEM = MENU_TEXT("\x06", "30 Seconds");
 const char* const option_txt_1_4[] PROGMEM = {
 option_txt_1_4_0, option_txt_1_4_1, option_txt_1_4_2, option_txt_1_4_3, option_txt_1_4_4, option_txt_1_4_5, option_txt_1_4_6, NULL
 };
 
-const char title_txt_1_5[] PROGMEM = "\x14""Spot Meter";
-const char option_txt_1_5_0[] PROGMEM = "\x01""ON";
-const char option_txt_1_5_1[] PROGMEM = "\x00""OFF";
+const char title_txt_1_5[] PROGMEM = MENU_TEXT("\x14", "Spot Meter");
+const char option_txt_1_5_0[] PROGMEM = MENU_TEXT("\x01", "ON");
+const char option_txt_1_5_1[] PROGMEM = MENU_TEXT("\x00", "OFF");
 const char* const option_txt_1_5[] PROGMEM = {
 option_txt_1_5_0, option_txt_1_5_1, NULL
 };
 
-const char title_txt_1_6[] PROGMEM = "\x15""Protune";
-const char option_txt_1_6_0[] PROGMEM = "\x01""ON";
-const char option_txt_1_6_1[] PROGMEM = "\x00""OFF";
+const char title_txt_1_6[] PROGMEM = MENU_TEXT("\x15", "Protune");
+const char option_txt_1_6_0[] PROGMEM = MENU_TEXT("\x01", "ON");
+const char option_txt_1_6_1[] PROGMEM = MENU_TEXT("\x00", "OFF");
 const char* const option_txt_1_6[] PROGMEM = {
 option_txt_1_6_0, option_txt_1_6_1, NULL
 };
 
-const char title_txt_1_7[] PROGMEM = "\x16""White Balance";
-const char option_txt_1_7_0[] PROGMEM = "\x00""Auto";
-const char option_txt_1_7_1[] PROGMEM = "\x01""3000K";
-const char option_txt_1_7_2[] PROGMEM = "\x02""5500K";
-const char option_txt_1_7_3[] PROGMEM = "\x03""6500K";
-const char option_txt_1_7_4[] PROGMEM = "\x04""Native";
+const char title_txt_1_7[] PROGMEM = MENU_TEXT("\x16", "White Balance");
+const char option_txt_1_7_0[] PROGMEM = MENU_TEXT("\x00", "Auto");
+const char option_txt_1_7_1[] PROGMEM = MENU_TEXT("\x01", "3000K");
+const char option_txt_1_7_2[] PROGMEM = MENU_TEXT("\x02", "5500K");
+const char option_txt_1_7_3[] PROGMEM = MENU_TEXT("\x03", "6500K");
+const char option_txt_1_7_4[] PROGMEM = MENU_TEXT("\x04", "Native");
 const char* const option_txt_1_7[] PROGMEM = {
 option_txt_1_7_0, option_txt_1_7_1, option_txt_1_7_2, option_txt_1_7_3, option_txt_1_7_4, NULL
 };
 
-const char title_txt_1_8[] PROGMEM = "\x17""Color";
-const char option_txt_1_8_0[] PROGMEM = "\x00""GoPro Color";
-const char option_txt_1_8_1[] PROGMEM = "\x01""Flat";
+const char title_txt_1_8[] PROGMEM = MENU_TEXT("\x17", "Color");
+const char option_txt_1_8_0[] PROGMEM = MENU_TEXT("\x00", "GoPro Color");
+const char option_txt_1_8_1[] PROGMEM = MENU_TEXT("\x01", "Flat");
 const char* const option_txt_1_8[] PROGMEM = {
 option_txt_1_8_0, option_txt_1_8_1, NULL
 };
 
-const char title_txt_1_9[] PROGMEM = "\x19""Sharpness";
-const char option_txt_1_9_0[] PROGMEM = "\x00""High";
-const char option_txt_1_9_1[] PROGMEM = "\x01""Medium";
-const char option_txt_1_9_2[] PROGMEM = "\x02""Low";
+const char title_txt_1_9[] PROGMEM = MENU_TEXT("\x19", "Sharpness");
+const char option_txt_1_9_0[] PROGMEM = MENU_TEXT("\x00", "High");
+const char option_txt_1_9_1[] PROGMEM = MENU_TEXT("\x01", "Medium");
+const char option_txt_1_9_2[] PROGMEM = MENU_TEXT("\x02", "Low");
 const char* const option_txt_1_9[] PROGMEM = {
 option_txt_1_9_0, option_txt_1_9_1, option_txt_1_9_2, NULL
 };
 
-const char title_txt_1_10[] PROGMEM = "\x1a""EV Comp";
-const char option_txt_1_10_0[] PROGMEM = "\x08""-2.0";
-const char option_txt_1_10_1[] PROGMEM = "\x07""-1.5";
-const char option_txt_1_10_2[] PROGMEM = "\x06""-1.0";
-const char option_txt_1_10_3[] PROGMEM = "\x05""-0.5";
-const char option_txt_1_10_4[] PROGMEM = "\x04""0.0";
-const char option_txt_1_10_5[] PROGMEM = "\x03""0.5";
-const char option_txt_1_10_6[] PROGMEM = "\x02""1.0";
-const char option_txt_1_10_7[] PROGMEM = "\x01""1.5";
-const char option_txt_1_10_8[] PROGMEM = "\x00""2.0";
+const char title_txt_1_10[] PROGMEM = MENU_TEXT("\x1a", "EV Comp");
+const char option_txt_1_10_0[] PROGMEM = MENU_TEXT("\x08", "-2.0");
+const char option_txt_1_10_1[] PROGMEM = MENU_TEXT("\x07", "-1.5");
+const char option_txt_1_10_2[] PROGMEM = MENU_TEXT("\x06", "-1.0");
+const char option_txt_1_10_3[] PROGMEM = MENU_TEXT("\x05", "-0.5");
+const char option_txt_1_10_4[] PROGMEM = MENU_TEXT("\x04", "0.0");
+const char option_txt_1_10_5[] PROGMEM = MENU_TEXT("\x03", "0.5");
+const char option_txt_1_10_6[] PROGMEM = MENU_TEXT("\x02", "1.0");
+const char option_txt_1_10_7[] PROGMEM = MENU_TEXT("\x01", "1.5");
+const char option_txt_1_10_8[] PROGMEM = MENU_TEXT("\x00", "2.0");
 const char* const option_txt_1_10[] PROGMEM = {
 option_txt_1_10_0, option_txt_1_10_1, option_txt_1_10_2, option_txt_1_10_3, option_txt_1_10_4, option_txt_1_10_5, option_txt_1_10_6, option_txt_1_10_7, option_txt_1_10_8, NULL
 };
 
-const char title_txt_1_11[] PROGMEM = "\x18""ISO Limit";
-const char option_txt_1_11_0[] PROGMEM = "\x00""800";
-const char option_txt_1_11_1[] PROGMEM = "\x01""400";
-const char option_txt_1_11_2[] PROGMEM = "\x02""200";
-const char option_txt_1_11_3[] PROGMEM = "\x03""100";
+const char title_txt_1_11[] PROGMEM = MENU_TEXT("\x18", "ISO Limit");
+const char option_txt_1_11_0[] PROGMEM = MENU_TEXT("\x00", "800");
+const char option_txt_1_11_1[] PROGMEM = MENU_TEXT("\x01", "400");
+const char option_txt_1_11_2[] PROGMEM = MENU_TEXT("\x02", "200");
+const char option_txt_1_11_3[] PROGMEM = MENU_TEXT("\x03", "100");
 const char* const option_txt_1_11[] PROGMEM = {
 option_txt_1_11_0, option_txt_1_11_1, option_txt_1_11_2, option_txt_1_11_3, NULL
 };
 
 
 //
-const char title_txt_2_0[] PROGMEM = "\x1b""Default Sub Mode";
-const char option_txt_2_0_0[] PROGMEM = "\x00""Burst";
-const char option_txt_2_0_1[] PROGMEM = "\x01""Time Lapse";
-const char option_txt_2_0_2[] PROGMEM = "\x02""Night Lapse";
+const char title_txt_2_0[] PROGMEM = MENU_TEXT("\x1b", "Default Sub Mode");
+const char option_txt_2_0_0[] PROGMEM = MENU_TEXT("\x00", "Burst");
+const char option_txt_2_0_1[] PROGMEM = MENU_TEXT("\x01", "Time Lapse");
+const char option_txt_2_0_2[] PROGMEM = MENU_TEXT("\x02", "Night Lapse");
 const char* const option_txt_2_0[] PROGMEM = {
 option_txt_2_0_0, option_txt_2_0_1, option_txt_2_0_2, NULL
 };
 
-const char title_txt_2_1[] PROGMEM = "\x46""Sub Mode";
-const char option_txt_2_1_0[] PROGMEM = "\x00""Burst";
-const char option_txt_2_1_1[] PROGMEM = "\x01""Time Lapse";
-const char option_txt_2_1_2[] PROGMEM = "\x02""Night Lapse";
+const char title_txt_2_1[] PROGMEM = MENU_TEXT("\x46", "Sub Mode");
+const char option_txt_2_1_0[] PROGMEM = MENU_TEXT("\x00", "Burst");
+const char option_txt_2_1_1[] PROGMEM = MENU_TEXT("\x01", "Time Lapse");
+const char option_txt_2_1_2[] PROGMEM = MENU_TEXT("\x02", "Night Lapse");
 const char* const option_txt_2_1[] PROGMEM = {
 option_txt_2_1_0, option_txt_2_1_1, option_txt_2_1_2, NULL
 };
 
-const char title_txt_2_2[] PROGMEM = "\x1f""Shutter";
-//const char option_txt_2_2_0[] PROGMEM = "\x00""Auto"; // auto exposure is not supported
-const char option_txt_2_2_1[] PROGMEM = "\x01""2 Seconds";
-const char option_txt_2_2_2[] PROGMEM = "\x02""5 Seconds";
-const char option_txt_2_2_3[] PROGMEM = "\x03""10 Seconds";
-const char option_txt_2_2_4[] PROGMEM = "\x04""15 Seconds";
-const char option_txt_2_2_5[] PROGMEM = "\x05""20 Seconds";
-const char option_txt_2_2_6[] PROGMEM = "\x06""30 Seconds";
+const char title_txt_2_2[] PROGMEM = MENU_TEXT("\x1f", "Shutter");
+//const char option_txt_2_2_0[] PROGMEM = MENU_TEXT("\x00", "Auto"); // auto exposure is not supported
+const char option_txt_2_2_1[] PROGMEM = MENU_TEXT("\x01", "2 Seconds");
+const char option_txt_2_2_2[] PROGMEM = MENU_TEXT("\x02", "5 Seconds");
+const char option_txt_2_2_3[] PROGMEM = MENU_TEXT("\x03", "10 Seconds");
+const char option_txt_2_2_4[] PROGMEM = MENU_TEXT("\x04", "15 Seconds");
+const char option_txt_2_2_5[] PROGMEM = MENU_TEXT("\x05", "20 Seconds");
+const char option_txt_2_2_6[] PROGMEM = MENU_TEXT("\x06", "30 Seconds");
 const char* const option_txt_2_2[] PROGMEM = {
 /* option_txt_2_2_0, */ option_txt_2_2_1, option_txt_2_2_2, option_txt_2_2_3, option_txt_2_2_4, option_txt_2_2_5, option_txt_2_2_6, NULL
 };
 
-const char title_txt_2_3[] PROGMEM = "\x1d""Burst Rate";
-const char option_txt_2_3_0[] PROGMEM = "\x00""3 P / 1 Sec";
-const char option_txt_2_3_1[] PROGMEM = "\x01""5 P / 1 Sec";
-const char option_txt_2_3_2[] PROGMEM = "\x02""10 P / 1 Sec";
-const char option_txt_2_3_3[] PROGMEM = "\x03""10 P / 2 Sec";
-const char option_txt_2_3_4[] PROGMEM = "\x04""10 P / 3 Sec";
-const char option_txt_2_3_5[] PROGMEM = "\x05""30 P / 1 Sec";
-const char option_txt_2_3_6[] PROGMEM = "\x06""30 P / 2 Sec";
-const char option_txt_2_3_7[] PROGMEM = "\x07""30 P / 3 Sec";
-const char option_txt_2_3_8[] PROGMEM = "\x08""30 P / 6 Sec";
+const char title_txt_2_3[] PROGMEM = MENU_TEXT("\x1d", "Burst Rate");
+const char option_txt_2_3_0[] PROGMEM = MENU_TEXT("\x00", "3 P / 1 Sec");
+const char option_txt_2_3_1[] PROGMEM = MENU_TEXT("\x01", "5 P / 1 Sec");
+const char option_txt_2_3_2[] PROGMEM = MENU_TEXT("\x02", "10 P / 1 Sec");
+const char option_txt_2_3_3[] PROGMEM = MENU_TEXT("\x03", "10 P / 2 Sec");
+const char option_txt_2_3_4[] PROGMEM = MENU_TEXT("\x04", "10 P / 3 Sec");
+const char option_txt_2_3_5[] PROGMEM = MENU_TEXT("\x05", "30 P / 1 Sec");
+const char option_txt_2_3_6[] PROGMEM = MENU_TEXT("\x06", "30 P / 2 Sec");
+const char option_txt_2_3_7[] PROGMEM = MENU_TEXT("\x07", "30 P / 3 Sec");
+const char option_txt_2_3_8[] PROGMEM = MENU_TEXT("\x08", "30 P / 6 Sec");
 const char* const option_txt_2_3[] PROGMEM = {
 option_txt_2_3_0, option_txt_2_3_1, option_txt_2_3_2, option_txt_2_3_3, option_txt_2_3_4, option_txt_2_3_5, option_txt_2_3_6, option_txt_2_3_7, option_txt_2_3_8, NULL
 };
 
-const char title_txt_2_4[] PROGMEM = "\x1e""Interval";
-const char option_txt_2_4_0[] PROGMEM = "\x00""1 P / 0.5 Sec";
-const char option_txt_2_4_1[] PROGMEM = "\x01""1 P / 1 Sec";
-const char option_txt_2_4_2[] PROGMEM = "\x02""1 P / 2 Sec";
-const char option_txt_2_4_3[] PROGMEM = "\x03""1 P / 5 Sec";
-const char option_txt_2_4_4[] PROGMEM = "\x04""1 P / 10 Sec";
-const char option_txt_2_4_5[] PROGMEM = "\x05""1 P / 30 Sec";
-const char option_txt_2_4_6[] PROGMEM = "\x06""1 P / 60 Sec";
+const char title_txt_2_4[] PROGMEM = MENU_TEXT("\x1e", "Interval");
+const char option_txt_2_4_0[] PROGMEM = MENU_TEXT("\x00", "1 P / 0.5 Sec");
+const char option_txt_2_4_1[] PROGMEM = MENU_TEXT("\x01", "1 P / 1 Sec");
+const char option_txt_2_4_2[] PROGMEM = MENU_TEXT("\x02", "1 P / 2 Sec");
+const char option_txt_2_4_3[] PROGMEM = MENU_TEXT("\x03", "1 P / 5 Sec");
+const char option_txt_2_4_4[] PROGMEM = MENU_TEXT("\x04", "1 P / 10 Sec");
+const char option_txt_2_4_5[] PROGMEM = MENU_TEXT("\x05", "1 P / 30 Sec");
+const char option_txt_2_4_6[] PROGMEM = MENU_TEXT("\x06", "1 P / 60 Sec");
 const char* const option_txt_2_4[] PROGMEM = {
 option_txt_2_4_0, option_txt_2_4_1, option_txt_2_4_2, option_txt_2_4_3, option_txt_2_4_4, option_txt_2_4_5, option_txt_2_4_6, NULL
 };
 
-const char title_txt_2_5[] PROGMEM = "\x20""Interval";
-//const char option_txt_2_5_0[] PROGMEM = "\x09""Continuous"; // continuous mode is not supported
-const char option_txt_2_5_1[] PROGMEM = "\x0a""4 Seconds";
-const char option_txt_2_5_2[] PROGMEM = "\x0b""5 Seconds";
-const char option_txt_2_5_3[] PROGMEM = "\x00""10 Seconds";
-const char option_txt_2_5_4[] PROGMEM = "\x01""15 Seconds";
-const char option_txt_2_5_5[] PROGMEM = "\x02""20 Seconds";
-const char option_txt_2_5_6[] PROGMEM = "\x03""30 Seconds";
-const char option_txt_2_5_7[] PROGMEM = "\x04""1 Minute";
-const char option_txt_2_5_8[] PROGMEM = "\x05""2 Minutes";
-const char option_txt_2_5_9[] PROGMEM = "\x06""5 Minutes";
-const char option_txt_2_5_10[] PROGMEM = "\x07""30 Minutes";
-const char option_txt_2_5_11[] PROGMEM = "\x08""60 Minutes";
+const char title_txt_2_5[] PROGMEM = MENU_TEXT("\x20", "Interval");
+//const char option_txt_2_5_0[] PROGMEM = MENU_TEXT("\x09", "Continuous"); // continuous mode is not supported
+const char option_txt_2_5_1[] PROGMEM = MENU_TEXT("\x0a", "4 Seconds");
+const char option_txt_2_5_2[] PROGMEM = MENU_TEXT("\x0b", "5 Seconds");
+const char option_txt_2_5_3[] PROGMEM = MENU_TEXT("\x00", "10 Seconds");
+const char option_txt_2_5_4[] PROGMEM = MENU_TEXT("\x01", "15 Seconds");
+const char option_txt_2_5_5[] PROGMEM = MENU_TEXT("\x02", "20 Seconds");
+const char option_txt_2_5_6[] PROGMEM = MENU_TEXT("\x03", "30 Seconds");
+const char option_txt_2_5_7[] PROGMEM = MENU_TEXT("\x04", "1 Minute");
+const char option_txt_2_5_8[] PROGMEM = MENU_TEXT("\x05", "2 Minutes");
+const char option_txt_2_5_9[] PROGMEM = MENU_TEXT("\x06", "5 Minutes");
+const char option_txt_2_5_10[] PROGMEM = MENU_TEXT("\x07", "30 Minutes");
+const char option_txt_2_5_11[] PROGMEM = MENU_TEXT("\x08", "60 Minutes");
 const char* const option_txt_2_5[] PROGMEM = {
 /* option_txt_2_5_0, */ option_txt_2_5_1, option_txt_2_5_2, option_txt_2_5_3, option_txt_2_5_4, option_txt_2_5_5, option_txt_2_5_6, option_txt_2_5_7, option_txt_2_5_8, option_txt_2_5_9, option_txt_2_5_10, option_txt_2_5_11, NULL
 };
 
-const char title_txt_2_6[] PROGMEM = "\x1c""Megapixels";
-const char option_txt_2_6_0[] PROGMEM = "\x00""12MP Wide";
-const char option_txt_2_6_1[] PROGMEM = "\x01""7MP Wide";
-const char option_txt_2_6_2[] PROGMEM = "\x02""7MP Med";
-const char option_txt_2_6_3[] PROGMEM = "\x03""5MP Med";
+const char title_txt_2_6[] PROGMEM = MENU_TEXT("\x1c", "Megapixels");
+const char option_txt_2_6_0[] PROGMEM = MENU_TEXT("\x00", "12MP Wide");
+const char option_txt_2_6_1[] PROGMEM = MENU_TEXT("\x01", "7MP Wide");
+const char option_txt_2_6_2[] PROGMEM = MENU_TEXT("\x02", "7MP Med");
+const char option_txt_2_6_3[] PROGMEM = MENU_TEXT("\x03", "5MP Med");
 const char* const option_txt_2_6[] PROGMEM = {
 option_txt_2_6_0, option_txt_2_6_1, option_txt_2_6_2, option_txt_2_6_3, NULL
 };
 
-const char title_txt_2_7[] PROGMEM = "\x21""Spot Meter";
-const char option_txt_2_7_0[] PROGMEM = "\x01""ON";
-const char option_txt_2_7_1[] PROGMEM = "\x00""OFF";
+const char title_txt_2_7[] PROGMEM = MENU_TEXT("\x21", "Spot Meter");
+const char option_txt_2_7_0[] PROGMEM = MENU_TEXT("\x01", "ON");
+const char option_txt_2_7_1[] PROGMEM = MENU_TEXT("\x00", "OFF");
 const char* const option_txt_2_7[] PROGMEM = {
 option_txt_2_7_0, option_txt_2_7_1, NULL
 };
 
-const char title_txt_2_8[] PROGMEM = "\x22""Protune";
-const char option_txt_2_8_0[] PROGMEM = "\x01""ON";
-const char option_txt_2_8_1[] PROGMEM = "\x00""OFF";
+const char title_txt_2_8[] PROGMEM = MENU_TEXT("\x22", "Protune");
+const char option_txt_2_8_0[] PROGMEM = MENU_TEXT("\x01", "ON");
+const char option_txt_2_8_1[] PROGMEM = MENU_TEXT("\x00", "OFF");
 const char* const option_txt_2_8[] PROGMEM = {
 option_txt_2_8_0, option_txt_2_8_1, NULL
 };
 
-const char title_txt_2_9[] PROGMEM = "\x23""White Balance";
-const char option_txt_2_9_0[] PROGMEM = "\x00""Auto";
-const char option_txt_2_9_1[] PROGMEM = "\x01""3000K";
-const char option_txt_2_9_2[] PROGMEM = "\x02""5500K";
-const char option_txt_2_9_3[] PROGMEM = "\x03""6500K";
-const char option_txt_2_9_4[] PROGMEM = "\x04""Native";
+const char title_txt_2_9[] PROGMEM = MENU_TEXT("\x23", "White Balance");
+const char option_txt_2_9_0[] PROGMEM = MENU_TEXT("\x00", "Auto");
+const char option_txt_2_9_1[] PROGMEM = MENU_TEXT("\x01", "3000K");
+const char option_txt_2_9_2[] PROGMEM = MENU_TEXT("\x02", "5500K");
+const char option_txt_2_9_3[] PROGMEM = MENU_TEXT("\x03", "6500K");
+const char option_txt_2_9_4[] PROGMEM = MENU_TEXT("\x04", "Native");
 const char* const option_txt_2_9[] PROGMEM = {
 option_txt_2_9_0, option_txt_2_9_1, option_txt_2_9_2, option_txt_2_9_3, option_txt_2_9_4, NULL
 };
 
-const char title_txt_2_10[] PROGMEM = "\x24""Color";
-const char option_txt_2_10_0[] PROGMEM = "\x00""GoPro Color";
-const char option_txt_2_10_1[] PROGMEM = "\x01""Flat";
+const char title_txt_2_10[] PROGMEM = MENU_TEXT("\x24", "Color");
+const char option_txt_2_10_0[] PROGMEM = MENU_TEXT("\x00", "GoPro Color");
+const char option_txt_2_10_1[] PROGMEM = MENU_TEXT("\x01", "Flat");
 const char* const option_txt_2_10[] PROGMEM = {
 option_txt_2_10_0, option_txt_2_10_1, NULL
 };
 
-const char title_txt_2_11[] PROGMEM = "\x26""Sharpness";
-const char option_txt_2_11_0[] PROGMEM = "\x00""High";
-const char option_txt_2_11_1[] PROGMEM = "\x01""Medium";
-const char option_txt_2_11_2[] PROGMEM = "\x02""Low";
+const char title_txt_2_11[] PROGMEM = MENU_TEXT("\x26", "Sharpness");
+const char option_txt_2_11_0[] PROGMEM = MENU_TEXT("\x00", "High");
+const char option_txt_2_11_1[] PROGMEM = MENU_TEXT("\x01", "Medium");
+const char option_txt_2_11_2[] PROGMEM = MENU_TEXT("\x02", "Low");
 const char* const option_txt_2_11[] PROGMEM = {
 option_txt_2_11_0, option_txt_2_11_1, option_txt_2_11_2, NULL
 };
 
-const char title_txt_2_12[] PROGMEM = "\x27""EV Comp";
-const char option_txt_2_12_0[] PROGMEM = "\x08""-2.0";
-const char option_txt_2_12_1[] PROGMEM = "\x07""-1.5";
-const char option_txt_2_12_2[] PROGMEM = "\x06""-1.0";
-const char option_txt_2_12_3[] PROGMEM = "\x05""-0.5";
-const char option_txt_2_12_4[] PROGMEM = "\x04""0.0";
-const char option_txt_2_12_5[] PROGMEM = "\x03""0.5";
-const char option_txt_2_12_6[] PROGMEM = "\x02""1.0";
-const char option_txt_2_12_7[] PROGMEM = "\x01""1.5";
-const char option_txt_2_12_8[] PROGMEM = "\x00""2.0";
+const char title_txt_2_12[] PROGMEM = MENU_TEXT("\x27", "EV Comp");
+const char option_txt_2_12_0[] PROGMEM = MENU_TEXT("\x08", "-2.0");
+const char option_txt_2_12_1[] PROGMEM = MENU_TEXT("\x07", "-1.5");
+const char option_txt_2_12_2[] PROGMEM = MENU_TEXT("\x06", "-1.0");
+const char option_txt_2_12_3[] PROGMEM = MENU_TEXT("\x05", "-0.5");
+const char option_txt_2_12_4[] PROGMEM = MENU_TEXT("\x04", "0.0");
+const char option_txt_2_12_5[] PROGMEM = MENU_TEXT("\x03", "0.5");
+const char option_txt_2_12_6[] PROGMEM = MENU_TEXT("\x02", "1.0");
+const char option_txt_2_12_7[] PROGMEM = MENU_TEXT("\x01", "1.5");
+const char option_txt_2_12_8[] PROGMEM = MENU_TEXT("\x00", "2.0");
 const char* const option_txt_2_12[] PROGMEM = {
 option_txt_2_12_0, option_txt_2_12_1, option_txt_2_12_2, option_txt_2_12_3, option_txt_2_12_4, option_txt_2_12_5, option_txt_2_12_6, option_txt_2_12_7, option_txt_2_12_8, NULL
 };
 
-const char title_txt_2_13[] PROGMEM = "\x25""ISO Limit";
-const char option_txt_2_13_0[] PROGMEM = "\x00""800";
-const char option_txt_2_13_1[] PROGMEM = "\x01""400";
-const char option_txt_2_13_2[] PROGMEM = "\x02""200";
-const char option_txt_2_13_3[] PROGMEM = "\x03""100";
+const char title_txt_2_13[] PROGMEM = MENU_TEXT("\x25", "ISO Limit");
+const char option_txt_2_13_0[] PROGMEM = MENU_TEXT("\x00", "800");
+const char option_txt_2_13_1[] PROGMEM = MENU_TEXT("\x01", "400");
+const char option_txt_2_13_2[] PROGMEM = MENU_TEXT("\x02", "200");
+const char option_txt_2_13_3[] PROGMEM = MENU_TEXT("\x03", "100");
 const char* const option_txt_2_13[] PROGMEM = {
 option_txt_2_13_0, option_txt_2_13_1, option_txt_2_13_2, option_txt_2_13_3, NULL
 };
 
 
 //
-const char title_txt_3_0[] PROGMEM = "\x48""LCD Display";
-const char option_txt_3_0_0[] PROGMEM = "\x01""ON";
-const char option_txt_3_0_1[] PROGMEM = "\x00""OFF";
+const char title_txt_3_0[] PROGMEM = MENU_TEXT("\x48", "LCD Display");
+const char option_txt_3_0_0[] PROGMEM = MENU_TEXT("\x01", "ON");
+const char option_txt_3_0_1[] PROGMEM = MENU_TEXT("\x00", "OFF");
 const char* const option_txt_3_0[] PROGMEM = {
 option_txt_3_0_0, option_txt_3_0_1, NULL
 };
 
-const char title_txt_3_1[] PROGMEM = "\x31""LCD Brightness";
-const char option_txt_3_1_0[] PROGMEM = "\x00""High";
-const char option_txt_3_1_1[] PROGMEM = "\x01""Medium";
-const char option_txt_3_1_2[] PROGMEM = "\x02""Low";
+const char title_txt_3_1[] PROGMEM = MENU_TEXT("\x31", "LCD Brightness");
+const char option_txt_3_1_0[] PROGMEM = MENU_TEXT("\x00", "High");
+const char option_txt_3_1_1[] PROGMEM = MENU_TEXT("\x01", "Medium");
+const char option_txt_3_1_2[] PROGMEM = MENU_TEXT("\x02", "Low");
 const char* const option_txt_3_1[] PROGMEM = {
 option_txt_3_1_0, option_txt_3_1_1, option_txt_3_1_2, NULL
 };
 
-const char title_txt_3_2[] PROGMEM = "\x32""LCD Lock";
-const char option_txt_3_2_0[] PROGMEM = "\x01""ON";
-const char option_txt_3_2_1[] PROGMEM = "\x00""OFF";
+const char title_txt_3_2[] PROGMEM = MENU_TEXT("\x32", "LCD Lock");
+const char option_txt_3_2_0[] PROGMEM = MENU_TEXT("\x01", "ON");
+const char option_txt_3_2_1[] PROGMEM = MENU_TEXT("\x00", "OFF");
 const char* const option_txt_3_2[] PROGMEM = {
 option_txt_3_2_0, option_txt_3_2_1, NULL
 };
 
-const char title_txt_3_3[] PROGMEM = "\x33""LCD Sleep";
-const char option_txt_3_3_0[] PROGMEM = "\x00""Never";
-const char option_txt_3_3_1[] PROGMEM = "\x01""1 MIN";
-const char option_txt_3_3_2[] PROGMEM = "\x02""2 MIN";
-const char option_txt_3_3_3[] PROGMEM = "\x03""3 MIN";
+const char title_txt_3_3[] PROGMEM = MENU_TEXT("\x33", "LCD Sleep");
+const char option_txt_3_3_0[] PROGMEM = MENU_TEXT("\x00", "Never");
+const char option_txt_3_3_1[] PROGMEM = MENU_TEXT("\x01", "1 MIN");
+const char option_txt_3_3_2[] PROGMEM = MENU_TEXT("\x02", "2 MIN");
+const char option_txt_3_3_3[] PROGMEM = MENU_TEXT("\x03", "3 MIN");
 const char* const option_txt_3_3[] PROGMEM = {
 option_txt_3_3_0, option_txt_3_3_1, option_txt_3_3_2, option_txt_3_3_3, NULL
 };
 
-const char title_txt_3_4[] PROGMEM = "\x34""Orientation";
-const char option_txt_3_4_0[] PROGMEM = "\x01""Up";
-const char option_txt_3_4_1[] PROGMEM = "\x02""Down";
-const char option_txt_3_4_2[] PROGMEM = "\x00""Auto";
+const char title_txt_3_4[] PROGMEM = MENU_TEXT("\x34", "Orientation");
+const char option_txt_3_4_0[] PROGMEM = MENU_TEXT("\x01", "Up");
+const char option_txt_3_4_1[] PROGMEM = MENU_TEXT("\x02", "Down");
+const char option_txt_3_4_2[] PROGMEM = MENU_TEXT("\x00", "Auto");
 const char* const option_txt_3_4[] PROGMEM = {
 option_txt_3_4_0, option_txt_3_4_1, option_txt_3_4_2, NULL
 };
 
-const char title_txt_3_5[] PROGMEM = "\x35""Default Mode";
-const char option_txt_3_5_0[] PROGMEM = "\x00""Video";
-const char option_txt_3_5_1[] PROGMEM = "\x01""Photo";
-const char option_txt_3_5_2[] PROGMEM = "\x02""Multi-shot";
+const char title_txt_3_5[] PROGMEM = MENU_TEXT("\x35", "Default Mode");
+const char option_txt_3_5_0[] PROGMEM = MENU_TEXT("\x00", "Video");
+const char option_txt_3_5_1[] PROGMEM = MENU_TEXT("\x01", "Photo");
+const char option_txt_3_5_2[] PROGMEM = MENU_TEXT("\x02", "Multi-shot");
 const char* const option_txt_3_5[] PROGMEM = {
 option_txt_3_5_0, option_txt_3_5_1, option_txt_3_5_2, NULL
 };
 
-const char title_txt_3_6[] PROGMEM = "\x36""Quick Capture";
-const char option_txt_3_6_0[] PROGMEM = "\x01""ON";
-const char option_txt_3_6_1[] PROGMEM = "\x00""OFF";
+const char title_txt_3_6[] PROGMEM = MENU_TEXT("\x36", "Quick Capture");
+const char option_txt_3_6_0[] PROGMEM = MENU_TEXT("\x01", "ON");
+const char option_txt_3_6_1[] PROGMEM = MENU_TEXT("\x00", "OFF");
 const char* const option_txt_3_6[] PROGMEM = {
 option_txt_3_6_0, option_txt_3_6_1, NULL
 };
 
-const char title_txt_3_7[] PROGMEM = "\x37""LED Blink";
-const char option_txt_3_7_0[] PROGMEM = "\x00""OFF";
-const char option_txt_3_7_1[] PROGMEM = "\x01""2";
-const char option_txt_3_7_2[] PROGMEM = "\x02""4";
+const char title_txt_3_7[] PROGMEM = MENU_TEXT("\x37", "LED Blink");
+const char option_txt_3_7_0[] PROGMEM = MENU_TEXT("\x00", "OFF");
+const char option_txt_3_7_1[] PROGMEM = MENU_TEXT("\x01", "2");
+const char option_txt_3_7_2[] PROGMEM = MENU_TEXT("\x02", "4");
 const char* const option_txt_3_7[] PROGMEM = {
 option_txt_3_7_0, option_txt_3_7_1, option_txt_3_7_2, NULL
 };
 
-const char title_txt_3_8[] PROGMEM = "\x38""Beeps";
-const char option_txt_3_8_0[] PROGMEM = "\x00""100%";
-const char option_txt_3_8_1[] PROGMEM = "\x01""70%";
-const char option_txt_3_8_2[] PROGMEM = "\x02""OFF";
+const char title_txt_3_8[] PROGMEM = MENU_TEXT("\x38", "Beeps");
+const char option_txt_3_8_0[] PROGMEM = MENU_TEXT("\x00", "100%");
+const char option_txt_3_8_1[] PROGMEM = MENU_TEXT("\x01", "70%");
+const char option_txt_3_8_2[] PROGMEM = MENU_TEXT("\x02", "OFF");
 const char* const option_txt_3_8[] PROGMEM = {
 option_txt_3_8_0, option_txt_3_8_1, option_txt_3_8_2, NULL
 };
 
-const char title_txt_3_9[] PROGMEM = "\x39""Video Format";
-const char option_txt_3_9_0[] PROGMEM = "\x00""NTSC";
-const char option_txt_3_9_1[] PROGMEM = "\x01""PAL";
+const char title_txt_3_9[] PROGMEM = MENU_TEXT("\x39", "Video Format");
+const char option_txt_3_9_0[] PROGMEM = MENU_TEXT("\x00", "NTSC");
+const char option_txt_3_9_1[] PROGMEM = MENU_TEXT("\x01", "PAL");
 const char* const option_txt_3_9[] PROGMEM = {
 option_txt_3_9_0, option_txt_3_9_1, NULL
 };
 
-const char title_txt_3_10[] PROGMEM = "\x3a""OSD";
-const char option_txt_3_10_0[] PROGMEM = "\x01""ON";
-const char option_txt_3_10_1[] PROGMEM = "\x00""OFF";
+const char title_txt_3_10[] PROGMEM = MENU_TEXT("\x3a", "OSD");
+const char option_txt_3_10_0[] PROGMEM = MENU_TEXT("\x01", "ON");
+const char option_txt_3_10_1[] PROGMEM = MENU_TEXT("\x00", "OFF");
 const char* const option_txt_3_10[] PROGMEM = {
 option_txt_3_10_0, option_txt_3_10_1, NULL
 };
 
-const char title_txt_3_11[] PROGMEM = "\x3b""Auto Off";
-const char option_txt_3_11_0[] PROGMEM = "\x00""NEVER";
-const char option_txt_3_11_1[] PROGMEM = "\x01""1 MIN";
-const char option_txt_3_11_2[] PROGMEM = "\x02""2 MIN";
-const char option_txt_3_11_3[] PROGMEM = "\x03""3 MIN";
-const char option_txt_3_11_4[] PROGMEM = "\x04""5 MIN";
+const char title_txt_3_11[] PROGMEM = MENU_TEXT("\x3b", "Auto Off");
+const char option_txt_3_11_0[] PROGMEM = MENU_TEXT("\x00", "NEVER");
+const char option_txt_3_11_1[] PROGMEM = MENU_TEXT("\x01", "1 MIN");
+const char option_txt_3_11_2[] PROGMEM = MENU_TEXT("\x02", "2 MIN");
+const char option_txt_3_11_3[] PROGMEM = MENU_TEXT("\x03", "3 MIN");
+const char option_txt_3_11_4[] PROGMEM = MENU_TEXT("\x04", "5 MIN");
 const char* const option_txt_3_11[] PROGMEM = {
 option_txt_3_11_0, option_txt_3_11_1, option_txt_3_11_2, option_txt_3_11_3, option_txt_3_11_4, NULL
 };
 
-const char title_txt_3_12[] PROGMEM = "\x3f""Wireless Mode";
-const char option_txt_3_12_0[] PROGMEM = "\x00""OFF";
-const char option_txt_3_12_1[] PROGMEM = "\x01""App";
-const char option_txt_3_12_2[] PROGMEM = "\x02""RC";
-const char option_txt_3_12_3[] PROGMEM = "\x04""Smart";
+const char title_txt_3_12[] PROGMEM = MENU_TEXT("\x3f", "Wireless Mode");
+const char option_txt_3_12_0[] PROGMEM = MENU_TEXT("\x00", "OFF");
+const char option_txt_3_12_1[] PROGMEM = MENU_TEXT("\x01", "App");
+const char option_txt_3_12_2[] PROGMEM = MENU_TEXT("\x02", "RC");
+const char option_txt_3_12_3[] PROGMEM = MENU_TEXT("\x04", "Smart");
 const char* const option_txt_3_12[] PROGMEM = {
 option_txt_3_12_0, option_txt_3_12_1, option_txt_3_12_2, option_txt_3_12_3, NULL
 };

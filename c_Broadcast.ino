@@ -12,7 +12,7 @@ void startup0()
 {
 #ifdef HERO_4_SILVER
   if (!setting.p.lcd) {
-    // this setting will be ignored by the camera
+    // explicitly send the command for LCD OFF otherwise stored setting will be ignored by the camera
     FIFOCPY_P(0, F("YY000707000100\n"), 15);
     FIFO_INC(15);
   }
