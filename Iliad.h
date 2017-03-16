@@ -7,36 +7,42 @@
 #define HERO_4_BLACK
 #undef  HERO_4_SILVER
 
-#define  USE_LCD
-
 #include "MenuText.h"
 
-#define __VERSION_STRING__ "v1.2.22"
+#define __VERSION_STRING__ "v1.3.0"
 
 #ifdef USE_LCD
-#include <LiquidCrystal.h>
+#  include <LiquidCrystal.h>
 // initialize the library with the numbers of the interface pins
 // lcd(RS, Enable, Data4, Data5, Data6, Data7)
 LiquidCrystal lcd(LCD_RS, LCD_ENABLE, LCD_DATA4, LCD_DATA5, LCD_DATA6, LCD_DATA7);
-#define LCD_SIZE_X 16
-#define LCD_SIZE_Y 2
-#endif
+#  define LCD_SIZE_X 16
+#  define LCD_SIZE_Y 2
+#endif /* USE_LCD */
 
+#ifdef USE_IR_REMOTE
 // using IRremote library at
 //     https://github.com/z3t0/Arduino-IRremote
 // WARNING: The IRremote library conflicts with RobotIRremote library in the standard Arduino IDE.
 // So please delete your_IDE_folder/Contents/Java/libraries/RobotIRremote 
-#include <IRremote.h>
+// ***** comment out the following line unless USE_IR_REMOTE
+#  include <IRremote.h>
 IRrecv irrecv(IR_RECEIVE);
+#endif /* USE_IR_REMOTE */
 
-#include <Wire.h>
+#ifdef USE_RTC
+#  include <Wire.h>
 // using RTClib at
 //     https://learn.adafruit.com/adafruit-ds3231-precision-rtc-breakout/wiring-and-test
-#include "RTClib.h"
+// ***** comment out the following line unless USE_RTC
+#  include "RTClib.h"
 RTC_DS3231 rtc;
-
-// Input from PC or master camera
-#define SERIAL Serial
+#else
+// Time and TimeAlarms libraries are downloadable from
+//   http://www.pjrc.com/teensy/td_libs_Time.html
+// ***** uncomment unless USE_RTC
+//#  include <TimeLib.h>
+#endif /* USE_RTC */
 
 #define MEWPRO_BUFFER_LENGTH 256
 
@@ -45,7 +51,7 @@ int fifo_readindex = 0;
 int fifo_writeindex = 0;
 #define FIFO(i) (command_buf[(fifo_writeindex + (i)) % MEWPRO_BUFFER_LENGTH])
 #define FIFO_INC(n) do { fifo_writeindex = (fifo_writeindex + (n)) % MEWPRO_BUFFER_LENGTH; } while (0)
-#define WRITE_CHAR(c) do { BROADCAST.write(c); SERIAL.print(c); } while (0)
+#define WRITE_CHAR(c) do { BROADCAST.write(c); DEBUG_print(c); } while (0)
 
 byte buf[MEWPRO_BUFFER_LENGTH];
 int bufp = 6;
@@ -99,6 +105,7 @@ void startup4(void);
 void startup5(void);
 
 void (*startup[])(void) = {
+#ifdef EMIT_STARTUP_COMMANDS
   startup_delay0,
   startup0, startup_delay,
   startup1, startup_delay, 
@@ -106,6 +113,7 @@ void (*startup[])(void) = {
   startup3, startup_delay,
   startup4, startup_delay,
   startup5,
+#endif
   NULL
 };
 

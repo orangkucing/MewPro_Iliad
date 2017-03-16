@@ -5,9 +5,17 @@ const char KEY_OK    = _BV(1);
 const char KEY_DOWN  = _BV(2);
 const char KEY_POWER = _BV(3);
 
+#ifdef USE_SWITCH
 // Momentary switch I/F
 //    debounce
 //    long press
+
+void initSwitch()
+{
+  pinMode(SETUP_SWITCH, INPUT_PULLUP);
+  pinMode(SHUTTER_SWITCH, INPUT_PULLUP);
+  pinMode(MODE_SWITCH, INPUT_PULLUP);
+}
 
 boolean __checkLongPress(char reading, boolean *ignorenext)
 {
@@ -62,9 +70,27 @@ void checkSwitchCommands()
   __checkLongPress(buttonState & KEY_DOWN, &ignorenext); // check long press only on MODE_SWITCH
 }
 
+#else
+
+void initSwitch()
+{
+}
+
+void checkSwitchCommands()
+{
+}
+
+#endif /* USE_SWITCH */
+
+#ifdef USE_IR_REMOTE
 // IR remote I/F
 
 boolean learning = false; // disable navigation while learning IR code
+
+void initIRremote()
+{
+  irrecv.enableIRIn();
+}
 
 void checkIRremoteCommands()
 {
@@ -86,6 +112,18 @@ void checkIRremoteCommands()
     irrecv.resume(); // Receive the next value
   }
 }
+
+#else
+
+void initIRremote()
+{
+}
+
+void checkIRremoteCommands()
+{
+}
+
+#endif /* USE_IR_REMOTE */
 
 //
 // The following is the state machine that interacts with HID device

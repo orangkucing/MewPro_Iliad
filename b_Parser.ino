@@ -6,27 +6,27 @@ void printHex(uint8_t d, boolean upper)
   if (t > '9') {
     t += a - '9' - 1;
   }
-  SERIAL.print(t);
+  DEBUG_print(t);
   t = d & 0xF | '0';
   if (t > '9') {
     t += a - '9' - 1;
   }
-  SERIAL.print(t);
+  DEBUG_print(t);
 }
 
 void _printOutPut()
 {
   int buflen = buf[0];
-  SERIAL.print(F("> "));
+  DEBUG_print(F("> "));
   for (int i = 4; i <= buflen; i++) {
     if ((i == 4 || i == 5) && isprint(buf[i])) {
-      SERIAL.print(' '); SERIAL.print((char) buf[i]);
+      DEBUG_print(' '); DEBUG_print((char) buf[i]);
     } else {
       printHex(buf[i], false);
     }
-    SERIAL.print(' ');
+    DEBUG_print(' ');
   }
-  SERIAL.println("");
+  DEBUG_println("");
 }
 
 // parse command that is broadcasted to cameras
@@ -91,9 +91,9 @@ int extendedYYcommand()
         case 1: // set main mode
           setting.p.mode = buf[13];
           break;
-        case 5: // set sub mode
-          //                        main       sub
-          setting.p.current_submode[buf[13]] = buf[14];
+        case 5: // set main and sub modes
+          setting.p.mode = buf[13];
+          setting.p.current_submode[setting.p.mode] = buf[14];
           break;
       }
       break;
@@ -358,7 +358,16 @@ int extendedYYcommand()
         case 27: // date/time (Note: a word data is stored as big-endian)
           // buf[11:12]        buf[13:14] buf[15] buf[16] buf[17] buf[18] buf[19]
           // arglen = 7  args: year       month   day     hour    minute  second
+#ifdef USE_RTC
           rtc.adjust(DateTime((int)(buf[13] * 256 + buf[14]), buf[15], buf[16], buf[17], buf[18], buf[19]));
+#else
+          {
+            TimeElements tE;
+            tE.Year = buf[13] * 256 + buf[14] - 1970; tE.Month = buf[15]; tE.Day = buf[16];
+            tE.Hour = buf[17]; tE.Minute = buf[18]; tE.Second = buf[19];
+            setTime(makeTime(tE));
+          }
+#endif /* USE_RTC */
           break;
         case 32: // language
           break;
@@ -379,7 +388,16 @@ int extendedYYcommand()
           // buf[38]; // const 1; unknown
           setting.p.setup.default_app_mode = buf[39];
           storeDefaultSubMode(setting.p.setup.default_app_mode, buf[40]);
-          rtc.adjust(DateTime((int)(buf[41] * 256 + buf[42]), buf[43], buf[44], buf[45], buf[46], buf[47]));         
+#ifdef USE_RTC
+          rtc.adjust(DateTime((int)(buf[41] * 256 + buf[42]), buf[43], buf[44], buf[45], buf[46], buf[47]));
+#else
+          {
+            TimeElements tE;
+            tE.Year = buf[41] * 256 + buf[42] - 1970; tE.Month = buf[43]; tE.Day = buf[44];
+            tE.Hour = buf[45]; tE.Minute = buf[46]; tE.Second = buf[47];
+            setTime(makeTime(tE));
+          }
+#endif /* USE_RTC */      
           break;
       }
       break;

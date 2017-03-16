@@ -14,7 +14,7 @@ void ROM_Read()
      f &= (EEPROM.read(i) == tmp[i]);
   }
   if (!f) {
-    SERIAL.println("factory reset");
+    DEBUG_println("factory reset");
     base = 0;
     for (i = 0; i < EEPROM_ID_LEN; i++) {
       EEPROM.write(i, tmp[i]);

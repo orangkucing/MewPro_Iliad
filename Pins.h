@@ -1,3 +1,4 @@
+#if defined(__AVR_ATmega2560__)
 // Arduino Mega Pins
 //
 //    connect to USB           0; //      PE0 ( RXD0/PCINT8 )
@@ -91,8 +92,78 @@ const int LCD_DATA7         = 59; //  A5; PF5 ( ADC5/TMS )
 //                            N/C; // PE6 ( T3/INT6 )
 //                            N/C; // PE2 ( XCK0/AIN0 )
 
+// Input from PC or master camera
+#define SERIAL Serial
+
 // Serial commands are broadcasted through the following port
 #define BROADCAST Serial2
 #define BROADCAST_UART_RECEIVER_DISABLE do { \
   UCSR2B &= (~_BV(RXEN2)); \
 } while (0)
+
+#define DEBUG_print(...) SERIAL.print(__VA_ARGS__)
+#define DEBUG_println(...) SERIAL.println(__VA_ARGS__)
+
+#define USE_LCD
+#define USE_IR_REMOTE
+#define USE_SWITCH
+#define USE_RTC
+#define EMIT_STARTUP_COMMANDS
+
+#elif defined(__AVR_ATmega328PB__)
+
+// ATmega328pb Pins
+//
+const int OC3A_PIN          =  0; //      PD0 ( RXD0/OC3A ) ----> connect to D23
+const int VSYNC             =  1; //      PD1 ( TXD0/OC4A )
+const int HSYNC             =  2; //      PD2 ( OC3B/OC4B/INT0 )
+const int GPIO              =  3; //      PD3 ( OC2B/INT1 )
+//                             4; //      PD4 ( XCK0/T0 )
+const int TRIG              =  5; //      PD5 ( OC0B/T1 )
+//                             6; //      PD6 ( OC0A/AIN0 )
+//                             7; //      PD7 ( AIN1 )
+//                             8; //      PB0 ( ICP1/CLKO )
+//                             9; //      PB1 ( OC1A )
+//                            10; //      PB2 ( !SS0/OC1B )
+//    broadcast to MewPro     11; //      PB3 ( MOSI0/TXD1/OC2A )
+//    connect to serial       12; //      PB4 ( MISO0/RXD1 )
+const int SECONDARY_RESET   = 13; //      PB5 ( XCK0/SCK0 )
+//                                //      PB6 ( XTAL1/TOSC1 )
+//                                //      PB7 ( XTAL2/TOSC2 )
+//                            14; //      PC0 ( ADC0/MISO1 )
+//                            15; //      PC1 ( ADC1/SCK1 )
+//                            16; //      PC2 ( ADC2 )
+//                            17; //      PC3 ( ADC3 )
+//    connect to RTC          18; //      PC4 ( ADC4/SDA0 )
+//    connect to RTC          19; //      PC5 ( ADC5/SCL0 )
+//                                //      PC6 ( !RESET )
+//                            20; //      PE2 ( ADC6/ICP3/!SS1 )
+//                            21; //      PE3 ( ADC7/T3/MOSI1 )
+//                            22; //      PE0 ( SDA1/ICP4/ACO )
+//    connect from D0         23; //      PE1 ( SCL1/T4 )
+
+// use either one if you like
+const int RTC_SQW = GPIO;
+const int IR_RECEIVE = GPIO;
+
+// Input from PC or master camera
+#define SERIAL Serial1
+
+// Serial commands are broadcasted through the following port
+#define BROADCAST Serial1
+
+#define DEBUG_print(...)
+#define DEBUG_println(...)
+//#define DEBUG_print(...) SERIAL.print(__VA_ARGS__)
+//#define DEBUG_println(...) SERIAL.println(__VA_ARGS__)
+
+#undef  USE_LCD
+#undef  USE_IR_REMOTE
+#undef  USE_SWITCH
+#undef  USE_RTC
+#undef  EMIT_STARTUP_COMMANDS
+
+#else
+#error CPU not supported
+#endif
+

@@ -5,32 +5,29 @@ void setup()
   SERIAL.begin(57600);    // baud rate ignored for USB virtual serial
   ROM_Read();
 
+
   // setup LCD
   initLCD();
 
   // setup IR remote
-  irrecv.enableIRIn();
+  initIRremote();
 
   // momentary switches
-  pinMode(SETUP_SWITCH, INPUT_PULLUP);
-  pinMode(SHUTTER_SWITCH, INPUT_PULLUP);
-  pinMode(MODE_SWITCH, INPUT_PULLUP);
+  initSwitch();
 
   // RTC
-  rtc.begin();
-  if (rtc.lostPower()) {
-    // following line sets the RTC to the date & time this sketch was compiled
-    rtc.adjust(DateTime(F(__DATE__), F(__TIME__)));
-  }
+  initRTC();
   
   StopSyncSignal();       // initialize timer
+#if BROADCAST!=SERIAL
   BROADCAST.begin(57600); // 57600 is the fastest communication rate for AVR8 8MHz 3.3V on MewPro boards
   BROADCAST_UART_RECEIVER_DISABLE;
+#endif
 
   digitalWrite(SECONDARY_RESET, LOW);
   pinMode(SECONDARY_RESET, OUTPUT);
   delay(100);
-  digitalWrite(SECONDARY_RESET, HIGH);
+  pinMode(SECONDARY_RESET, INPUT_PULLUP);
   digitalWrite(TRIG, LOW); // unused. fix LOW to reduce noise
   pinMode(TRIG, OUTPUT);
 }

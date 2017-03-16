@@ -43,8 +43,9 @@ void checkTerminalCommands()
       case '@':
         bufp = 6;
         session = 0xFF;
-        SERIAL.println(F("\ncamera power on"));
+        DEBUG_println(F("\ncamera power on"));
         __emptyInputBuffer();
+        WRITE_CHAR('\n');   // this is required because the buffer is made empty
         startupSession = 0; // emit power on sequence
         disp_state = MENU_MAIN;
         setting.p.mode = setting.p.setup.default_app_mode;

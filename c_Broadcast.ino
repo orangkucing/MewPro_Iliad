@@ -124,7 +124,6 @@ void Broadcast_ChangeSubMode()
 
 void Broadcast_ChangeSettings(char mode)
 {
-  DateTime now;
   if (startupSession == STARTUP_HALT) {
     // not within startup sessions
     while (nextWidget()) { // update to permissible options
@@ -359,14 +358,29 @@ void Broadcast_ChangeSettings(char mode)
           sprintHex(33 * 2, setting.p.multi_shot.default_sub_mode);
           break;
       }
-      now = rtc.now();
-      sprintHex(34 * 2, (uint8_t)(now.year() / 256));
-      sprintHex(35 * 2, (uint8_t)(now.year() % 256));
-      sprintHex(36 * 2, (uint8_t)now.month());
-      sprintHex(37 * 2, (uint8_t)now.day());
-      sprintHex(38 * 2, (uint8_t)now.hour());
-      sprintHex(39 * 2, (uint8_t)now.minute());
-      sprintHex(40 * 2, (uint8_t)now.second());
+#ifdef USE_RTC
+      {
+        DateTime now = rtc.now();
+        sprintHex(34 * 2, (uint8_t)(now.year() / 256));
+        sprintHex(35 * 2, (uint8_t)(now.year() % 256));
+        sprintHex(36 * 2, (uint8_t)now.month());
+        sprintHex(37 * 2, (uint8_t)now.day());
+        sprintHex(38 * 2, (uint8_t)now.hour());
+        sprintHex(39 * 2, (uint8_t)now.minute());
+        sprintHex(40 * 2, (uint8_t)now.second());
+      }
+#else
+      {
+        time_t t = now();
+        sprintHex(34 * 2, (uint8_t)((year(t) + 1970) / 256));
+        sprintHex(35 * 2, (uint8_t)((year(t) + 1970) % 256));
+        sprintHex(36 * 2, (uint8_t)month(t));
+        sprintHex(37 * 2, (uint8_t)day(t));
+        sprintHex(38 * 2, (uint8_t)hour(t));
+        sprintHex(39 * 2, (uint8_t)minute(t));
+        sprintHex(40 * 2, (uint8_t)second(t));
+      }
+#endif /* USE_RTC */
       FIFO(82) = '\n';
       FIFO_INC(83);
       break;
@@ -515,17 +529,30 @@ void Broadcast_ChangeSetting(char id)
 
 void Broadcast_StartRecording()
 {
-  DateTime now;
   switch (setting.p.mode) {
     case MODE_VIDEO:
       // default firmware doesn't need current time info that will be automatically truncated at MewPro
-      now = rtc.now();
       FIFOCPY_P(0, F("YY00021B0004"), 12);
-      // Omni firmware requires timestamp info
-      sprintHex(12, (uint8_t)now.day());
-      sprintHex(14, (uint8_t)now.hour());
-      sprintHex(16, (uint8_t)now.minute());
-      sprintHex(18, (uint8_t)now.second());
+#ifdef USE_RTC
+      {
+        DateTime now = rtc.now();
+        // Omni firmware requires timestamp info
+        sprintHex(12, (uint8_t)now.day());
+        sprintHex(14, (uint8_t)now.hour());
+        sprintHex(16, (uint8_t)now.minute());
+        sprintHex(18, (uint8_t)now.second());
+      }
+#else
+      {
+        time_t t = now();
+        FIFOCPY_P(0, F("YY00021B0004"), 12);
+        // Omni firmware requires timestamp info
+        sprintHex(12, (uint8_t)day(t));
+        sprintHex(14, (uint8_t)hour(t));
+        sprintHex(16, (uint8_t)minute(t));
+        sprintHex(18, (uint8_t)second(t));
+      }
+#endif /* USE_RTC */
       FIFO(20) = '\n';
       FIFO_INC(21);
       break;
@@ -558,8 +585,8 @@ void Broadcast_StopRecording()
 
 void Broadcast_PowerOn()
 {
-  FIFO(0) = '@';
-  FIFO(1) = '\n';
+  FIFO(0) = '\n';
+  FIFO(1) = '@';
   FIFO_INC(2);
 }
 

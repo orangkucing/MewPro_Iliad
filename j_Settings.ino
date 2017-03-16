@@ -48,16 +48,34 @@ const char* const iliad_beams_txt[] PROGMEM = {
 };
 
 void Iliad_Setting_Begin() {
-  DateTime datetime;
-  datetime = rtc.now();
-  tm.year = datetime.year(); tm.month = datetime.month(); tm.day = datetime.day();
-  tm.hour = datetime.hour(); tm.minute = datetime.minute();
+#ifdef USE_RTC
+  {
+    DateTime datetime = rtc.now();
+    tm.year = datetime.year(); tm.month = datetime.month(); tm.day = datetime.day();
+    tm.hour = datetime.hour(); tm.minute = datetime.minute();
+  }
+#else
+  {
+    time_t t = now();
+    tm.year = year(t) + 1970; tm.month = month(t); tm.day = day(t);
+    tm.hour = hour(t); tm.minute = minute(t);
+  }
+#endif /* USE_RTC */
   iliad_setting_state.menu = iliad_setting_state.menu_level = 0;
 }
 
 void Iliad_Setting_End() {
+#ifdef USE_RTC
   rtc.adjust(DateTime(tm.year, tm.month, tm.day, tm.hour, tm.minute, 0));
-  digitalWrite(SECONDARY_RESET, HIGH);
+#else
+  {
+    timeElements tE;
+    tE.Year = tm.year - 1970; tE.Month = tm.month; tE.Day = tm.day;
+    tE.Hour = tm.hour; tE.Minute = tm.minute; tm.Second = 0;
+    setTime(makeTime(tE));
+  }
+#endif
+  pinMode(SECONDARY_RESET, INPUT_PULLUP);
   disp_state = MENU_START;
 }
 
@@ -152,7 +170,12 @@ void Iliad_Setting_Shutter() {
               iliad_setting_state.menu_level = 0;
               break;
             case 1: // mount
-              digitalWrite(SECONDARY_RESET, !digitalRead(SECONDARY_RESET));
+              if (digitalRead(SECONDARY_RESET) == LOW) {
+                pinMode(SECONDARY_RESET, INPUT_PULLUP);
+              } else {
+                digitalWrite(SECONDARY_RESET, LOW);
+                pinMode(SECONDARY_RESET, OUTPUT);
+              }
               break;
           }
           break;
