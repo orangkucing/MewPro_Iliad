@@ -71,15 +71,6 @@ int ZZcommand()
         case 0: // power off
           break;
         case 1: // power on
-          switch (disp_state) {
-            case MENU_START:
-              // master camera doesn't send the '@' command instead sends setup commands too quickly for slaves to understand
-              // we must suspend these setup commands to be executed later
-              Broadcast_PowerOn();
-              break;
-            default:
-              break;
-          }
           break;
       }
       break;

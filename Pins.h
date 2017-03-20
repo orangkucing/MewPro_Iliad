@@ -104,6 +104,8 @@ const int LCD_DATA7         = 59; //  A5; PF5 ( ADC5/TMS )
 #define DEBUG_print(...) SERIAL.print(__VA_ARGS__)
 #define DEBUG_println(...) SERIAL.println(__VA_ARGS__)
 
+#define WRITE_CHAR(c) do { BROADCAST.write(c); DEBUG_print(c); } while (0)
+
 #define USE_LCD
 #define USE_IR_REMOTE
 #define USE_SWITCH
@@ -155,6 +157,8 @@ const int IR_RECEIVE = GPIO;
 #define DEBUG_println(...)
 //#define DEBUG_print(...) SERIAL.print(__VA_ARGS__)
 //#define DEBUG_println(...) SERIAL.println(__VA_ARGS__)
+
+#define WRITE_CHAR(c) do { BROADCAST.write(c); } while (0)
 
 #undef  USE_LCD
 #undef  USE_IR_REMOTE

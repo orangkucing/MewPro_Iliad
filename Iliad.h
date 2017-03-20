@@ -9,7 +9,7 @@
 
 #include "MenuText.h"
 
-#define __VERSION_STRING__ "v1.3.1"
+#define __VERSION_STRING__ "v1.3.2"
 
 #ifdef USE_LCD
 #  include <LiquidCrystal.h>
@@ -51,7 +51,6 @@ int fifo_readindex = 0;
 int fifo_writeindex = 0;
 #define FIFO(i) (command_buf[(fifo_writeindex + (i)) % MEWPRO_BUFFER_LENGTH])
 #define FIFO_INC(n) do { fifo_writeindex = (fifo_writeindex + (n)) % MEWPRO_BUFFER_LENGTH; } while (0)
-#define WRITE_CHAR(c) do { BROADCAST.write(c); DEBUG_print(c); } while (0)
 
 byte buf[MEWPRO_BUFFER_LENGTH];
 int bufp = 6;

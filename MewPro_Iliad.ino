@@ -41,6 +41,7 @@ void loop()
         startupSession++; // one function completed
       }
     } else {
+      __emptyInputBuffer();
       startupSession = STARTUP_HALT;
       updateLCD();
     }
