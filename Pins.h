@@ -108,7 +108,6 @@ const int LCD_DATA7         = 59; //  A5; PF5 ( ADC5/TMS )
 #define USE_IR_REMOTE
 #define USE_SWITCH
 #define USE_RTC
-#define EMIT_STARTUP_COMMANDS
 
 #elif defined(__AVR_ATmega328PB__)
 
@@ -161,7 +160,6 @@ const int IR_RECEIVE = GPIO;
 #undef  USE_IR_REMOTE
 #undef  USE_SWITCH
 #undef  USE_RTC
-#undef  EMIT_STARTUP_COMMANDS
 
 #else
 #error CPU not supported

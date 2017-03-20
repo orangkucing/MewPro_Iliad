@@ -9,7 +9,7 @@
 
 #include "MenuText.h"
 
-#define __VERSION_STRING__ "v1.3.0"
+#define __VERSION_STRING__ "v1.3.1"
 
 #ifdef USE_LCD
 #  include <LiquidCrystal.h>
@@ -95,17 +95,18 @@ unsigned int record_time;
 char startupSession = STARTUP_HALT;
 // function prototype declaration required here
 // because current Arduino IDE can't automatically do this
-void startup_delay0(void);
-void startup_delay(void);
-void startup0(void);
-void startup1(void);
-void startup2(void);
-void startup3(void);
-void startup4(void);
-void startup5(void);
+boolean startup_init(void);
+boolean startup_delay0(void);
+boolean startup_delay(void);
+boolean startup0(void);
+boolean startup1(void);
+boolean startup2(void);
+boolean startup3(void);
+boolean startup4(void);
+boolean startup5(void);
 
-void (*startup[])(void) = {
-#ifdef EMIT_STARTUP_COMMANDS
+boolean (*startup[])(void) = {
+  startup_init,
   startup_delay0,
   startup0, startup_delay,
   startup1, startup_delay, 
@@ -113,7 +114,6 @@ void (*startup[])(void) = {
   startup3, startup_delay,
   startup4, startup_delay,
   startup5,
-#endif
   NULL
 };
 

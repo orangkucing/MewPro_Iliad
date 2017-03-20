@@ -16,11 +16,14 @@ void checkTerminalCommands()
 
     if (SERIAL.available()) {
       c = SERIAL.read();
+      if (startupSession != STARTUP_HALT) { // suspend sending bulk setting commands too quickly
+        WRITE_CHAR(c);
+      }
     } else {
       c = command_buf[fifo_readindex];
       ++fifo_readindex %= MEWPRO_BUFFER_LENGTH;
+      WRITE_CHAR(c);
     }
-    WRITE_CHAR(c);
     
     switch (c) {
       case ' ':

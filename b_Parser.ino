@@ -69,9 +69,18 @@ int ZZcommand()
     case 2: // power on/off by long button press at primary camera
       switch (buf[9]) {
         case 0: // power off
-        break;
+          break;
         case 1: // power on
-        break;
+          switch (disp_state) {
+            case MENU_START:
+              // master camera doesn't send the '@' command instead sends setup commands too quickly for slaves to understand
+              // we must suspend these setup commands to be executed later
+              Broadcast_PowerOn();
+              break;
+            default:
+              break;
+          }
+          break;
       }
       break;
     case 3: // get camera version

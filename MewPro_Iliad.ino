@@ -19,7 +19,7 @@ void setup()
   initRTC();
   
   StopSyncSignal();       // initialize timer
-#if BROADCAST!=SERIAL
+#if defined(__AVR_ATmega2560__)
   BROADCAST.begin(57600); // 57600 is the fastest communication rate for AVR8 8MHz 3.3V on MewPro boards
   BROADCAST_UART_RECEIVER_DISABLE;
 #endif
@@ -37,7 +37,9 @@ void loop()
   // start up sessions
   if (startupSession != STARTUP_HALT) {
     if (startup[startupSession] != NULL) {
-      (startup[startupSession++])(); // call the function
+      if ((startup[startupSession])()) { // call the function
+        startupSession++; // one function completed
+      }
     } else {
       startupSession = STARTUP_HALT;
       updateLCD();

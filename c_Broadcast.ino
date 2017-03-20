@@ -1,14 +1,31 @@
-// these functions are called after camera power on
-void startup_delay0()
+// these functions are called after camera power on and these should not block the main loop()
+unsigned long startup_exec; // last execution time of a startup function
+
+boolean startup_init()
 {
-  delay(8000);
+  startup_exec = millis();
+  return true;
 }
 
-void startup_delay()
+boolean startup_delay0()
 {
-  delay(1000);
+  if (millis() - startup_exec > 8000UL) {
+    startup_exec = millis();
+    return true;
+  }
+  return false;
 }
-void startup0()
+
+boolean startup_delay()
+{
+  if (millis() - startup_exec > 1000UL) {
+    startup_exec = millis();
+    return true;
+  }
+  return false;
+}
+
+boolean startup0()
 {
 #ifdef HERO_4_SILVER
   if (!setting.p.lcd) {
@@ -19,33 +36,43 @@ void startup0()
 #endif
   // since MODE_SETUP's options includes video_format (NTSC/PAL), it must be sent before MODE_VIDEO
   Broadcast_ChangeSettings(MODE_SETUP);
+  startup_exec = millis();
+  return true;
 }
 
-void startup1()
+boolean startup1()
 {
   Broadcast_ChangeSettings(MODE_VIDEO);
+  startup_exec = millis();
+  return true;
 }
 
-void startup2()
+boolean startup2()
 {
   Broadcast_ChangeSettings(MODE_PHOTO);
+  startup_exec = millis();
+  return true;
 }
 
-void startup3()
+boolean startup3()
 {
   Broadcast_ChangeSettings(MODE_MULTI_SHOT);
+  startup_exec = millis();
+  return true;
 }
 
-void startup4()
+boolean startup4()
 {
   // default_app_mode is ignored by the camera so must manually change the start up mode.
   // first, it's impossible to set MODE_SETUP as starting let's change there 
   FIFOCPY_P(0, F("YY000101000100\n"), 15);
   sprintHex(12, MODE_SETUP);
   FIFO_INC(15);
+  startup_exec = millis();
+  return true;
 }
 
-void startup5()
+boolean startup5()
 {
   // next, change to the desired default_app_mode
   setting.p.mode = setting.p.setup.default_app_mode;
@@ -61,6 +88,8 @@ void startup5()
       break;
   }
   Broadcast_ChangeSubMode();
+  startup_exec = millis();
+  return true;
 }
 //
 
