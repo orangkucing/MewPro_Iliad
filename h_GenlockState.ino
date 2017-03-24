@@ -12,10 +12,12 @@ void checkGenlockState_Video()
       break;
     case STATE_SYNC_ON:
       if (millis() - command_sent > 2000) {
-        DEBUG_print(F("genlock signal start: (resolution, fps) = (0x0"));
+        DEBUG_print(F("genlock signal start: (resolution, fps, fov) = (0x0"));
         DEBUG_print(setting.p.video.resolution, HEX);
         DEBUG_print(F(", 0x0"));
         DEBUG_print(setting.p.video.fps, HEX);
+        DEBUG_print(F(", 0x0"));
+        DEBUG_print(setting.p.video.fov, HEX);
         DEBUG_println(F(")"));
         switch (setting.p.video.fov) {
           case 0: // WIDE
