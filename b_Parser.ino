@@ -438,6 +438,10 @@ void extendedZZcommand()
     case 3: // power off
       disp_state = MENU_START;
       ROM_write(); // store settings to EEPROM
+      // software reset within 1s
+      wdt_enable(WDTO_1S);
+      while (1); // loop forever
+      // never reach here
       break;
     case 5: // bacpac firmware version
       break;
