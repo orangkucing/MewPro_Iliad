@@ -225,7 +225,7 @@ void StartSyncSignal(int vidmode)
 
 void StopSyncSignal()
 {
-  // set OC4A = PD1, OC3B/OC4B = PD2, and OC3A = PD0 to output and set their initial value to SYNC_SIGNAL_DEFAULT (D1, D2, and D0 in , respectively)
+  // set OC4A = PD1, OC3B/OC4B = PD2, and OC3A = PD0 to output and set their initial value to SYNC_SIGNAL_DEFAULT (D1, D2, and D0 in the Arduino terminology, respectively)
   // Also T4 = PE1 is used to input external clock (D23)
 
   // initialize the signals to SYNC_SIGNAL_DEFAULT using FOC bits toggle on comapre match, normal mode
