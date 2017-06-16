@@ -50,7 +50,7 @@ Regrettably, following two modifications are yet necessary for installed core fi
    `ocdrev              = 1;`   
    `;`  
    and add the following lines after them:
-   <script src="https://gist.github.com/orangkucing/06954a0f5f10b2db0a5a36c90dbcf492.js"></script>
+   [avrdude-add.conf](https://gist.github.com/orangkucing/06954a0f5f10b2db0a5a36c90dbcf492)
 
 #### Install the missing tool chain files
 
