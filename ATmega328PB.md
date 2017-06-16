@@ -38,7 +38,7 @@ Regrettably, following two modifications are yet necessary for installed core fi
 2. Find `avrdude.conf` file and edit it:
 
    The file is located at 
-   `Arduino.app/Contents/Java/hardware/tools/avr/etc/avrdude.conf` under Mac or
+   `Arduino.app/Contents/Java/hardware/tools/avr/etc/avrdude.conf` under Mac or  
    `/Program Files(x86)/Arduino/hardware/tools/avr/etc/avrdude.conf` under Windows.  
 
    Since the file lacks the definition for ATmega328PB, find these six lines  
