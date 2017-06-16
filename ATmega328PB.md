@@ -67,7 +67,13 @@ The original updating instruction is [here](https://github.com/watterott/ATmega3
 
 MewPro Bastet and MewPro Iliad share [the same source code](https://github.com/orangkucing/MewPro_Iliad).
 
-To compile the code and to upload the firmware to Bastet, just select [Tools]->[Board: Atmel atmega328pb Xplained mini] and set [Tools]->[Port] to your FTDI port.
+The code needs Time and TimeAlarms libraries that are downloadable from 
+[the PJRC site](http://www.pjrc.com/teensy/td_libs_Time.html).
+After installing the libraries uncomment the line 44 in `Iliad.h` as
+
+`#  include <TimeLib.h>`
+
+Then, to compile the code and to upload the firmware to Bastet, just select [Tools]->[Board: Atmel atmega328pb Xplained mini] and set [Tools]->[Port] to your FTDI port.
 
 *Note 1: The source code is defaulted to use Bastet with GoPro Hero 4 Black. If you like to use Bastet with GoPro Hero 4 Silver then modify the 7th and 8th lines in `Iliad.h` as `#undef HERO_4_BLACK` and `#define HERO_4_SILVER`, respectively.* 
 
