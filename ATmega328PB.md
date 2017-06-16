@@ -1,3 +1,5 @@
+Updating Bastet firmware might be a challenge because the current toolchain distributed with Arduino IDE doesn't support its microcontroller.
+
 # Arduino IDE for ATmega328PB
 
 MewPro Bastet uses ATmega328PB as its microcontroller.  ATmega328P**B** is QUITE DIFFERENT than ubiquitous ATmega328P (without trailing **B**) that is used in Arduino Uno, Arduino Pro Mini etc.
@@ -61,7 +63,7 @@ The original updating instruction is [here](https://github.com/watterott/ATmega3
 >
 >The directory is located under Windows in `/Program Files(x86)/Arduino/hardware` and under Mac in `/Applications/Arduino/Contents/Java/hardware`
 
-## Compile and Upload
+# Compile and Upload
 
 MewPro Bastet and MewPro Iliad share [the same source code](https://github.com/orangkucing/MewPro_Iliad).
 
