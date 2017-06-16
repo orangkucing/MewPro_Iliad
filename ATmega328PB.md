@@ -69,11 +69,11 @@ MewPro Bastet and MewPro Iliad share [the same source code](https://github.com/o
 
 To compile the code and to upload the firmware to Bastet, just select [Tools]->[Board: Atmel atmega328pb Xplained mini] and set [Tools]->[Port] to your FTDI port.
 
-*Note 1: If you like to use Bastet with Silver then modify the 7th and 8th lines in `Iliad.h` as `#undef HERO_4_BLACK` and `#define HERO_4_SILVER`.* 
+*Note 1: The source code is defaulted to use Bastet with GoPro Hero 4 Black. If you like to use Bastet with GoPro Hero 4 Silver then modify the 7th and 8th lines in `Iliad.h` as `#undef HERO_4_BLACK` and `#define HERO_4_SILVER`.* 
 
 Connecting Sparkfun FTDI breakout to Bastet is the same as do so to MewPro 2 board. So please refer [the blog post for MewPro 2](https://mewpro.cc/2017/02/25/list-of-gopro-hero-4-i2c-commands/) at "Connection" section.
 
 *Note 2: If you soldered Bastet at the back of master MewPro 2 as in this picture
 ![](https://mewpro.cc/wp-content/uploads/ontop1.jpg)
-then you can update both firmwares as they have been soldered. To do this just set an "Arduino Mini Temporary FTDI Header" either from the right (i.e., from the part side) for Bastet or from the left (i.e., from the connector side) for MewPro 2 when needed.*
+then you can update both firmwares as they remain soldered. To do this just set an "Arduino Mini Temporary FTDI Header" from either the right side (i.e., from the part side) for Bastet or the left side (i.e., from the connector side) for MewPro 2 when needed.*
 
