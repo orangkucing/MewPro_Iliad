@@ -14,7 +14,7 @@ These are explained below.
 
 #### Install Atmel atmega328pb Xplained mini core package
 
-(In the following we assume you have already installed Arduino IDE to your PC. If not then please [download the Arduino IDE](https://www.arduino.cc/en/Main/Software) and install it before proceeding below.)
+(In the following we assume you have already installed Arduino IDE to your PC. If not then please [download the Arduino IDE](https://www.arduino.cc/en/Main/Software) and install it before proceeding.)
 
 Open your Arduino IDE application on your PC. Then select [Tools]->Board->[Boards Manager].  Then a dialog box for selecting boards is shown.  You will find "Atmel AVR Xplained-minis by Atmel University France" in the list.
 
@@ -69,9 +69,9 @@ MewPro Bastet and MewPro Iliad share [the same source code](https://github.com/o
 
 To compile the code and to upload the firmware to Bastet, just select [Tools]->[Board: Atmel atmega328pb Xplained mini] and set [Tools]->[Port] to your FTDI port.
 
-*Note 1: The source code is defaulted to use Bastet with GoPro Hero 4 Black. If you like to use Bastet with GoPro Hero 4 Silver then modify the 7th and 8th lines in `Iliad.h` as `#undef HERO_4_BLACK` and `#define HERO_4_SILVER`.* 
+*Note 1: The source code is defaulted to use Bastet with GoPro Hero 4 Black. If you like to use Bastet with GoPro Hero 4 Silver then modify the 7th and 8th lines in `Iliad.h` as `#undef HERO_4_BLACK` and `#define HERO_4_SILVER`, respectively.* 
 
-Connecting Sparkfun FTDI breakout to Bastet is the same as do so to MewPro 2 board. So please refer [the blog post for MewPro 2](https://mewpro.cc/2017/02/25/list-of-gopro-hero-4-i2c-commands/) at "Connection" section.
+Connecting Sparkfun FTDI breakout 3.3V to Bastet is the same as do so to MewPro 2 board. So please refer [the blog post for MewPro 2](https://mewpro.cc/2017/02/25/list-of-gopro-hero-4-i2c-commands/) at "Connection" section.
 
 *Note 2: If you soldered Bastet at the back of master MewPro 2 as in this picture
 ![](https://mewpro.cc/wp-content/uploads/ontop1.jpg)
