@@ -71,7 +71,7 @@ To compile the code and to upload the firmware to Bastet, just select [Tools]->[
 
 *Note 1: The source code is defaulted to use Bastet with GoPro Hero 4 Black. If you like to use Bastet with GoPro Hero 4 Silver then modify the 7th and 8th lines in `Iliad.h` as `#undef HERO_4_BLACK` and `#define HERO_4_SILVER`, respectively.* 
 
-Connecting Sparkfun FTDI breakout 3.3V to Bastet is the same as do so to MewPro 2 board. So please refer [the blog post for MewPro 2](https://mewpro.cc/2017/02/25/list-of-gopro-hero-4-i2c-commands/) at "Connection" section.
+Connecting Sparkfun FTDI breakout 3.3V to Bastet is the same as doing so to MewPro 2 board. Thus please refer [the blog post for MewPro 2](https://mewpro.cc/2017/02/25/list-of-gopro-hero-4-i2c-commands/) at "Connection" section.
 
 *Note 2: If you soldered Bastet at the back of master MewPro 2 as in this picture
 ![](https://mewpro.cc/wp-content/uploads/ontop1.jpg)
