@@ -63,6 +63,19 @@ The original updating instruction is [here](https://github.com/watterott/ATmega3
 >
 >The directory is located under Windows in `/Program Files(x86)/Arduino/hardware` and under Mac in `/Applications/Arduino/Contents/Java/hardware`
 
+REMARK: Take care to unzip the downloaded file at the proper location!  
+More precisely, under Windows do:   
+1. Right click the downloaded `hardware.zip` file  
+2. Select "Extract all"  
+3. Fill the "Files will be extracted to the folder" textbox as /Program Files(x86)/Arduino/hardware  
+4. Dialog box "The destination has 5 files with the same names" is shown: Tick "Replace the files in the destination"  
+Under Mac do:  
+1. Move `hardware.zip` to `/Applications/Arduino/Contents/Java/hardware`  
+2. Open "Terminal" application and type the following Unix commands   
+3. `cd /Applications/Arduino/Contents/Java/hardware`  
+4. `unzip -o hardware.zip`  
+
+
 # Compile and Upload
 
 MewPro Bastet and MewPro Iliad share [the same source code](https://github.com/orangkucing/MewPro_Iliad).
