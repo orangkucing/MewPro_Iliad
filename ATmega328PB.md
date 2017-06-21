@@ -90,6 +90,11 @@ After installing the libraries uncomment the line 44 in `Iliad.h` as
 
 `#  include <TimeLib.h>`
 
+And also if you haven't installed IRremote library or RTClib (these are required for MewPro Iliad) then comment out respective lines 29 or 38 as
+
+`//#  include <IRremote.h>`  
+`//#  include "RTClib.h"`
+
 Then, to compile the code and to upload the firmware to Bastet, just select [Tools]->[Board: Atmel atmega328pb Xplained mini] and set [Tools]->[Port] to your FTDI port.
 
 *Note 1: The source code is defaulted to use Bastet with GoPro Hero 4 Black. If you like to use Bastet with GoPro Hero 4 Silver then modify the 7th and 8th lines in `Iliad.h` as `#undef HERO_4_BLACK` and `#define HERO_4_SILVER`, respectively.* 
