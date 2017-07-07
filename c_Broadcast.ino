@@ -401,8 +401,8 @@ void Broadcast_ChangeSettings(char mode)
 #else
       {
         time_t t = now();
-        sprintHex(34 * 2, (uint8_t)((year(t) + 1970) / 256));
-        sprintHex(35 * 2, (uint8_t)((year(t) + 1970) % 256));
+        sprintHex(34 * 2, (uint8_t)(year(t) / 256));
+        sprintHex(35 * 2, (uint8_t)(year(t) % 256));
         sprintHex(36 * 2, (uint8_t)month(t));
         sprintHex(37 * 2, (uint8_t)day(t));
         sprintHex(38 * 2, (uint8_t)hour(t));
