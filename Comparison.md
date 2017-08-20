@@ -9,10 +9,11 @@ For Hero 4 Black or Silver the bacpac hardware attached to herobus will be **Mew
 
 Following is the list of required software and auxiliary hardware:
 
-| Control of           | Bacpac          | Software  | Auxiliary Hardware|
-|----------------------|:---------------:|:---------:|-------------------|
-| one cam (standalone) | MewPro 2 / Cable  | `MewPro4` | none              |
-| multi cam w/ genlock | MewPro 2 / Cable  | `MewPro4` | MewPro Iliad (\*) |
+| Control of           | Bacpac            | Software  | Auxiliary Hardware |
+|----------------------|:-----------------:|:---------:|--------------------|
+| one cam (standalone) | MewPro 2 / Cable  | `MewPro4` | none               |
+| multi cam w/ genlock | MewPro 2 / Cable  | `MewPro4` | MewPro Iliad (\*)  |
+| multi cam w/ genlock | MewPro 2 / Cable  | `MewPro4` | MewPro Bastet (\*) |
 
 \* Installation of `MewPro_Iliad` software for multi camera control and sync signal generation is required.
 
@@ -28,7 +29,7 @@ Following is the list of required sofware and auxiliary hardware:
 | one cam (standalone) | MewPro 1 / 2 / Cable | `MewPro` | none               |
 | multi cam w/ genlock | MewPro 1 / 2 / Cable | `MewPro` | GoPro Dual Hero (\*\*) and Genlock Dongle|
 | multi cam w/ genlock | MewPro 1 / 2 / Cable | `MewPro` | MewPro Iliad (\*\*\*) |
-
+| multi cam w/ genlock | MewPro 1 / 2 / Cable | `MewPro` | MewPro Bastet (\*\*\*) |
 \*\* Dual Hero is GoPro's original bacpac advertised as syncing only two cameras.
 
 \*\*\* Installation of `MewPro_Iliad_3plusB` software for multi camera control and sync signal generation is required.

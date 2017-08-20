@@ -82,7 +82,7 @@ Under Mac do:
 
 # Compile and Upload
 
-MewPro Bastet and MewPro Iliad share [the same source code](https://github.com/orangkucing/MewPro_Iliad).
+MewPro Bastet and MewPro Iliad share [the same source code for Hero 4 Silver/Black](https://github.com/orangkucing/MewPro_Iliad).
 
 The code needs Time and TimeAlarms libraries that are downloadable from 
 [the PJRC site](http://www.pjrc.com/teensy/td_libs_Time.html).
