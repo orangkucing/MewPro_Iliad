@@ -9,7 +9,7 @@
 
 #include "MenuText.h"
 
-#define __VERSION_STRING__ "v1.3.5"
+#define __VERSION_STRING__ "v1.3.6"
 
 #ifdef USE_LCD
 #  include <LiquidCrystal.h>
