@@ -91,6 +91,16 @@ boolean startup5()
   startup_exec = millis();
   return true;
 }
+
+boolean startup6()
+{
+  // for those who requires the slaves to be up-side down
+  FIFOCPY_P(0, F("YY000709000102\n"), 15);
+  sprintHex(12, MODE_SETUP);
+  FIFO_INC(15);
+  startup_exec = millis();
+  return true;
+}
 //
 
 void sprintHex(int index, uint8_t d)

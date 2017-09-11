@@ -9,7 +9,7 @@
 
 #include "MenuText.h"
 
-#define __VERSION_STRING__ "v1.3.8"
+#define __VERSION_STRING__ "v1.3.9"
 
 #ifdef USE_LCD
 #  include <LiquidCrystal.h>
@@ -43,6 +43,10 @@ RTC_DS3231 rtc;
 // ***** uncomment unless USE_RTC
 //#  include <TimeLib.h>
 #endif /* USE_RTC */
+
+// define only if you keep using the good old 3D housing that comes with GoPro Dual Hero system originally for Hero 3+ Black:
+// slave cameras' orientation will be forced to set to "DOWN".
+#undef  DUAL_HERO_ORIENTATION
 
 #define MEWPRO_BUFFER_LENGTH 256
 
@@ -103,6 +107,7 @@ boolean startup2(void);
 boolean startup3(void);
 boolean startup4(void);
 boolean startup5(void);
+boolean startup6(void);
 
 boolean (*startup[])(void) = {
   startup_init,
@@ -113,6 +118,9 @@ boolean (*startup[])(void) = {
   startup3, startup_delay,
   startup4, startup_delay,
   startup5,
+#ifdef DUAL_HERO_ORIENTATION
+  startup_delay, startup6,
+#endif
   NULL
 };
 
