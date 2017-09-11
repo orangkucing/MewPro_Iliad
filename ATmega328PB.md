@@ -99,6 +99,8 @@ Then, to compile the code and to upload the firmware to Bastet, just select [Too
 
 *Note 1: The source code is defaulted to use Bastet with GoPro Hero 4 Black. If you like to use Bastet with GoPro Hero 4 Silver then modify the 7th and 8th lines in `Iliad.h` as `#undef HERO_4_BLACK` and `#define HERO_4_SILVER`, respectively.* 
 
+*Note 2: If you like to use Bastet in the good old housing that came with GoPro's discontinued Dual Hero system for Hero 3+ Black then it's better to modify the 49th line in `Iliad.h` as `#define DUAL_HERO_ORIENTATION`.  This will enable the slave camera to be upside down regardless of master's orientation setting.*
+
 Connecting Sparkfun FTDI breakout 3.3V to Bastet is the same as doing so to MewPro 2 board. Thus, please refer [the blog post for MewPro 2](https://mewpro.cc/2017/02/25/list-of-gopro-hero-4-i2c-commands/) at "Connection" section.
 
 *Note 2: If you soldered Bastet at the back of master MewPro 2 as in this picture
