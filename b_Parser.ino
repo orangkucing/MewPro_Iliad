@@ -331,7 +331,8 @@ int extendedYYcommand()
           setting.p.lcd = buf[13];
           break;
         case 9: // orientation
-          // there's a bug in v4.0.0 firmware that prevents from setting orientation to AUTO
+          // orientation can be set only by using this command.
+          // there's a orientation byte in bulk setting transfer but it will be ignored. (default firmware's bug)
           setting.p.setup.orientation = buf[13];
           break;
         case 11: // default mode
@@ -377,7 +378,7 @@ int extendedYYcommand()
           setting.p.setup.auto_power_down = buf[21];
           setting.p.setup.led = buf[22];
           setting.p.setup.quick_capture = buf[23];
-          setting.p.setup.orientation = buf[24];
+          setting.p.setup.orientation = buf[24]; // this byte is ignored by camera (default firmware's bug)
           setting.p.setup.lcd_brightness = buf[25];
           setting.p.setup.lcd_sleep = buf[26];
           setting.p.setup.lcd_lock = buf[27];
