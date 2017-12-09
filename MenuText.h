@@ -5,9 +5,9 @@ const char MODE_PLAYBACK = 4;
 const char MODE_SETUP = 5;
 const char MODE_AUDIO = 6;
 
-const char GPCAMERA_GROUP_VIDEO[] PROGMEM = { 5, 6, 7, 2, 3, 4, 8, 9, 10, 11, 12, 13, 14, 15, 0 };
-const char GPCAMERA_GROUP_PHOTO[] PROGMEM = { 18, 19, 17, 20, 21, 22, 23, 24, 25, 26, 0 };
-const char GPCAMERA_GROUP_MULTI_SHOT[] PROGMEM = { 31, 29, 30, 32, 28, 33, 34, 35, 36, 37, 38, 39, 0 };
+const char GPCAMERA_GROUP_VIDEO[] PROGMEM = { 5, 6, 7, 2, 3, 4, 8, 9, 10, 11, 12, 73, 74, 13, 14, 15, 0 };
+const char GPCAMERA_GROUP_PHOTO[] PROGMEM = { 18, 19, 17, 20, 21, 22, 23, 75, 24, 25, 26, 0 };
+const char GPCAMERA_GROUP_MULTI_SHOT[] PROGMEM = { 31, 29, 30, 32, 28, 33, 34, 35, 36, 76, 37, 38, 39, 0 };
 #ifdef HERO_4_SILVER
 const char GPCAMERA_GROUP_SETUP[] PROGMEM = { 51, 50, 49, 72, 52, 53, 1, 16, 27, 54, 55, 56, 57, 58, 59, 0 };
 #else
@@ -546,6 +546,65 @@ const char* const option_txt_3_12[] PROGMEM = {
 option_txt_3_12_0, option_txt_3_12_1, option_txt_3_12_2, option_txt_3_12_3, NULL
 };
 
+const char title_txt_4_0[] PROGMEM = MENU_TEXT("\x49", "Exposure Time");
+const char option_txt_4_0_0[] PROGMEM = MENU_TEXT("\x00", "Auto");
+const char option_txt_4_0_1[] PROGMEM = MENU_TEXT("\x01", "1/12.5");
+const char option_txt_4_0_2[] PROGMEM = MENU_TEXT("\x02", "1/15");
+const char option_txt_4_0_3[] PROGMEM = MENU_TEXT("\x03", "1/24");
+const char option_txt_4_0_4[] PROGMEM = MENU_TEXT("\x04", "1/25");
+const char option_txt_4_0_5[] PROGMEM = MENU_TEXT("\x05", "1/30");
+const char option_txt_4_0_6[] PROGMEM = MENU_TEXT("\x06", "1/48");
+const char option_txt_4_0_7[] PROGMEM = MENU_TEXT("\x07", "1/50");
+const char option_txt_4_0_8[] PROGMEM = MENU_TEXT("\x08", "1/60");
+const char option_txt_4_0_9[] PROGMEM = MENU_TEXT("\x09", "1/80");
+const char option_txt_4_0_10[] PROGMEM = MENU_TEXT("\x0a", "1/90");
+const char option_txt_4_0_11[] PROGMEM = MENU_TEXT("\x0b", "1/96");
+const char option_txt_4_0_12[] PROGMEM = MENU_TEXT("\x0c", "1/100");
+const char option_txt_4_0_13[] PROGMEM = MENU_TEXT("\x0d", "1/120");
+const char option_txt_4_0_14[] PROGMEM = MENU_TEXT("\x0e", "1/160");
+const char option_txt_4_0_15[] PROGMEM = MENU_TEXT("\x0f", "1/180");
+const char option_txt_4_0_16[] PROGMEM = MENU_TEXT("\x10", "1/192");
+const char option_txt_4_0_17[] PROGMEM = MENU_TEXT("\x11", "1/200");
+const char option_txt_4_0_18[] PROGMEM = MENU_TEXT("\x12", "1/240");
+const char option_txt_4_0_19[] PROGMEM = MENU_TEXT("\x13", "1/320");
+const char option_txt_4_0_20[] PROGMEM = MENU_TEXT("\x14", "1/360");
+const char option_txt_4_0_21[] PROGMEM = MENU_TEXT("\x15", "1/400");
+const char option_txt_4_0_22[] PROGMEM = MENU_TEXT("\x16", "1/480");
+const char option_txt_4_0_23[] PROGMEM = MENU_TEXT("\x17", "1/960");
+const char* const option_txt_4_0[] PROGMEM = {
+option_txt_4_0_0, option_txt_4_0_1, option_txt_4_0_2, option_txt_4_0_3,
+option_txt_4_0_4, option_txt_4_0_5, option_txt_4_0_6, option_txt_4_0_7,
+option_txt_4_0_8, option_txt_4_0_9, option_txt_4_0_10, option_txt_4_0_11,
+option_txt_4_0_12, option_txt_4_0_13, option_txt_4_0_14, option_txt_4_0_15,
+option_txt_4_0_16, option_txt_4_0_17, option_txt_4_0_18, option_txt_4_0_19,
+option_txt_4_0_20, option_txt_4_0_21, option_txt_4_0_22, option_txt_4_0_23, NULL
+};
+
+const char title_txt_4_1[] PROGMEM = MENU_TEXT("\x4a", "ISO Mode");
+const char option_txt_4_1_0[] PROGMEM = MENU_TEXT("\x00", "Maximum");
+const char option_txt_4_1_1[] PROGMEM = MENU_TEXT("\x01", "Lock");
+const char* const option_txt_4_1[] PROGMEM = {
+option_txt_4_1_0, option_txt_4_1_1, NULL
+};
+
+const char title_txt_4_2[] PROGMEM = MENU_TEXT("\x4b", "ISO Minimum");
+const char option_txt_4_2_0[] PROGMEM = MENU_TEXT("\x00", "800");
+const char option_txt_4_2_1[] PROGMEM = MENU_TEXT("\x01", "400");
+const char option_txt_4_2_2[] PROGMEM = MENU_TEXT("\x02", "200");
+const char option_txt_4_2_3[] PROGMEM = MENU_TEXT("\x03", "100");
+const char* const option_txt_4_2[] PROGMEM = {
+option_txt_4_2_0, option_txt_4_2_1, option_txt_4_2_2, option_txt_4_2_3, NULL
+};
+
+const char title_txt_4_3[] PROGMEM = MENU_TEXT("\x4c", "ISO Minimum");
+const char option_txt_4_3_0[] PROGMEM = MENU_TEXT("\x00", "800");
+const char option_txt_4_3_1[] PROGMEM = MENU_TEXT("\x01", "400");
+const char option_txt_4_3_2[] PROGMEM = MENU_TEXT("\x02", "200");
+const char option_txt_4_3_3[] PROGMEM = MENU_TEXT("\x03", "100");
+const char* const option_txt_4_3[] PROGMEM = {
+option_txt_4_3_0, option_txt_4_3_1, option_txt_4_3_2, option_txt_4_3_3, NULL
+};
+
 struct Widget {
 const char * title_txt;
 const char * const *option_txt;
@@ -625,9 +684,13 @@ const struct Widget widgets[] PROGMEM = {
 { title_txt_2_1, option_txt_2_1 },
 { NULL, NULL },
 { title_txt_3_0, option_txt_3_0 },
+{ title_txt_4_0, option_txt_4_0 },
+{ title_txt_4_1, option_txt_4_1 },
+{ title_txt_4_2, option_txt_4_2 },
+{ title_txt_4_3, option_txt_4_3 },
 };
 
-#define SETUP_LEN 73
+#define SETUP_LEN 77
 typedef union Setting {
   byte b[SETUP_LEN];
   struct {
@@ -700,21 +763,21 @@ typedef union Setting {
     byte current_submode[3];
     byte reserved2;
     byte lcd;
-/*
     struct {
       byte videoExposure_time;
       byte videoProtune_iso_mode;
       byte photoProtune_iso_min;
       byte multi_shotProtune_iso_min;
       // the following are not supported yet in firmware v4.0.0
+      /*
       byte photoSingle_wdr;
       byte videoEis;
       byte audioProtune;
       byte audioOption;
       byte audioProtune_option;
       byte photoSingle_raw;
+      */
     } v4;
- */
   } p;
 } Setting;
 
@@ -794,12 +857,12 @@ Setting setting =
   0,     // 70 setup/current_sub_mode (multi shot)
   0,     // 71
   0,     // 72 setup/lcd
-/*
 // firmware v.4.00 only
   0,     // 73 v4/video/exposure_time
   0,     // 74 v4/video/protune_iso_mode
   3,     // 75 v4/photo/protune_iso_min
   3,     // 76 v4/multi_shot/protune_iso_min
+/*
 // v4.0.0 firmware doesn't support the following, yet
   0,     // 77 v4/photo/single_wdr (wide dynamic range)
   0,     // 78 v4/video/eis (electronic image stabilization)
@@ -888,12 +951,12 @@ Setting storage[MAX_SUBMODE_SIZE] = {
   0,     // 70 setup/current_sub_mode (multi shot)
   0,     // 71
   0,     // 72 setup/lcd
-/*
 // firmware v.4.00 only
   0,     // 73 v4/video/exposure_time
   0,     // 74 v4/video/protune_iso_mode
   3,     // 75 v4/photo/protune_iso_min
   3,     // 76 v4/multi_shot/protune_iso_min
+/*
 // v4.0.0 firmware doesn't support the following, yet
   0,     // 77 v4/photo/single_wdr (wide dynamic range)
   0,     // 78 v4/video/eis (electronic image stabilization)
@@ -978,12 +1041,12 @@ Setting storage[MAX_SUBMODE_SIZE] = {
   0,     // 70 setup/current_sub_mode (multi shot)
   0,     // 71
   0,     // 72 setup/lcd
-/*
 // firmware v.4.00 only
   0,     // 73 v4/video/exposure_time
   0,     // 74 v4/video/protune_iso_mode
   3,     // 75 v4/photo/protune_iso_min
   3,     // 76 v4/multi_shot/protune_iso_min
+/*
 // v4.0.0 firmware doesn't support the following, yet
   0,     // 77 v4/photo/single_wdr (wide dynamic range)
   0,     // 78 v4/video/eis (electronic image stabilization)
@@ -1068,12 +1131,12 @@ Setting storage[MAX_SUBMODE_SIZE] = {
   0,     // 70 setup/current_sub_mode (multi shot)
   0,     // 71
   0,     // 72 setup/lcd
-/*
 // firmware v.4.00 only
   0,     // 73 v4/video/exposure_time
   0,     // 74 v4/video/protune_iso_mode
   3,     // 75 v4/photo/protune_iso_min
   3,     // 76 v4/multi_shot/protune_iso_min
+/*
 // v4.0.0 firmware doesn't support the following, yet
   0,     // 77 v4/photo/single_wdr (wide dynamic range)
   0,     // 78 v4/video/eis (electronic image stabilization)
@@ -1158,12 +1221,12 @@ Setting storage[MAX_SUBMODE_SIZE] = {
   0,     // 70 setup/current_sub_mode (multi shot)
   0,     // 71
   0,     // 72 setup/lcd
-/*
 // firmware v.4.00 only
   0,     // 73 v4/video/exposure_time
   0,     // 74 v4/video/protune_iso_mode
   3,     // 75 v4/photo/protune_iso_min
   3,     // 76 v4/multi_shot/protune_iso_min
+/*
 // v4.0.0 firmware doesn't support the following, yet
   0,     // 77 v4/photo/single_wdr (wide dynamic range)
   0,     // 78 v4/video/eis (electronic image stabilization)
@@ -1239,7 +1302,24 @@ if(id==8&&setting.b[3]==12)switch(v){case 0:case 1:return true;}
 if(id==11&&setting.b[10]==0)switch(v){case 0:case 1:case 2:case 3:case 4:return true;}
 if(id==12&&setting.b[10]==0)switch(v){case 0:case 1:return true;}
 if(id==14&&setting.b[10]==0)switch(v){case 0:case 1:case 2:return true;}
+if(id==73&&setting.b[10]==0)return true;
+if(id==73&&setting.b[3]==0)switch(v){case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 8:case 9:case 10:case 11:case 12:case 13:case 14:case 15:case 16:case 17:case 19:case 20:case 21:return true;}
+if(id==73&&setting.b[3]==1)switch(v){case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 8:case 9:case 10:case 11:case 12:case 14:case 15:case 16:case 17:case 19:case 20:case 21:case 23:return true;}
+if(id==73&&setting.b[3]==2)switch(v){case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 8:case 9:case 10:case 11:case 13:case 14:case 15:case 16:case 18:case 19:case 20:case 22:case 23:return true;}
+if(id==73&&setting.b[3]==3)switch(v){case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 8:case 9:case 11:case 12:case 13:case 14:case 16:case 17:case 18:case 19:case 21:case 22:case 23:return true;}
+if(id==73&&setting.b[3]==4)switch(v){case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 8:case 10:case 11:case 12:case 13:case 15:case 16:case 17:case 18:case 20:case 21:case 22:case 23:return true;}
+if(id==73&&setting.b[3]==5)switch(v){case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 9:case 10:case 11:case 12:case 14:case 15:case 16:case 17:case 19:case 20:case 21:case 22:case 23:return true;}
+if(id==73&&setting.b[3]==6)switch(v){case 1:case 2:case 3:case 4:case 5:case 6:case 8:case 9:case 10:case 11:case 13:case 14:case 15:case 16:case 18:case 19:case 20:case 21:case 22:case 23:return true;}
+if(id==73&&setting.b[3]==7)switch(v){case 1:case 2:case 3:case 4:case 5:case 7:case 8:case 9:case 10:case 12:case 13:case 14:case 15:case 17:case 18:case 19:case 20:case 21:case 22:case 23:return true;}
+if(id==73&&setting.b[3]==8)switch(v){case 1:case 2:case 3:case 4:case 6:case 7:case 9:case 10:case 11:case 12:case 14:case 15:case 16:case 17:case 18:case 19:case 20:case 21:case 22:case 23:return true;}
+if(id==73&&setting.b[3]==9)switch(v){case 1:case 2:case 3:case 5:case 6:case 8:case 9:case 10:case 11:case 13:case 14:case 15:case 16:case 17:case 18:case 19:case 20:case 21:case 22:case 23:return true;}
+if(id==73&&setting.b[3]==10)switch(v){case 1:case 2:case 4:case 5:case 7:case 8:case 9:case 10:case 12:case 13:case 14:case 15:case 16:case 17:case 18:case 19:case 20:case 21:case 22:case 23:return true;}
+if(id==73&&setting.b[3]==11)switch(v){case 1:case 3:case 4:case 6:case 7:case 9:case 10:case 11:case 12:case 13:case 14:case 15:case 16:case 17:case 18:case 19:case 20:case 21:case 22:case 23:return true;}
+if(id==73&&setting.b[3]==12)switch(v){case 2:case 4:case 5:case 7:case 8:case 9:case 10:case 11:case 12:case 13:case 14:case 15:case 16:case 17:case 18:case 19:case 20:case 21:case 22:case 23:return true;}
+if(id==74&&setting.b[10]==1&&setting.b[73]==0)return true;
+if(id==74&&setting.b[10]==0)return true;
 if(id==13&&setting.b[10]==0)switch(v){case 0:case 1:case 2:case 3:case 4:return true;}
+if(id==15&&setting.b[10]==1&&setting.b[73]!=0)return true;
 if(id==15&&setting.b[10]==0)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 8:return true;}
 if(id==5&&setting.b[68]==0)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:return true;}
 if(id==6&&setting.b[68]==0)switch(v){case 0:case 1:case 2:case 3:case 4:return true;}
@@ -1260,6 +1340,7 @@ if(id==19&&setting.b[69]==1)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:
 if(id==18&&setting.b[69]==2)switch(v){case 0:case 1:case 2:return true;}
 if(id==22&&setting.b[21]==0)switch(v){case 0:case 1:case 2:case 3:case 4:return true;}
 if(id==23&&setting.b[21]==0)switch(v){case 0:case 1:return true;}
+if(id==75&&setting.b[21]==0)return true;
 if(id==25&&setting.b[21]==0)switch(v){case 0:case 1:case 2:return true;}
 if(id==24&&setting.b[21]==0)switch(v){case 0:case 1:case 2:case 3:return true;}
 if(id==26&&setting.b[21]==0)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 8:return true;}
@@ -1296,6 +1377,7 @@ if(id==32&&setting.b[70]==2&&setting.b[31]==5)switch(v){case 10:case 11:case 0:c
 if(id==32&&setting.b[70]==2&&setting.b[31]==6)switch(v){case 10:case 11:case 0:case 1:case 2:case 3:return true;}
 if(id==35&&setting.b[34]==0)switch(v){case 0:case 1:case 2:case 3:case 4:return true;}
 if(id==36&&setting.b[34]==0)switch(v){case 0:case 1:return true;}
+if(id==76&&setting.b[34]==0)return true;
 if(id==38&&setting.b[34]==0)switch(v){case 0:case 1:case 2:return true;}
 if(id==37&&setting.b[34]==0)switch(v){case 0:case 1:case 2:case 3:return true;}
 if(id==39&&setting.b[34]==0)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 8:return true;}
@@ -1379,8 +1461,25 @@ if(id==8&&setting.b[3]==11)switch(v){case 0:case 1:return true;}
 if(id==8&&setting.b[3]==12)switch(v){case 0:case 1:return true;}
 if(id==11&&setting.b[10]==0)switch(v){case 0:case 1:case 2:case 3:case 4:return true;}
 if(id==12&&setting.b[10]==0)switch(v){case 0:case 1:return true;}
+if(id==73&&setting.b[10]==0)return true;
+if(id==73&&setting.b[3]==0)switch(v){case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 8:case 9:case 10:case 11:case 12:case 13:case 14:case 15:case 16:case 17:case 19:case 20:case 21:return true;}
+if(id==73&&setting.b[3]==1)switch(v){case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 8:case 9:case 10:case 11:case 12:case 14:case 15:case 16:case 17:case 19:case 20:case 21:case 23:return true;}
+if(id==73&&setting.b[3]==2)switch(v){case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 8:case 9:case 10:case 11:case 13:case 14:case 15:case 16:case 18:case 19:case 20:case 22:case 23:return true;}
+if(id==73&&setting.b[3]==3)switch(v){case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 8:case 9:case 11:case 12:case 13:case 14:case 16:case 17:case 18:case 19:case 21:case 22:case 23:return true;}
+if(id==73&&setting.b[3]==4)switch(v){case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 8:case 10:case 11:case 12:case 13:case 15:case 16:case 17:case 18:case 20:case 21:case 22:case 23:return true;}
+if(id==73&&setting.b[3]==5)switch(v){case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 9:case 10:case 11:case 12:case 14:case 15:case 16:case 17:case 19:case 20:case 21:case 22:case 23:return true;}
+if(id==73&&setting.b[3]==6)switch(v){case 1:case 2:case 3:case 4:case 5:case 6:case 8:case 9:case 10:case 11:case 13:case 14:case 15:case 16:case 18:case 19:case 20:case 21:case 22:case 23:return true;}
+if(id==73&&setting.b[3]==7)switch(v){case 1:case 2:case 3:case 4:case 5:case 7:case 8:case 9:case 10:case 12:case 13:case 14:case 15:case 17:case 18:case 19:case 20:case 21:case 22:case 23:return true;}
+if(id==73&&setting.b[3]==8)switch(v){case 1:case 2:case 3:case 4:case 6:case 7:case 9:case 10:case 11:case 12:case 14:case 15:case 16:case 17:case 18:case 19:case 20:case 21:case 22:case 23:return true;}
+if(id==73&&setting.b[3]==9)switch(v){case 1:case 2:case 3:case 5:case 6:case 8:case 9:case 10:case 11:case 13:case 14:case 15:case 16:case 17:case 18:case 19:case 20:case 21:case 22:case 23:return true;}
+if(id==73&&setting.b[3]==10)switch(v){case 1:case 2:case 4:case 5:case 7:case 8:case 9:case 10:case 12:case 13:case 14:case 15:case 16:case 17:case 18:case 19:case 20:case 21:case 22:case 23:return true;}
+if(id==73&&setting.b[3]==11)switch(v){case 1:case 3:case 4:case 6:case 7:case 9:case 10:case 11:case 12:case 13:case 14:case 15:case 16:case 17:case 18:case 19:case 20:case 21:case 22:case 23:return true;}
+if(id==73&&setting.b[3]==12)switch(v){case 2:case 4:case 5:case 7:case 8:case 9:case 10:case 11:case 12:case 13:case 14:case 15:case 16:case 17:case 18:case 19:case 20:case 21:case 22:case 23:return true;}
+if(id==74&&setting.b[10]==1&&setting.b[73]==0)return true;
+if(id==74&&setting.b[10]==0)return true;
 if(id==14&&setting.b[10]==0)switch(v){case 0:case 1:case 2:return true;}
 if(id==13&&setting.b[10]==0)switch(v){case 0:case 1:case 2:case 3:case 4:return true;}
+if(id==15&&setting.b[10]==1&&setting.b[73]!=0)return true;
 if(id==15&&setting.b[10]==0)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 8:return true;}
 if(id==5&&setting.b[68]==0)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:return true;}
 if(id==6&&setting.b[68]==0)switch(v){case 0:case 1:case 2:case 3:case 4:return true;}
@@ -1401,6 +1500,7 @@ if(id==19&&setting.b[69]==1)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:
 if(id==18&&setting.b[69]==2)switch(v){case 0:case 1:case 2:return true;}
 if(id==22&&setting.b[21]==0)switch(v){case 0:case 1:case 2:case 3:case 4:return true;}
 if(id==23&&setting.b[21]==0)switch(v){case 0:case 1:return true;}
+if(id==75&&setting.b[21]==0)return true;
 if(id==25&&setting.b[21]==0)switch(v){case 0:case 1:case 2:return true;}
 if(id==24&&setting.b[21]==0)switch(v){case 0:case 1:case 2:case 3:return true;}
 if(id==26&&setting.b[21]==0)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 8:return true;}
@@ -1437,6 +1537,7 @@ if(id==32&&setting.b[70]==2&&setting.b[31]==5)switch(v){case 10:case 11:case 0:c
 if(id==32&&setting.b[70]==2&&setting.b[31]==6)switch(v){case 10:case 11:case 0:case 1:case 2:case 3:return true;}
 if(id==35&&setting.b[34]==0)switch(v){case 0:case 1:case 2:case 3:case 4:return true;}
 if(id==36&&setting.b[34]==0)switch(v){case 0:case 1:return true;}
+if(id==76&&setting.b[34]==0)return true;
 if(id==38&&setting.b[34]==0)switch(v){case 0:case 1:case 2:return true;}
 if(id==37&&setting.b[34]==0)switch(v){case 0:case 1:case 2:case 3:return true;}
 if(id==39&&setting.b[34]==0)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 8:return true;}

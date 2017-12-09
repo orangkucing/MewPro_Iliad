@@ -34,7 +34,7 @@ void updateLCD()
   switch (disp_state) {
     case MENU_START:
       lcd.clear();
-      lcd.print(F("MewPro Iliad"));
+      lcd.print(F("MewPro Iliad v4"));
       lcd.setCursor(0, 1);
       lcd.print(F(__VERSION_STRING__));
       break;

@@ -6,7 +6,7 @@ void loadSetupValue()
     memcpy(&setting.p.video, &storage[current_submode].p.video, sizeof(setting.p.video));
     memcpy(&setting.p.photo, &storage[current_submode].p.photo, sizeof(setting.p.photo));
     memcpy(&setting.p.multi_shot, &storage[current_submode].p.multi_shot, sizeof(setting.p.multi_shot));
-//  memcpy(&setting.p.v4, &storage[current_submode].p.v4, sizeof(setting.p.v4));
+    memcpy(&setting.p.v4, &storage[current_submode].p.v4, sizeof(setting.p.v4));
   }
 }
 
@@ -41,7 +41,7 @@ void storeSetupValue()
     memcpy(&storage[current_submode].p.video, &setting.p.video, sizeof(setting.p.video));
     memcpy(&storage[current_submode].p.photo, &setting.p.photo, sizeof(setting.p.photo));
     memcpy(&storage[current_submode].p.multi_shot, &setting.p.multi_shot, sizeof(setting.p.multi_shot));
-//  memcpy(&storage[current_submode].p.v4, &setting.p.v4, sizeof(setting.p.v4));
+    memcpy(&storage[current_submode].p.v4, &setting.p.v4, sizeof(setting.p.v4));
   }
   switch (setting.p.mode) {
     case MODE_VIDEO:
@@ -112,7 +112,7 @@ boolean nextWidget()
         if (blacklist(id, setting.b[id])) {
           // current value is blacklisted
           setting.b[id] = val;
-          if (&setting.b[id] < &setting.p.reserved0 /* || &setting.b[id] >= &setting.p.v4 */) {
+          if (&setting.b[id] < &setting.p.reserved0 || &setting.b[id] >= &setting.p.v4) {
             storeSetupValue();
           }
           Broadcast_ChangeSetting(id);
@@ -164,7 +164,7 @@ void setNextValue()
           storage[i].p.video.fps = __fps[storage[i].p.video.fps];
         }
       }
-      if (&setting.b[setup_id] < &setting.p.reserved0 /* || &setting.b[setup_id] >= &setting.p.v4 */) {
+      if (&setting.b[setup_id] < &setting.p.reserved0 || &setting.b[setup_id] >= &setting.p.v4) {
         storeSetupValue();
       }
       return;

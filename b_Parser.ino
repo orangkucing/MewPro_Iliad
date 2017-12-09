@@ -166,16 +166,16 @@ int extendedYYcommand()
             storage[i].p.video.protune_iso           = buf[26 + i * 24];
             storage[i].p.video.protune_ev            = buf[27 + i * 24];
             storage[i].p.video.protune_white_balance = buf[28 + i * 24];
-//          storage[i].p.v4.videoExposure_time       = buf[29 + i * 24];
-//          storage[i].p.v4.videoProtune_iso_mode    = buf[30 + i * 24];
+            storage[i].p.v4.videoExposure_time       = buf[29 + i * 24];
+            storage[i].p.v4.videoProtune_iso_mode    = buf[30 + i * 24];
           }
           break;
-//      case 40: // exposure_time
-//        storage[sub].p.v4.videoExposure_time = buf[13];
-//        break;
-//      case 42: // protune_iso_mode
-//        storage[sub].p.v4.videoProtune_iso_mode = buf[13];
-//        break;
+        case 40: // exposure_time
+          storage[sub].p.v4.videoExposure_time = buf[13];
+          break;
+        case 42: // protune_iso_mode
+          storage[sub].p.v4.videoProtune_iso_mode = buf[13];
+          break;
       }
       break;
     case 3: // photo
@@ -235,12 +235,12 @@ int extendedYYcommand()
             storage[i].p.photo.protune_iso           = buf[22 + i * 20];
             storage[i].p.photo.protune_ev            = buf[23 + i * 20];
             storage[i].p.photo.protune_white_balance = buf[24 + i * 20];
-//          storage[i].p.v4.photoProtune_iso_min     = buf[25 + i * 20];
+            storage[i].p.v4.photoProtune_iso_min     = buf[25 + i * 20];
           }
           break;
-//      case 29: // protune_iso_min
-//        storage[sub].p.v4.photoProtune_iso_min = buf[13];
-//        break;
+        case 29: // protune_iso_min
+          storage[sub].p.v4.photoProtune_iso_min = buf[13];
+          break;
       }
       break;
     case 4: // multi-shot
@@ -308,12 +308,12 @@ int extendedYYcommand()
             storage[i].p.multi_shot.protune_iso           = buf[24 + i * 22];
             storage[i].p.multi_shot.protune_ev            = buf[25 + i * 22];
             storage[i].p.multi_shot.protune_white_balance = buf[26 + i * 22];
-//          storage[i].p.v4.multi_shotProtune_iso_min     = buf[27 + i * 22];
+            storage[i].p.v4.multi_shotProtune_iso_min     = buf[27 + i * 22];
           }
           break;
-//      case 34: // protune_iso_min (v4)
-//        storage[sub].p.v4.multi_shotProtune_iso_min = buf[13];
-//        break;
+        case 34: // protune_iso_min (v4)
+          storage[sub].p.v4.multi_shotProtune_iso_min = buf[13];
+          break;
       }
       break;
     case 7: // global settings

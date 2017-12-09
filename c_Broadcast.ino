@@ -192,8 +192,8 @@ void Broadcast_ChangeSettings(char mode)
       sprintHex((6 + 13) * 2, storage[0].p.video.protune_iso);
       sprintHex((6 + 14) * 2, storage[0].p.video.protune_ev);
       sprintHex((6 + 15) * 2, storage[0].p.video.protune_white_balance);
-      sprintHex((6 + 16) * 2, 0 /* storage[0].p.v4.videoExposure_time */);
-      sprintHex((6 + 17) * 2, 0 /* storage[0].p.v4.videoProtune_iso_mode */);
+      sprintHex((6 + 16) * 2, storage[0].p.v4.videoExposure_time);
+      sprintHex((6 + 17) * 2, storage[0].p.v4.videoProtune_iso_mode);
       FIFOCPY_P(48, F("000000000000"), 12); // reserved
       // sub mode: timelapse video
       sprintHex((30 + 0) * 2, 0);
@@ -212,8 +212,8 @@ void Broadcast_ChangeSettings(char mode)
       sprintHex((30 + 13) * 2, storage[0].p.video.protune_iso);
       sprintHex((30 + 14) * 2, storage[0].p.video.protune_ev);
       sprintHex((30 + 15) * 2, storage[0].p.video.protune_white_balance);
-      sprintHex((30 + 16) * 2, 0 /* storage[0].p.v4.videoExposure_time */);
-      sprintHex((30 + 17) * 2, 0 /* storage[0].p.v4.videoProtune_iso_mode */);
+      sprintHex((30 + 16) * 2, storage[0].p.v4.videoExposure_time);
+      sprintHex((30 + 17) * 2, storage[0].p.v4.videoProtune_iso_mode);
       FIFOCPY_P(96, F("000000000000"), 12); // reserved
       // sub mode: video + photo
       sprintHex((54 + 0) * 2, 0);
@@ -232,8 +232,8 @@ void Broadcast_ChangeSettings(char mode)
       sprintHex((54 + 13) * 2, storage[0].p.video.protune_iso);
       sprintHex((54 + 14) * 2, storage[0].p.video.protune_ev);
       sprintHex((54 + 15) * 2, storage[0].p.video.protune_white_balance);
-      sprintHex((54 + 16) * 2, 0 /* storage[0].p.v4.videoExposure_time */);
-      sprintHex((54 + 17) * 2, 0 /* storage[0].p.v4.videoProtune_iso_mode */);
+      sprintHex((54 + 16) * 2, storage[0].p.v4.videoExposure_time);
+      sprintHex((54 + 17) * 2, storage[0].p.v4.videoProtune_iso_mode);
       FIFOCPY_P(144, F("000000000000"), 12); // reserved
       // sub mode: looping
       sprintHex((78 + 0) * 2, 0);
@@ -252,8 +252,8 @@ void Broadcast_ChangeSettings(char mode)
       sprintHex((78 + 13) * 2, storage[0].p.video.protune_iso);
       sprintHex((78 + 14) * 2, storage[0].p.video.protune_ev);
       sprintHex((78 + 15) * 2, storage[0].p.video.protune_white_balance);
-      sprintHex((78 + 16) * 2, 0 /* storage[0].p.v4.videoExposure_time */);
-      sprintHex((78 + 17) * 2, 0 /* storage[0].p.v4.videoProtune_iso_mode */);
+      sprintHex((78 + 16) * 2, storage[0].p.v4.videoExposure_time);
+      sprintHex((78 + 17) * 2, storage[0].p.v4.videoProtune_iso_mode);
       FIFOCPY_P(192, F("000000000000"), 12); // reserved
       //
       FIFO(204) = '\n';
@@ -274,7 +274,7 @@ void Broadcast_ChangeSettings(char mode)
       sprintHex((6 + 9) * 2, storage[0].p.photo.protune_iso);
       sprintHex((6 + 10) * 2, storage[0].p.photo.protune_ev);
       sprintHex((6 + 11) * 2, storage[0].p.photo.protune_white_balance);
-      sprintHex((6 + 12) * 2, 3 /* storage[0].p.v4.photoProtune_iso_min */);
+      sprintHex((6 + 12) * 2, storage[0].p.v4.photoProtune_iso_min);
       FIFOCPY_P(38, F("00000000000000"), 14); // reserved
       // sub mode: continuous
       sprintHex((26 + 0) * 2, 0);
@@ -289,7 +289,7 @@ void Broadcast_ChangeSettings(char mode)
       sprintHex((26 + 9) * 2, storage[1].p.photo.protune_iso);
       sprintHex((26 + 10) * 2, storage[1].p.photo.protune_ev);
       sprintHex((26 + 11) * 2, storage[1].p.photo.protune_white_balance);
-      sprintHex((26 + 12) * 2, 3 /* storage[1].p.v4.photoProtune_iso_min */);
+      sprintHex((26 + 12) * 2, storage[1].p.v4.photoProtune_iso_min);
       FIFOCPY_P(78, F("00000000000000"), 14); // reserved
       // sub mode: night
       sprintHex((46 + 0) * 2, 0);
@@ -304,7 +304,7 @@ void Broadcast_ChangeSettings(char mode)
       sprintHex((46 + 9) * 2, storage[2].p.photo.protune_iso);
       sprintHex((46 + 10) * 2, storage[2].p.photo.protune_ev);
       sprintHex((46 + 11) * 2, storage[2].p.photo.protune_white_balance);
-      sprintHex((46 + 12) * 2, 3 /* storage[2].p.v4.photoProtune_iso_min */);
+      sprintHex((46 + 12) * 2, storage[2].p.v4.photoProtune_iso_min);
       FIFOCPY_P(118, F("00000000000000"), 14); // reserved
       //
       FIFO(132) = '\n';
@@ -327,7 +327,7 @@ void Broadcast_ChangeSettings(char mode)
       sprintHex((6 + 11) * 2, storage[0].p.multi_shot.protune_iso);
       sprintHex((6 + 12) * 2, storage[0].p.multi_shot.protune_ev);
       sprintHex((6 + 13) * 2, storage[0].p.multi_shot.protune_white_balance);
-      sprintHex((6 + 14) * 2, 4 /* storage[0].p.v4.multi_shotProtune_iso_min */);
+      sprintHex((6 + 14) * 2, storage[0].p.v4.multi_shotProtune_iso_min);
       FIFOCPY_P(42, F("00000000000000"), 14); // reserved
       // sub mode: timelapse
       sprintHex((28 + 0) * 2, 0);
@@ -344,7 +344,7 @@ void Broadcast_ChangeSettings(char mode)
       sprintHex((28 + 11) * 2, storage[1].p.multi_shot.protune_iso);
       sprintHex((28 + 12) * 2, storage[1].p.multi_shot.protune_ev);
       sprintHex((28 + 13) * 2, storage[1].p.multi_shot.protune_white_balance);
-      sprintHex((28 + 14) * 2, 4 /* storage[1].p.v4.multi_shotProtune_iso_min */);
+      sprintHex((28 + 14) * 2, storage[1].p.v4.multi_shotProtune_iso_min);
       FIFOCPY_P(86, F("00000000000000"), 14); // reserved
       // sub mode: night lapse
       sprintHex((50 + 0) * 2, 0);
@@ -361,7 +361,7 @@ void Broadcast_ChangeSettings(char mode)
       sprintHex((50 + 11) * 2, storage[2].p.multi_shot.protune_iso);
       sprintHex((50 + 12) * 2, storage[2].p.multi_shot.protune_ev);
       sprintHex((50 + 13) * 2, storage[2].p.multi_shot.protune_white_balance);
-      sprintHex((50 + 14) * 2, 4 /* storage[2].p.v4.multi_shotProtune_iso_min */);
+      sprintHex((50 + 14) * 2, storage[2].p.v4.multi_shotProtune_iso_min);
       FIFOCPY_P(130, F("00000000000000"), 14); // reserved
       //
       FIFO(144) = '\n';
@@ -553,14 +553,14 @@ void Broadcast_ChangeSetting(char id)
     case &setting.p.current_submode[MODE_MULTI_SHOT] - setting.b:
       Broadcast_ChangeSubMode(); break;
     //
-//  case &setting.p.v4.videoExposure_time - setting.b:
-//    __queueIn(2, 40, setting.p.v4.videoExposure_time); break;
-//  case &setting.p.v4.videoProtune_iso_mode - setting.b:
-//    __queueIn(2, 42, setting.p.v4.videoProtune_iso_mode); break;
-//  case &setting.p.v4.photoProtune_iso_min - setting.b:
-//    __queueIn(3, 29, setting.p.v4.photoProtune_iso_min); break;
-//  case &setting.p.v4.multi_shotProtune_iso_min - setting.b:
-//    __queueIn(4, 34, setting.p.v4.multi_shotProtune_iso_min); break;
+    case &setting.p.v4.videoExposure_time - setting.b:
+      __queueIn(2, 40, setting.p.v4.videoExposure_time); break;
+    case &setting.p.v4.videoProtune_iso_mode - setting.b:
+      __queueIn(2, 42, setting.p.v4.videoProtune_iso_mode); break;
+    case &setting.p.v4.photoProtune_iso_min - setting.b:
+      __queueIn(3, 29, setting.p.v4.photoProtune_iso_min); break;
+    case &setting.p.v4.multi_shotProtune_iso_min - setting.b:
+      __queueIn(4, 34, setting.p.v4.multi_shotProtune_iso_min); break;
   }
 #endif /* not BULK_SETTING_TRANSFER */
 }
