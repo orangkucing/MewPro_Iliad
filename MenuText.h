@@ -1315,7 +1315,7 @@ if(id==73&&setting.b[3]==8)switch(v){case 1:case 2:case 3:case 4:case 6:case 7:c
 if(id==73&&setting.b[3]==9)switch(v){case 1:case 2:case 3:case 5:case 6:case 8:case 9:case 10:case 11:case 13:case 14:case 15:case 16:case 17:case 18:case 19:case 20:case 21:case 22:case 23:return true;}
 if(id==73&&setting.b[3]==10)switch(v){case 1:case 2:case 4:case 5:case 7:case 8:case 9:case 10:case 12:case 13:case 14:case 15:case 16:case 17:case 18:case 19:case 20:case 21:case 22:case 23:return true;}
 if(id==73&&setting.b[3]==11)switch(v){case 1:case 3:case 4:case 6:case 7:case 9:case 10:case 11:case 12:case 13:case 14:case 15:case 16:case 17:case 18:case 19:case 20:case 21:case 22:case 23:return true;}
-if(id==73&&setting.b[3]==12)switch(v){case 2:case 4:case 5:case 7:case 8:case 9:case 10:case 11:case 12:case 13:case 14:case 15:case 16:case 17:case 18:case 19:case 20:case 21:case 22:case 23:return true;}
+if(id==73&&setting.b[3]==12)switch(v){case 2:case 3:case 5:case 6:case 8:case 9:case 10:case 11:case 12:case 13:case 14:case 15:case 16:case 17:case 18:case 19:case 20:case 21:case 22:case 23:return true;}
 if(id==74&&setting.b[10]==1&&setting.b[73]==0)return true;
 if(id==74&&setting.b[10]==0)return true;
 if(id==13&&setting.b[10]==0)switch(v){case 0:case 1:case 2:case 3:case 4:return true;}
@@ -1474,7 +1474,7 @@ if(id==73&&setting.b[3]==8)switch(v){case 1:case 2:case 3:case 4:case 6:case 7:c
 if(id==73&&setting.b[3]==9)switch(v){case 1:case 2:case 3:case 5:case 6:case 8:case 9:case 10:case 11:case 13:case 14:case 15:case 16:case 17:case 18:case 19:case 20:case 21:case 22:case 23:return true;}
 if(id==73&&setting.b[3]==10)switch(v){case 1:case 2:case 4:case 5:case 7:case 8:case 9:case 10:case 12:case 13:case 14:case 15:case 16:case 17:case 18:case 19:case 20:case 21:case 22:case 23:return true;}
 if(id==73&&setting.b[3]==11)switch(v){case 1:case 3:case 4:case 6:case 7:case 9:case 10:case 11:case 12:case 13:case 14:case 15:case 16:case 17:case 18:case 19:case 20:case 21:case 22:case 23:return true;}
-if(id==73&&setting.b[3]==12)switch(v){case 2:case 4:case 5:case 7:case 8:case 9:case 10:case 11:case 12:case 13:case 14:case 15:case 16:case 17:case 18:case 19:case 20:case 21:case 22:case 23:return true;}
+if(id==73&&setting.b[3]==12)switch(v){case 2:case 3:case 5:case 6:case 8:case 9:case 10:case 11:case 12:case 13:case 14:case 15:case 16:case 17:case 18:case 19:case 20:case 21:case 22:case 23:return true;}
 if(id==74&&setting.b[10]==1&&setting.b[73]==0)return true;
 if(id==74&&setting.b[10]==0)return true;
 if(id==14&&setting.b[10]==0)switch(v){case 0:case 1:case 2:return true;}
