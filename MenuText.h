@@ -142,11 +142,14 @@ option_txt_0_10_0, option_txt_0_10_1, NULL
 const char title_txt_0_11[] PROGMEM = MENU_TEXT("\x0b", "White Balance");
 const char option_txt_0_11_0[] PROGMEM = MENU_TEXT("\x00", "Auto");
 const char option_txt_0_11_1[] PROGMEM = MENU_TEXT("\x01", "3000K");
-const char option_txt_0_11_2[] PROGMEM = MENU_TEXT("\x02", "5500K");
-const char option_txt_0_11_3[] PROGMEM = MENU_TEXT("\x03", "6500K");
-const char option_txt_0_11_4[] PROGMEM = MENU_TEXT("\x04", "Native");
+const char option_txt_0_11_2[] PROGMEM = MENU_TEXT("\x05", "4000K");
+const char option_txt_0_11_3[] PROGMEM = MENU_TEXT("\x06", "4800K");
+const char option_txt_0_11_4[] PROGMEM = MENU_TEXT("\x02", "5500K");
+const char option_txt_0_11_5[] PROGMEM = MENU_TEXT("\x07", "6000K");
+const char option_txt_0_11_6[] PROGMEM = MENU_TEXT("\x03", "6500K");
+const char option_txt_0_11_7[] PROGMEM = MENU_TEXT("\x04", "Native");
 const char* const option_txt_0_11[] PROGMEM = {
-option_txt_0_11_0, option_txt_0_11_1, option_txt_0_11_2, option_txt_0_11_3, option_txt_0_11_4, NULL
+option_txt_0_11_0, option_txt_0_11_1, option_txt_0_11_2, option_txt_0_11_3, option_txt_0_11_4, option_txt_0_11_5, option_txt_0_11_6, option_txt_0_11_7, NULL
 };
 
 const char title_txt_0_12[] PROGMEM = MENU_TEXT("\x0c", "Color");
@@ -180,12 +183,14 @@ option_txt_0_14_0, option_txt_0_14_1, option_txt_0_14_2, option_txt_0_14_3, opti
 
 const char title_txt_0_15[] PROGMEM = MENU_TEXT("\x0d", "ISO Limit");
 const char option_txt_0_15_0[] PROGMEM = MENU_TEXT("\x00", "6400");
-const char option_txt_0_15_1[] PROGMEM = MENU_TEXT("\x01", "1600");
-const char option_txt_0_15_2[] PROGMEM = MENU_TEXT("\x02", "400");
-const char option_txt_0_15_3[] PROGMEM = MENU_TEXT("\x03", "3200");
-const char option_txt_0_15_4[] PROGMEM = MENU_TEXT("\x04", "800");
+const char option_txt_0_15_1[] PROGMEM = MENU_TEXT("\x03", "3200");
+const char option_txt_0_15_2[] PROGMEM = MENU_TEXT("\x01", "1600");
+const char option_txt_0_15_3[] PROGMEM = MENU_TEXT("\x04", "800");
+const char option_txt_0_15_4[] PROGMEM = MENU_TEXT("\x02", "400");
+const char option_txt_0_15_5[] PROGMEM = MENU_TEXT("\x07", "200");
+const char option_txt_0_15_6[] PROGMEM = MENU_TEXT("\x08", "100");
 const char* const option_txt_0_15[] PROGMEM = {
-option_txt_0_15_0, option_txt_0_15_1, option_txt_0_15_2, option_txt_0_15_3, option_txt_0_15_4, NULL
+option_txt_0_15_0, option_txt_0_15_1, option_txt_0_15_2, option_txt_0_15_3, option_txt_0_15_4, option_txt_0_15_5, option_txt_0_15_6, NULL
 };
 
 
@@ -252,11 +257,14 @@ option_txt_1_6_0, option_txt_1_6_1, NULL
 const char title_txt_1_7[] PROGMEM = MENU_TEXT("\x16", "White Balance");
 const char option_txt_1_7_0[] PROGMEM = MENU_TEXT("\x00", "Auto");
 const char option_txt_1_7_1[] PROGMEM = MENU_TEXT("\x01", "3000K");
-const char option_txt_1_7_2[] PROGMEM = MENU_TEXT("\x02", "5500K");
-const char option_txt_1_7_3[] PROGMEM = MENU_TEXT("\x03", "6500K");
-const char option_txt_1_7_4[] PROGMEM = MENU_TEXT("\x04", "Native");
+const char option_txt_1_7_2[] PROGMEM = MENU_TEXT("\x05", "4000K");
+const char option_txt_1_7_3[] PROGMEM = MENU_TEXT("\x06", "4800K");
+const char option_txt_1_7_4[] PROGMEM = MENU_TEXT("\x02", "5500K");
+const char option_txt_1_7_5[] PROGMEM = MENU_TEXT("\x07", "6000K");
+const char option_txt_1_7_6[] PROGMEM = MENU_TEXT("\x03", "6500K");
+const char option_txt_1_7_7[] PROGMEM = MENU_TEXT("\x04", "Native");
 const char* const option_txt_1_7[] PROGMEM = {
-option_txt_1_7_0, option_txt_1_7_1, option_txt_1_7_2, option_txt_1_7_3, option_txt_1_7_4, NULL
+option_txt_1_7_0, option_txt_1_7_1, option_txt_1_7_2, option_txt_1_7_3, option_txt_1_7_4, option_txt_1_7_5, option_txt_1_7_6, option_txt_1_7_7, NULL
 };
 
 const char title_txt_1_8[] PROGMEM = MENU_TEXT("\x17", "Color");
@@ -396,11 +404,14 @@ option_txt_2_8_0, option_txt_2_8_1, NULL
 const char title_txt_2_9[] PROGMEM = MENU_TEXT("\x23", "White Balance");
 const char option_txt_2_9_0[] PROGMEM = MENU_TEXT("\x00", "Auto");
 const char option_txt_2_9_1[] PROGMEM = MENU_TEXT("\x01", "3000K");
-const char option_txt_2_9_2[] PROGMEM = MENU_TEXT("\x02", "5500K");
-const char option_txt_2_9_3[] PROGMEM = MENU_TEXT("\x03", "6500K");
-const char option_txt_2_9_4[] PROGMEM = MENU_TEXT("\x04", "Native");
+const char option_txt_2_9_2[] PROGMEM = MENU_TEXT("\x05", "4000K");
+const char option_txt_2_9_3[] PROGMEM = MENU_TEXT("\x06", "4800K");
+const char option_txt_2_9_4[] PROGMEM = MENU_TEXT("\x02", "5500K");
+const char option_txt_2_9_5[] PROGMEM = MENU_TEXT("\x07", "6000K");
+const char option_txt_2_9_6[] PROGMEM = MENU_TEXT("\x03", "6500K");
+const char option_txt_2_9_7[] PROGMEM = MENU_TEXT("\x04", "Native");
 const char* const option_txt_2_9[] PROGMEM = {
-option_txt_2_9_0, option_txt_2_9_1, option_txt_2_9_2, option_txt_2_9_3, option_txt_2_9_4, NULL
+option_txt_2_9_0, option_txt_2_9_1, option_txt_2_9_2, option_txt_2_9_3, option_txt_2_9_4, option_txt_2_9_5, option_txt_2_9_6, option_txt_2_9_7, NULL
 };
 
 const char title_txt_2_10[] PROGMEM = MENU_TEXT("\x24", "Color");
@@ -1299,7 +1310,7 @@ if(id==8&&setting.b[3]==9)switch(v){case 0:case 1:return true;}
 if(id==8&&setting.b[3]==10)switch(v){case 0:case 1:return true;}
 if(id==8&&setting.b[3]==11)switch(v){case 0:case 1:return true;}
 if(id==8&&setting.b[3]==12)switch(v){case 0:case 1:return true;}
-if(id==11&&setting.b[10]==0)switch(v){case 0:case 1:case 2:case 3:case 4:return true;}
+if(id==11&&setting.b[10]==0)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:case 7:return true;}
 if(id==12&&setting.b[10]==0)switch(v){case 0:case 1:return true;}
 if(id==14&&setting.b[10]==0)switch(v){case 0:case 1:case 2:return true;}
 if(id==73&&setting.b[10]==0)return true;
@@ -1318,7 +1329,8 @@ if(id==73&&setting.b[3]==11)switch(v){case 1:case 3:case 4:case 6:case 7:case 9:
 if(id==73&&setting.b[3]==12)switch(v){case 2:case 3:case 5:case 6:case 8:case 9:case 10:case 11:case 12:case 13:case 14:case 15:case 16:case 17:case 18:case 19:case 20:case 21:case 22:case 23:return true;}
 if(id==74&&setting.b[10]==1&&setting.b[73]==0)return true;
 if(id==74&&setting.b[10]==0)return true;
-if(id==13&&setting.b[10]==0)switch(v){case 0:case 1:case 2:case 3:case 4:return true;}
+if(id==13&&setting.b[10]==0)switch(v){case 0:case 1:case 2:case 3:case 4:case 7:case 8:return true;}
+if(id==13&&setting.b[74]==0)switch(v){case 7:case 8:return true;}
 if(id==15&&setting.b[10]==1&&setting.b[73]!=0)return true;
 if(id==15&&setting.b[10]==0)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 8:return true;}
 if(id==5&&setting.b[68]==0)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:return true;}
@@ -1338,7 +1350,7 @@ if(id==18&&setting.b[69]==0)switch(v){case 0:case 1:case 2:return true;}
 if(id==19&&setting.b[69]==0)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:return true;}
 if(id==19&&setting.b[69]==1)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:return true;}
 if(id==18&&setting.b[69]==2)switch(v){case 0:case 1:case 2:return true;}
-if(id==22&&setting.b[21]==0)switch(v){case 0:case 1:case 2:case 3:case 4:return true;}
+if(id==22&&setting.b[21]==0)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:case 7:return true;}
 if(id==23&&setting.b[21]==0)switch(v){case 0:case 1:return true;}
 if(id==75&&setting.b[21]==0)return true;
 if(id==25&&setting.b[21]==0)switch(v){case 0:case 1:case 2:return true;}
@@ -1375,7 +1387,7 @@ if(id==32&&setting.b[70]==2&&setting.b[31]==3)switch(v){case 10:case 11:case 0:r
 if(id==32&&setting.b[70]==2&&setting.b[31]==4)switch(v){case 10:case 11:case 0:case 1:return true;}
 if(id==32&&setting.b[70]==2&&setting.b[31]==5)switch(v){case 10:case 11:case 0:case 1:case 2:return true;}
 if(id==32&&setting.b[70]==2&&setting.b[31]==6)switch(v){case 10:case 11:case 0:case 1:case 2:case 3:return true;}
-if(id==35&&setting.b[34]==0)switch(v){case 0:case 1:case 2:case 3:case 4:return true;}
+if(id==35&&setting.b[34]==0)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:case 7:return true;}
 if(id==36&&setting.b[34]==0)switch(v){case 0:case 1:return true;}
 if(id==76&&setting.b[34]==0)return true;
 if(id==38&&setting.b[34]==0)switch(v){case 0:case 1:case 2:return true;}
@@ -1388,22 +1400,22 @@ if(id==39&&setting.b[70]==2&&setting.b[31]==4)switch(v){case 0:case 1:case 2:cas
 if(id==39&&setting.b[70]==2&&setting.b[31]==5)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 8:return true;}
 if(id==39&&setting.b[70]==2&&setting.b[31]==6)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 8:return true;}
 if(id==10&&setting.b[68]==1)switch(v){case 0:case 1:return true;}
-if(id==11&&setting.b[68]==1)switch(v){case 0:case 1:case 2:case 3:case 4:return true;}
+if(id==11&&setting.b[68]==1)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:case 7:return true;}
 if(id==12&&setting.b[68]==1)switch(v){case 0:case 1:return true;}
 if(id==14&&setting.b[68]==1)switch(v){case 0:case 1:case 2:return true;}
-if(id==13&&setting.b[68]==1)switch(v){case 0:case 1:case 2:case 3:case 4:return true;}
+if(id==13&&setting.b[68]==1)switch(v){case 0:case 1:case 2:case 3:case 4:case 7:case 8:return true;}
 if(id==15&&setting.b[68]==1)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 8:return true;}
 if(id==10&&setting.b[68]==2)switch(v){case 0:case 1:return true;}
-if(id==11&&setting.b[68]==2)switch(v){case 0:case 1:case 2:case 3:case 4:return true;}
+if(id==11&&setting.b[68]==2)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:case 7:return true;}
 if(id==12&&setting.b[68]==2)switch(v){case 0:case 1:return true;}
 if(id==14&&setting.b[68]==2)switch(v){case 0:case 1:case 2:return true;}
-if(id==13&&setting.b[68]==2)switch(v){case 0:case 1:case 2:case 3:case 4:return true;}
+if(id==13&&setting.b[68]==2)switch(v){case 0:case 1:case 2:case 3:case 4:case 7:case 8:return true;}
 if(id==15&&setting.b[68]==2)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 8:return true;}
 if(id==10&&setting.b[68]==3)switch(v){case 0:case 1:return true;}
-if(id==11&&setting.b[68]==3)switch(v){case 0:case 1:case 2:case 3:case 4:return true;}
+if(id==11&&setting.b[68]==3)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:case 7:return true;}
 if(id==12&&setting.b[68]==3)switch(v){case 0:case 1:return true;}
 if(id==14&&setting.b[68]==3)switch(v){case 0:case 1:case 2:return true;}
-if(id==13&&setting.b[68]==3)switch(v){case 0:case 1:case 2:case 3:case 4:return true;}
+if(id==13&&setting.b[68]==3)switch(v){case 0:case 1:case 2:case 3:case 4:case 7:case 8:return true;}
 if(id==15&&setting.b[68]==3)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 8:return true;}
 if(id==16&&setting.b[53]==0)switch(v){case 0:case 1:case 2:return true;}
 if(id==27&&setting.b[53]==0)switch(v){case 0:case 1:case 2:return true;}
@@ -1459,7 +1471,7 @@ if(id==8&&setting.b[3]==9)switch(v){case 0:case 1:return true;}
 if(id==8&&setting.b[3]==10)switch(v){case 0:case 1:return true;}
 if(id==8&&setting.b[3]==11)switch(v){case 0:case 1:return true;}
 if(id==8&&setting.b[3]==12)switch(v){case 0:case 1:return true;}
-if(id==11&&setting.b[10]==0)switch(v){case 0:case 1:case 2:case 3:case 4:return true;}
+if(id==11&&setting.b[10]==0)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:case 7:return true;}
 if(id==12&&setting.b[10]==0)switch(v){case 0:case 1:return true;}
 if(id==73&&setting.b[10]==0)return true;
 if(id==73&&setting.b[3]==0)switch(v){case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 8:case 9:case 10:case 11:case 12:case 13:case 14:case 15:case 16:case 17:case 19:case 20:case 21:return true;}
@@ -1478,7 +1490,8 @@ if(id==73&&setting.b[3]==12)switch(v){case 2:case 3:case 5:case 6:case 8:case 9:
 if(id==74&&setting.b[10]==1&&setting.b[73]==0)return true;
 if(id==74&&setting.b[10]==0)return true;
 if(id==14&&setting.b[10]==0)switch(v){case 0:case 1:case 2:return true;}
-if(id==13&&setting.b[10]==0)switch(v){case 0:case 1:case 2:case 3:case 4:return true;}
+if(id==13&&setting.b[10]==0)switch(v){case 0:case 1:case 2:case 3:case 4:case 7:case 8:return true;}
+if(id==13&&setting.b[74]==0)switch(v){case 7:case 8:return true;}
 if(id==15&&setting.b[10]==1&&setting.b[73]!=0)return true;
 if(id==15&&setting.b[10]==0)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 8:return true;}
 if(id==5&&setting.b[68]==0)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:return true;}
@@ -1498,7 +1511,7 @@ if(id==18&&setting.b[69]==0)switch(v){case 0:case 1:case 2:return true;}
 if(id==19&&setting.b[69]==0)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:return true;}
 if(id==19&&setting.b[69]==1)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:return true;}
 if(id==18&&setting.b[69]==2)switch(v){case 0:case 1:case 2:return true;}
-if(id==22&&setting.b[21]==0)switch(v){case 0:case 1:case 2:case 3:case 4:return true;}
+if(id==22&&setting.b[21]==0)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:case 7:return true;}
 if(id==23&&setting.b[21]==0)switch(v){case 0:case 1:return true;}
 if(id==75&&setting.b[21]==0)return true;
 if(id==25&&setting.b[21]==0)switch(v){case 0:case 1:case 2:return true;}
@@ -1535,7 +1548,7 @@ if(id==32&&setting.b[70]==2&&setting.b[31]==3)switch(v){case 10:case 11:case 0:r
 if(id==32&&setting.b[70]==2&&setting.b[31]==4)switch(v){case 10:case 11:case 0:case 1:return true;}
 if(id==32&&setting.b[70]==2&&setting.b[31]==5)switch(v){case 10:case 11:case 0:case 1:case 2:return true;}
 if(id==32&&setting.b[70]==2&&setting.b[31]==6)switch(v){case 10:case 11:case 0:case 1:case 2:case 3:return true;}
-if(id==35&&setting.b[34]==0)switch(v){case 0:case 1:case 2:case 3:case 4:return true;}
+if(id==35&&setting.b[34]==0)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:case 7:return true;}
 if(id==36&&setting.b[34]==0)switch(v){case 0:case 1:return true;}
 if(id==76&&setting.b[34]==0)return true;
 if(id==38&&setting.b[34]==0)switch(v){case 0:case 1:case 2:return true;}
@@ -1548,22 +1561,22 @@ if(id==39&&setting.b[70]==2&&setting.b[31]==4)switch(v){case 0:case 1:case 2:cas
 if(id==39&&setting.b[70]==2&&setting.b[31]==5)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 8:return true;}
 if(id==39&&setting.b[70]==2&&setting.b[31]==6)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 8:return true;}
 if(id==10&&setting.b[68]==1)switch(v){case 0:case 1:return true;}
-if(id==11&&setting.b[68]==1)switch(v){case 0:case 1:case 2:case 3:case 4:return true;}
+if(id==11&&setting.b[68]==1)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:case 7:return true;}
 if(id==12&&setting.b[68]==1)switch(v){case 0:case 1:return true;}
 if(id==14&&setting.b[68]==1)switch(v){case 0:case 1:case 2:return true;}
-if(id==13&&setting.b[68]==1)switch(v){case 0:case 1:case 2:case 3:case 4:return true;}
+if(id==13&&setting.b[68]==1)switch(v){case 0:case 1:case 2:case 3:case 4:case 7:case 8:return true;}
 if(id==15&&setting.b[68]==1)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 8:return true;}
 if(id==10&&setting.b[68]==2)switch(v){case 0:case 1:return true;}
-if(id==11&&setting.b[68]==2)switch(v){case 0:case 1:case 2:case 3:case 4:return true;}
+if(id==11&&setting.b[68]==2)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:case 7:return true;}
 if(id==12&&setting.b[68]==2)switch(v){case 0:case 1:return true;}
 if(id==14&&setting.b[68]==2)switch(v){case 0:case 1:case 2:return true;}
-if(id==13&&setting.b[68]==2)switch(v){case 0:case 1:case 2:case 3:case 4:return true;}
+if(id==13&&setting.b[68]==2)switch(v){case 0:case 1:case 2:case 3:case 4:case 7:case 8:return true;}
 if(id==15&&setting.b[68]==2)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 8:return true;}
 if(id==10&&setting.b[68]==3)switch(v){case 0:case 1:return true;}
-if(id==11&&setting.b[68]==3)switch(v){case 0:case 1:case 2:case 3:case 4:return true;}
+if(id==11&&setting.b[68]==3)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:case 7:return true;}
 if(id==12&&setting.b[68]==3)switch(v){case 0:case 1:return true;}
 if(id==14&&setting.b[68]==3)switch(v){case 0:case 1:case 2:return true;}
-if(id==13&&setting.b[68]==3)switch(v){case 0:case 1:case 2:case 3:case 4:return true;}
+if(id==13&&setting.b[68]==3)switch(v){case 0:case 1:case 2:case 3:case 4:case 7:case 8:return true;}
 if(id==15&&setting.b[68]==3)switch(v){case 0:case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 8:return true;}
 if(id==16&&setting.b[53]==0)switch(v){case 0:case 1:case 2:return true;}
 if(id==27&&setting.b[53]==0)switch(v){case 0:case 1:case 2:return true;}
